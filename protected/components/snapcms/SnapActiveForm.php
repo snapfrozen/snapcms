@@ -18,7 +18,7 @@ class SnapActiveForm extends CActiveForm
 			'text' => array(
 				//'fieldType' => 'TextArea',
 				'widget'=> array(
-					'class' => 'application.extensions.CKEditor.theCKEditorWidget',
+					'class' => 'application.extensions.CKEditor.TheCKEditorWidget',
 					'settings' => array(
 						//'attribute'=>'content',     
 						'height'=>'400px',

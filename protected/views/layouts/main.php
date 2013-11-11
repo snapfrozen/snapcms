@@ -60,11 +60,11 @@
 	<div id="footer">
 		<div id="footermenu">
 			<?php //$items = Menu::model()->findByAttributes(array('name'=>'Footer Menu'))->menuList; ?>
-			<?php $this->widget('zii.widgets.CMenu',array(
+			<?php /* $this->widget('zii.widgets.CMenu',array(
 				'encodeLabel'=>false,
 				'activateParents'=>true,
 				'items'=>$items
-			)); ?>
+			)); */ ?>
 		</div><!-- mainmenu -->
 		Copyright &copy; <?php echo date('Y'); ?> by My Company.<br/>
 		All Rights Reserved.<br/>
