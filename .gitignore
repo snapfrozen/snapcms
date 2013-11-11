@@ -1,0 +1,8 @@
+assets/*
+!assets/.gitignore
+protected/runtime/*
+!protected/runtime/.gitignore
+protected/config/database.php
+protected/data/*.db
+error_log
+images/cache/*
