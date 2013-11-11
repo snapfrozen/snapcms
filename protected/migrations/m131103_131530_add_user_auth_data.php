@@ -38,7 +38,7 @@ class m131103_131530_add_user_auth_data extends CDbMigration
 		
 		$role=$authManager->createTask("Content");
 		$role->addChild("View Content");
-		$role->addChild("Create User");
+		$role->addChild("Create Content");
 		$role->addChild("Update Content");
 		$role->addChild("Delete Content");
 		$role->addChild("Update Content Type Structure");
