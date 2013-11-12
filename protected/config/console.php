@@ -37,10 +37,5 @@ return array(
 			),
 		),
 	),
-	
-	'params'=>array(
-		// this is used in contact page
-		'salt'=>'N-3S))OT<aAk]FZAv<%X*GxLZ!)@m,jg}M4f(P.EI0>+,!Z@-u?]ZVOxpZ^H3NSf',
-	),
 );
  */

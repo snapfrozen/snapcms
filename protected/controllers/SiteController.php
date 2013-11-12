@@ -94,7 +94,7 @@ class SiteController extends Controller
 			if($model->validate() && $model->login()) 
 			{
 				if(Yii::app()->user->checkAccess('Access Backend')) {
-					$this->redirect(array('/admin/default/index'));
+					$this->redirect(array('/snapcms/default/index'));
 				} else {
 					$this->redirect(Yii::app()->user->returnUrl);
 				}

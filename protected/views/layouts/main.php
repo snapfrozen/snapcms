@@ -73,7 +73,7 @@
 
 </div><!-- page -->
 
-<?php $this->renderPartial('application.modules.admin.views.layouts._admin_bar'); ?>
+<?php $this->renderPartial('application.modules.snapcms.views.layouts._admin_bar'); ?>
 
 </body>
 </html>

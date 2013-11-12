@@ -31,7 +31,8 @@ class UserIdentity extends CUserIdentity
 	
 	public static function doHash($password)
 	{
-		$salt = Yii::app()->params['salt'];
+		$conf = Yii::app()->getModule('snapcms')->getConfig('general');
+		$salt = $conf['security']['salt'];
 		$hash = hash('sha256',$password.$salt);
 		return $hash;
 	}

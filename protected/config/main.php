@@ -17,12 +17,14 @@ return array(
 	'import'=>array(
 		'application.models.*',
 		'application.components.*',
-		'application.components.snapcms.*',
+		//'application.components.snapcms.*',
+		'application.modules.snapcms.models.*',
+		'application.modules.snapcms.components.*',
 	),
 
 	'modules'=>array(
 		// uncomment the following to enable the Gii tool
-		'admin',
+		'snapcms'=>array(),
 		'gii'=>array(
 			'class'=>'system.gii.GiiModule',
 			'password'=>'francis',
@@ -51,6 +53,10 @@ return array(
 				//'<controller:\w+>/<id:\d+>'=>'<controller>/view',
 				//'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
 				//'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
+				'admin'                            =>'snapcms',
+				'admin/<_c:\w+>/<_a:\w+>/<id:\d+>' =>'snapcms/<_c>/<_a>/<id>',
+				'admin/<_c:\w+>/<_a:\w+>'          =>'snapcms/<_c>/<_a>',
+				'admin/<_c:\w+>'                   =>'snapcms/<_c>',
 				'<controller:[\w\-]+>/<action:[\w\-]+>' => '<controller>/<action>', 
 			),
 		),
@@ -81,43 +87,5 @@ return array(
 	'params'=>array(
 		// this is used in contact page
 		'adminEmail'=>'webmaster@example.com',
-		'salt'=>'N-3S))OT<aAk]FZAv<%X*GxLZ!)@m,jg}M4f(P.EI0>+,!Z@-u?]ZVOxpZ^H3NSf',
-		'contentTypes'=>require(dirname(__FILE__).'/content_types.php'),
-		'CMSSettings'=>array(
-			'defaultMenu'=>'Main Menu',
-		),
-		'ckEditorToolBarSets'=>array(
-			'Default'=>array(
-				array(
-					'name'=>'paragraph',
-					'items'=>array('NumberedList','BulletedList', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'Blockquote')
-				),
-				array(
-					'name'=>'links',
-					'items'=>array('Link','Unlink','Anchor')
-				),
-				array(
-					'name'=>'links',
-					'items'=>array('Image','Table','HorizontalRule')
-				),
-				'/',
-				array(
-					'name'=>'styles',
-					'items'=>array('Format')
-				),
-				array(
-					'name'=>'basicstyles',
-					'items'=>array('Bold','Italic','Underline')
-				),
-				array(
-					'name'=>'clipboard',
-					'items'=>array('Cut','Copy','Paste','PasteText','PasteFromWord','-','Undo','Redo')
-				),
-				array(
-					'name'=>'tools',
-					'items'=>array('Maximize')
-				),
-			)
-		)
 	),
 );

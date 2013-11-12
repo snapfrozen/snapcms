@@ -28,7 +28,7 @@ $this->operations=array(
 	<h1 class="text-muted">View <?php echo $this->modelClass." #<?php echo \$model->{$this->tableSchema->primaryKey}; ?>"; ?></h1>
 </div>
 
-<?php echo "<?php"; ?> $this->widget('application.components.snapcms.SnapDetailView', array(
+<?php echo "<?php"; ?> $this->widget('SnapDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
 <?php
