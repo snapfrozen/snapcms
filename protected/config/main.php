@@ -9,6 +9,7 @@ return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'SnapCMS 7',
 	//'theme'=>'admin',
+	'language'=>'en_gb',
 
 	// preloading 'log' component
 	'preload'=>array('log'),

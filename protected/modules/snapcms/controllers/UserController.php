@@ -3,9 +3,9 @@
 class UserController extends DefaultController
 {
 	protected static $menuArray=array(
-		array('label'=>'List Users', 'url'=>array('/snapcms/user/index'), 'access'=>'View User'),
-		array('label'=>'Manage Users', 'url'=>array('/snapcms/user/admin'), 'access'=>'Update User'),
-		array('label'=>'Manage Groups', 'url'=>array('/snapcms/user/groups'), 'access'=>'Manage User Groups'),
+		//array('label'=>'List Users', 'url'=>array('/snapcms/user/index'), 'access'=>'View User'),
+		array('label'=>'Users', 'url'=>array('/snapcms/user/admin'), 'access'=>'Update User'),
+		array('label'=>'User Groups', 'url'=>array('/snapcms/user/groups'), 'access'=>'Manage User Groups'),
 		//array('label'=>'User Group', 'url'=>array('/snapcms/user/permissions')),
 	);
 	

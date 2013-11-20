@@ -12,7 +12,7 @@
  * The followings are the available model relations:
  * @property MenuItems[] $menuItems
  */
-class Menu extends SnapActiveRecord
+class Menu extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name

@@ -13,6 +13,7 @@ class ContentType extends SnapModel
 	private $_schemaErrors = array();
 	private $_attributes = array();
 	private $_tableSchema = null;
+	private $_alias = null;
 	private $_rules = array(
 		array('name, id', 'required'),
 		array('content_id', 'numerical'),
@@ -137,7 +138,6 @@ class ContentType extends SnapModel
 					}
 				}
 			}
-			
 		}
 	}
 	
@@ -306,4 +306,10 @@ class ContentType extends SnapModel
 	{
 		return isset($this->_attributes[$name]);
 	}
+		
+	public static function getList()
+	{
+		return CHtml::listData(self::findAll(),'id','name');
+	}
+	
 }

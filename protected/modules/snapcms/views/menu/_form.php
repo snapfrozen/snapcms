@@ -35,7 +35,7 @@ Yii::app()->getClientScript()->registerCoreScript( 'jquery.ui' );
 		$this->widget('zii.widgets.CMenu', array(
 			'encodeLabel'=>false,
 			'items'=>$model->getMenuList(array('admin'=>true)),
-			'htmlOptions'=>array('class'=>'nav nav-stacked'),
+			'htmlOptions'=>array('class'=>'nav nav-stacked admin-nav'),
 		));
 		$this->endWidget();
 	?>

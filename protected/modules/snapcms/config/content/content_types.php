@@ -14,6 +14,7 @@ return array(
 		),
 		'inputTypes' => array (
 			'file' => 'fileField',
+			'meta_description' => 'textArea',
 		)
 	),
 	'news' => array (

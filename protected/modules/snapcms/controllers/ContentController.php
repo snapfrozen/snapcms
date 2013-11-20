@@ -4,7 +4,7 @@ class ContentController extends DefaultController
 {
 	public static $menuArray=array(
 		//array('label'=>'List Content', 'url'=>array('index')),
-		array('label'=>'Manage Pages', 'url'=>array('/snapcms/content/admin')),
+		array('label'=>'Manage Content', 'url'=>array('/snapcms/content/admin')),
 		array('label'=>'Menus', 'url'=>array('/snapcms/menu/admin')),
 	);
 	
@@ -85,11 +85,11 @@ class ContentController extends DefaultController
 		if(isset($_POST['Content']))
 		{
 			$model->attributes=$_POST['Content'];
-			$contentType = $model->contentType;
-			$contentType->attributes=$_POST['ContentType'];
+			$ContentType = $model->ContentType;
+			$ContentType->attributes=$_POST['ContentType'];
 			
 			$contentSaved = $model->save();
-			$contentType->save(); //Have to assume saved because function always returns 0;
+			$ContentType->save(); //Have to assume saved because function always returns 0;
 			$menuItemsSaved = true;
 			
 			if(isset($_POST['MenuItem']))
@@ -153,27 +153,33 @@ class ContentController extends DefaultController
 						if(!$MenuItem->save())
 							$menuItemsSaved = false;
 					}
+					else 
+					{						
+						if(!empty($data['id'])) {
+							MenuItem::model()->findByPk($data['id'])->delete();
+						}
+					}
 				}
 			}
 		}
 		
 		if(isset($_POST['ContentType']))
 		{
-			$contentType = $model->contentType;
-			$contentType->attributes=$_POST['ContentType'];
+			$ContentType = $model->ContentType;
+			$ContentType->attributes=$_POST['ContentType'];
 
-			foreach($contentType->fileFields as $field)
+			foreach($ContentType->fileFields as $field)
 			{
 				if(isset($_POST[$field.'_delete'])) {
-					$contentType->$field = null;
+					$ContentType->$field = null;
 				}
 			}
 			
-			$contentType->save(); //Have to assume saved because function always returns 0;
+			$ContentType->save(); //Have to assume saved because function always returns 0;
 			
 			if(Yii::app()->request->isAjaxRequest)
 			{
-				echo CJSON::encode($contentType->errors);
+				echo CJSON::encode($ContentType->errors);
 				Yii::app()->end();
 			}
 		}

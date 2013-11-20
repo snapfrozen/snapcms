@@ -3,7 +3,7 @@
 class DefaultController extends Controller
 {	
 	protected static $menuArray = array(
-		array('label'=>'List Users', 'url'=>array('/snapcms/user/index'), 'access'=>'View User'),
+		//array('label'=>'List Users', 'url'=>array('/snapcms/user/index'), 'access'=>'View User'),
 	);
 	
 	public function actionIndex()

@@ -41,21 +41,26 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'model'=>$model,
 )); ?>
 </div><!-- search-form -->
-
 <?php $this->widget('SnapGridView', array(
 	'id'=>'content-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
 		array(
-			'name'=>'type',
+			'name'=>'title',
 			'type'=>'raw',
 			//'header'=>'Name',
 			'value'=>'CHtml::link($data->title, array("/snapcms/content/update","id"=>$data->id))',
 		),
-		'contentType.name',
-		'created',
-		'updated',
+		array(
+			'name'=>'type',
+			//'header'=>'Content Type',
+			'filter'=>ContentType::getList(),
+		),
+		array(            // display 'create_time' using an expression
+            'name'=>'updated',
+            'value'=>'SnapFormat::date($data->updated)',
+        ),
 		array(
 			'class'=>'SnapButtonColumn',
 			'viewButtonUrl'=>'array("/content/view/","id"=>$data->id)',

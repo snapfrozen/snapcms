@@ -5,23 +5,6 @@
 $this->breadcrumbs=array(
 	'Menus',
 );
-
-$this->operations=array(
-	array('label'=>'Create Menu', 'url'=>array('create')),
-);
-
-Yii::app()->clientScript->registerScript('search', "
-$('.search-button').click(function(){
-	$('.search-form').toggle();
-	return false;
-});
-$('.search-form form').submit(function(){
-	$('#menu-grid').yiiGridView('update', {
-		data: $(this).serialize()
-	});
-	return false;
-});
-");
 ?>
 
 <div class="page-header">
@@ -37,6 +20,7 @@ $('.search-form form').submit(function(){
 		'name',
 		array(
 			'class'=>'SnapButtonColumn',
+			'template'=>'{update}'
 		),
 	),
 )); ?>

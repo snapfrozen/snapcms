@@ -9,7 +9,7 @@ $this->breadcrumbs=array(
 ?>
 
 <div class="page-header">
-	<h1 class="text-muted">Create Page - <?php echo $model->contentType->name ?></h1>
+	<h1 class="text-muted">Create Page - <?php echo $model->ContentType->name ?></h1>
 </div>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

@@ -58,6 +58,7 @@ class MenuItem extends SnapActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'Menu' => array(self::BELONGS_TO, 'Menu', 'menu_id'),
+			'Content' => array(self::BELONGS_TO, 'Content', 'content_id'),
 			'Parent' => array(self::BELONGS_TO, 'MenuItem', 'parent'),
 			'children' => array(self::HAS_MANY, 'MenuItem', 'parent','order'=>'sort ASC'),
 		);
@@ -176,6 +177,18 @@ class MenuItem extends SnapActiveRecord
 		if($admin)
 		{
 			$returnarray['itemOptions']=array('data-id'=>$this->id);
+			$returnarray['template']='{menu}<span class="actions">'
+				.CHtml::link(
+					'update',
+					array('/snapcms/menuItem/update','id'=>$this->id),
+					array('class'=>'btn btn-xs btn-primary')
+				)
+				.CHtml::link(
+					'delete',
+					array('/snapcms/menuItem/delete','id'=>$this->id),
+					array('class'=>'btn btn-xs btn-danger')
+				)
+				.'</span>';
 		}
 		return $returnarray;
 	}

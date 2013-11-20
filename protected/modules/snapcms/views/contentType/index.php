@@ -20,16 +20,12 @@ $this->operations=array(
 	
 	<table class="table table-striped table-hover">
 		<tr>
-<!--			<td>ID</td>-->
 			<td>Name</td>
-			<td></td>
 		</tr>
 		<?php foreach ($data as $ct): ?>
-			<tr>
-<!--				<td><?php echo $ct->id ?></td>-->
-				<td><?php echo CHtml::link($ct->name, array('contentType/view', 'id'=>$ct->id)); ?></td>
-				<td><span class="pull-right"><?php echo CHtml::link('Create', array('/snapcms/content/create', 'type'=>$ct->id),array('class'=>'btn btn-xs btn-primary')) ?></span></td>
-			</tr>
+		<tr>
+			<td><?php echo CHtml::link($ct->name, array('/snapcms/content/create', 'type'=>$ct->id)); ?></td>
+		</tr>
 		<?php endforeach; ?>
 	</table>
 </div>

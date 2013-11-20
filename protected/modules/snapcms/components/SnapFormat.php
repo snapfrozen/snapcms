@@ -25,4 +25,15 @@ class SnapFormat
 		}
 		return $text;
 	}
+	
+	/**
+	 * 
+	 * @param type $date
+	 * @param string $dateWidth 'full', 'long', 'medium', 'short'
+	 * @return type
+	 */
+	static public function date($date,$dateWidth='medium',$timeWidth='short')
+	{
+		return Yii::app()->dateFormatter->formatDateTime($date,$dateWidth,$timeWidth);
+	}
 }

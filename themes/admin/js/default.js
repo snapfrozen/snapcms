@@ -57,7 +57,7 @@ $("div.sortable ul").sortable({
 				data:{
 					items:idList
 				},
-				url:SnapCMS.baseUrl + "/admin/menu/updateStructure/id/" + SnapCMS.menuId,
+				url:SnapCMS.baseUrl + "/snapcms/menu/updateStructure/id/" + SnapCMS.menuId,
 				success:function(){
 
 				}

@@ -1,3 +1,8 @@
+#logo {
+	float:left;
+	margin:10px 10px 10px 0;
+}
+
 .footer {
 	padding:2em 0;
 	margin-top:2em;
@@ -83,11 +88,38 @@
 		opacity:.75;
 	}
 .sortable .empty {
-	min-height:10px;
+	min-height:5px;
 }
 	.sortable li {
 		background:#fff;
 	}
+	
+
+.admin-nav li {
+	border-top:1px solid #ddd;
+}
+	.admin-nav li a {
+		display:inline-block;
+		border:none;
+	}
+	.admin-nav li a:hover,
+	.admin-nav li a:active {
+		background:none;
+	}
+	.admin-nav .actions {
+		float:right;
+		padding:10px 20px;
+		clear:right;
+	}
+		.admin-nav .actions .btn {
+			padding:1px 5px;
+			border:none;
+			margin:0 0 0 5px;
+		}
+.admin-nav li .actions a:hover, 
+.admin-nav li .actions a:focus {
+	background:#aaa;
+}
 	
 /* CPortlet */
 .portlet-content .table {

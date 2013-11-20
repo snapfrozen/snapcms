@@ -28,16 +28,16 @@ $menus = Menu::model()->findAll();
 	<!--
 	<div class="form-group <?php echo $model->hasErrors('type') ? 'has-error' : ''; ?>">
 		<?php echo $form->labelEx($model,'type'); ?>
-		<?php echo $form->dropDownList($model,'type',$model->contentTypeList); ?>
+		<?php echo $form->dropDownList($model,'type',ContentType::getList()); ?>
 		<?php echo $form->error($model,'type',array('class'=>'help-block')); ?>
 	</div>	
 	-->
 
-	<?php if(isset($model->contentType)): ?>
-		<?php foreach($model->contentType->attributes as $field=>$attrib): ?>
+	<?php if(isset($model->ContentType)): ?>
+		<?php foreach($model->ContentType->attributes as $field=>$attrib): ?>
 		<div class="form-group <?php echo $model->hasErrors('type') ? 'has-error' : ''; ?>">
 			<?php echo $form->labelEx($model,$field); ?>
-			<?php echo $form->autoGenerateInput($model->contentType, $field); ?>
+			<?php echo $form->autoGenerateInput($model->ContentType, $field); ?>
 		</div>
 		<?php endforeach; ?>
 	<?php endif; ?>

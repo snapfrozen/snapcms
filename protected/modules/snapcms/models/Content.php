@@ -17,7 +17,8 @@ class Content extends SnapActiveRecord
 	const TYPE_FRIENDLY_NAME = 'Content';
 	const FOREIGN_NAME = 'content_id';
 	
-	public $contentType = null;
+	public $ContentType = null;  //ContentType Model
+	//public $content_type = null; //For CGridView
 	
 	/**
 	 * @return string the associated database table name
@@ -34,6 +35,7 @@ class Content extends SnapActiveRecord
 	{
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
+
 		return array(
 			array('title, type', 'required'),
 			array('title, type', 'length', 'max'=>255),
@@ -41,7 +43,7 @@ class Content extends SnapActiveRecord
 			array('created, updated', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, title, type, created, updated', 'safe', 'on'=>'search'),
+			array('content_type, id, title, type, created, updated', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -53,6 +55,7 @@ class Content extends SnapActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			//'ContentType' => array(self::HAS_ONE, 'ContentType', 'content_id'),
 		);
 	}
 
@@ -88,7 +91,7 @@ class Content extends SnapActiveRecord
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
 		$criteria=new CDbCriteria;
-
+		//$criteria->with = 'ContentType';
 		$criteria->compare('id',$this->id);
 		$criteria->compare('title',$this->title,true);
 		$criteria->compare('type',$this->type,true);
@@ -97,6 +100,9 @@ class Content extends SnapActiveRecord
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
+			'sort'=>array(
+				'defaultOrder'=>'updated DESC',
+			)
 		));
 	}
 
@@ -111,15 +117,21 @@ class Content extends SnapActiveRecord
 		return parent::model($className);
 	}
 	
+	public function __construct($scenario = 'insert') 
+	{
+		$this->ContentType = new ContentType;
+		parent::__construct($scenario);
+	}
+	
 	public function afterFind()
 	{
 		$cnfCTs = ContentType::getConfigArray();
 		if(isset($cnfCTs[$this->type])) {
-			$this->contentType = new ContentType($cnfCTs[$this->type]);
+			$this->ContentType = new ContentType($cnfCTs[$this->type]);
 		}
-		$this->contentType->content_id = $this->id;
-		$this->contentType->loadData();
-		$this->contentType->Content = $this;
+		$this->ContentType->content_id = $this->id;
+		$this->ContentType->loadData();
+		$this->ContentType->Content = $this;
 		
 		parent::afterFind();
 	}
@@ -129,20 +141,10 @@ class Content extends SnapActiveRecord
 		$cnfCTs = ContentType::getConfigArray();
 		$this->type = $type;
 		if(isset($cnfCTs[$this->type])) {
-			$this->contentType = new ContentType($cnfCTs[$this->type]);
+			$this->ContentType = new ContentType($cnfCTs[$this->type]);
 		}
 	}
-	
-	public function getContentTypes()
-	{
-		return ContentType::findAll();
-	}
-	
-	public static function getContentTypeList()
-	{
-		return CHtml::listData(ContentType::findAll(),'id','name');
-	}
-	
+
 	/**
 	 * @return \app\models\content\ContentType
 	 */
@@ -161,13 +163,14 @@ class Content extends SnapActiveRecord
 		{
 			$MI=new MenuItem;
 			$MI->menu_id=$Menu->id;
+			$MI->content_id=$this->id;
 		}
 		return $MI;
 	}
 	
 	public function __get($name) 
 	{	
-		$ct = $this->contentType;
+		$ct = $this->ContentType;
 		$attributes = $this->getAttributes();
 		if($ct && isset($this->$name) && !array_key_exists($name, $attributes)) {
 			return $ct->$name;
@@ -179,7 +182,7 @@ class Content extends SnapActiveRecord
 	public function __isset($name) 
 	{
 		$attributes = $this->getAttributes();
-		if(isset($attributes[$name]) || isset($this->contentType->$name))
+		if(isset($attributes[$name]) || isset($this->ContentType->$name))
 			return true;
 		else
 			parent::__isset($name);

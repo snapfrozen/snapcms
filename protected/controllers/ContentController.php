@@ -80,7 +80,7 @@ class ContentController extends Controller
 	{
 		$model=$this->loadModel($id);
 		$base=Yii::getPathOfAlias('application.data');
-		$filePath=$base.'/content_type_files/'.$model->contentType->id.'/'.$field;
+		$filePath=$base.'/content_type_files/'.$model->ContentType->id.'/'.$field;
 		$mime=false;
 		
 		if(function_exists('finfo_open'))

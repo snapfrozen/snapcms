@@ -19,44 +19,20 @@
 </head>
 <body>
 	<div class="container">
-		<div id="header" class="masthead clearfix">
-			<img id="logo" alt="SnapCMS" src="<?php echo $themeUrl ?>/images/snap-logo.gif" />
+		<div id="header" class="masthead">
 			<h3 class="text-muted"><?php echo Yii::app()->name ?></h3>
 			<?php //var_dump(Player::getTimezoneList()); ?>
 		</div><!-- header -->
 
 		<div id="mainmenu" class="navbar navbar-default">
 			<div class="navbar-collapse collapse">
+				<?php $items = Menu::model()->findByAttributes(array('name'=>'Main Menu'))->menuList; ?>
 				<?php $this->widget('zii.widgets.CMenu',array(
 					'encodeLabel'=>false,
 					'activateParents'=>true,
-					'items'=>array(
-						array('label'=>'Admin', 'url'=>array('/snapcms/default/index')),
-						array('label'=>'View Site', 'url'=>array('/site/index')),
-						array('label'=>'Content', 'url'=>array('/snapcms/content/admin')),
-						array('label'=>'Menus', 'url'=>array('/snapcms/menu/admin')),
-						array(
-							'label'=>'Users <b class="caret"></b>', 
-							'url'=>array('/snapcms/user/index'), 
-							'itemOptions'=>array('class'=>'dropdown'),
-							'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>'dropdown'),
-							'submenuOptions'=>array('class'=>'dropdown-menu'),
-							'template'=>'{menu}',
-							'items'=>UserController::getMenuArray(),
-							'visible'=>$user->checkAccess('View User'),
-						),
-						//array('label'=>'Players', 'url'=>array('/snapcms/player/admin')),
-					),
 					'htmlOptions'=>array('class'=>'nav navbar-nav'),
+					'items'=>$items
 				)); ?>
-				<?php 
-				$this->widget('zii.widgets.CMenu',array(
-					'items'=>array(
-						array('label'=>'Logout (' . Yii::app()->user->first_name . ')', 'url'=>array('/site/logout')),
-					),
-					'htmlOptions'=>array('class'=>'nav navbar-nav navbar-right'),
-				)); 
-				?>
 			</div>
 		</div><!-- mainmenu -->
 
@@ -68,7 +44,7 @@
 				'tagName'=>'ul',
 				'activeLinkTemplate'=>'<li><a href="{url}">{label}</a></li>',
 				'inactiveLinkTemplate'=>'<li class="active">{label}</li>',
-				'homeLink'=>'<li><a href="'.$this->createUrl('/snapcms/default/index').'">Admin</a></li>'
+				'homeLink'=>'<li><a href="'.$this->createUrl('/admin/default/index').'">Admin</a></li>'
 			)); ?><!-- breadcrumbs -->
 		<?php endif?>
 			

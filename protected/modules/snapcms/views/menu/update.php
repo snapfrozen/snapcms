@@ -27,7 +27,7 @@ $this->operations=array(
 </script>
 
 <div class="page-header">
-	<h1 class="text-muted">Update Menu <?php echo $model->id; ?></h1>
+	<h1 class="text-muted">Update <?php echo $model->name; ?></h1>
 </div>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>
