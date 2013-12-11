@@ -11,9 +11,8 @@ class SnapActiveForm extends CActiveForm
 	
 	public function init()
 	{
-		$SnapCMS=Yii::app()->getModule('snapcms');
-		$this->_contentTypesConfig = $SnapCMS->getConfig('content.content_types');
-		$this->_defaultTypes = $SnapCMS->getConfig('content.default_field_inputs');
+		$this->_contentTypesConfig = SnapUtil::getConfig('content.content_types');
+		$this->_defaultTypes = SnapUtil::getConfig('content.default_field_inputs');
 		parent::init();
 	}
 	

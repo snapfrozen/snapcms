@@ -40,7 +40,7 @@
 	</div><!-- header -->
 
 	<div id="mainmenu">
-		<?php $items = Menu::model()->findByAttributes(array('name'=>'Main Menu'))->menuList; ?>
+		<?php $items = Menu::model('main_menu')->menuList; ?>
 		<?php $this->widget('zii.widgets.CMenu',array(
 			'encodeLabel'=>false,
 			'activateParents'=>true,

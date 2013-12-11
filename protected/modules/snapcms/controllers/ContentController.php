@@ -189,9 +189,7 @@ class ContentController extends DefaultController
 			Yii::app()->user->setFlash('success','Content Updated');
 			//$this->redirect(array('content/admin','id'=>$model->id));
 		}
-		
-			
-		
+
 		$this->render('update',array(
 			'model'=>$model,
 		));

@@ -6,7 +6,7 @@ $baseUrl = Yii::app()->request->baseUrl;
 if($app->user->checkAccess('Admin')) :
 	
 	$cs = $app->clientScript;
-	$conf = Yii::app()->getModule('snapcms')->getConfig('content.ckeditor');
+	$conf = SnapUtil::getConfig('content.ckeditor');
 
 	$toolbar = $conf['default']['toolbarSet'];
 	$fileBrowser = $conf['default']['config'];
@@ -18,7 +18,7 @@ if($app->user->checkAccess('Admin')) :
 	$cs->registerCssFile($adminThemeUrl . '/css/admin-bar.css');
 	$cs->registerScriptFile($baseUrl . '/lib/ckeditor/ckeditor.js', CClientScript::POS_END);
 	$cs->registerScript('CKEditor Inline',"
-		\$saveButton = $('div#admin-nav a#ckSave')
+		\$saveButton = $('div#admin-nav a#ckSave');
 		CKEDITOR.on( 'instanceCreated', function( event ) {
 		
 			var editor = event.editor,

@@ -2,10 +2,7 @@
 
 class MenuController extends DefaultController
 {
-	public static $menuArray=array(
-		array('label'=>'Manage Pages', 'url'=>array('/snapcms/content/admin')),
-		array('label'=>'Menus', 'url'=>array('/snapcms/menu/admin')),
-	);
+	public static $menuArray=array();
 	
 	public function beforeRender($view)
 	{
@@ -160,14 +157,7 @@ class MenuController extends DefaultController
 	 */
 	public function actionAdmin()
 	{
-		$model=new Menu('search');
-		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Menu']))
-			$model->attributes=$_GET['Menu'];
-
-		$this->render('admin',array(
-			'model'=>$model,
-		));
+		$this->render('admin');
 	}
 
 	/**
@@ -179,7 +169,7 @@ class MenuController extends DefaultController
 	 */
 	public function loadModel($id)
 	{
-		$model=Menu::model()->findByPk($id);
+		$model=Menu::model($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;

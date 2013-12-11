@@ -212,7 +212,7 @@ class ContentType extends SnapModel
 	
 	public static function getConfigArray()
 	{
-		return Yii::app()->getModule('snapcms')->getConfig('content.content_types');
+		return SnapUtil::getConfig('content.content_types');
 	}
 	
 	public function addSchemaError($error)

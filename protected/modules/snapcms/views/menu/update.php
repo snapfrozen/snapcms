@@ -23,7 +23,7 @@ $this->operations=array(
 ?>
 
 <script type="text/javascript">
-	SnapCMS.menuId = <?php echo $model->id ?>;
+	SnapCMS.menuId = "<?php echo $model->id ?>";
 </script>
 
 <div class="page-header">

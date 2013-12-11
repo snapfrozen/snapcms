@@ -2,7 +2,7 @@
 /* @var $this ContentController */
 /* @var $model Content */
 /* @var $form CActiveForm */
-$menus = Menu::model()->findAll();
+$menus = Menu::getMenus();
 ?>
 
 <div class="form row">

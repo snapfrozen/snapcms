@@ -11,8 +11,11 @@ class SnapcmsModule extends CWebModule
 			'snapcms.components.*',
 			'snapcms.controllers.*',
 		));
-		
-		if(Yii::app()->user->checkAccess('Access Backend'))
+
+		//@TODO: Needed to prevent "yiic migrate" from trying to access Yii::app()->user
+		//because this was breaking the initial migration. Maybe there's a better way 
+		//to handle this?
+		if(php_sapi_name() == 'cli' || Yii::app()->user->checkAccess('Access Backend'))
 		{
 			Yii::app()->setComponents(array(
 				'errorHandler'=>array(
@@ -20,12 +23,6 @@ class SnapcmsModule extends CWebModule
 				))
 			);
 		}
-	}
-	
-	public function getConfig($path)
-	{
-		$confPath = Yii::getPathOfAlias('application.modules.snapcms.config.'.$path);
-		return require($confPath.'.php');
 	}
 
 	public function beforeControllerAction($controller, $action)

@@ -10,17 +10,21 @@ $this->breadcrumbs=array(
 <div class="page-header">
 	<h1 class="text-muted">Menus</h1>
 </div>
-
-<?php $this->widget('SnapGridView', array(
-	'id'=>'menu-grid',
-	'dataProvider'=>$model->search(),
-	//'filter'=>$model,
-	'columns'=>array(
-		//'id',
-		'name',
-		array(
-			'class'=>'SnapButtonColumn',
-			'template'=>'{update}'
-		),
-	),
-)); ?>
+<div id="content-grid" class="panel panel-default">
+	<table class="items table">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+		<?php foreach(Menu::getMenus() as $menu) : ?>	
+			<tr>
+				<td><?php echo $menu->name ?></td>
+				<td><?php echo CHtml::link('update',array('/snapcms/menu/update','id'=>$menu->id)); ?></td>
+			</tr>		
+		<?php endforeach; ?>
+		</tbody>
+	</table>
+</div>

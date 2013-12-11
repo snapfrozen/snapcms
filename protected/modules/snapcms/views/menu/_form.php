@@ -19,12 +19,6 @@ Yii::app()->getClientScript()->registerCoreScript( 'jquery.ui' );
 	
 	<?php echo $form->errorSummary($model); ?>
 
-	<div class="form-group <?php echo $model->hasErrors('name') ? 'has-error' : ''; ?>">
-		<?php echo $form->labelEx($model,'name'); ?>
-		<?php echo $form->textField($model,'name',array('size'=>60,'maxlength'=>255)); ?>
-		<?php echo $form->error($model,'name',array('class'=>'help-block')); ?>
-	</div>
-	
 	<?php
 		$this->beginWidget('zii.widgets.CPortlet', array(
 			'title'=>$model->name,
@@ -41,7 +35,7 @@ Yii::app()->getClientScript()->registerCoreScript( 'jquery.ui' );
 	?>
 
 	<div class="buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array('class'=>'btn btn-primary btn-lg')); ?>
+		<?php echo CHtml::submitButton('Save', array('class'=>'btn btn-primary btn-lg')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

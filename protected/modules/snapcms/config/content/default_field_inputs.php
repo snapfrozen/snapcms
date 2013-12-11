@@ -1,6 +1,5 @@
 <?php
-$SnapCMS=Yii::app()->getModule('snapcms');
-$conf=$SnapCMS->getConfig('content.ckeditor');
+$conf = SnapUtil::getConfig('content.ckeditor');
 return array (
 	'varchar(%)' => 'TextField',
 	'text' => array(

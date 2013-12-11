@@ -1,4 +1,4 @@
-<?php $cnf=Yii::app()->getModule('snapcms')->getConfig('general'); ?>
+<?php $cnf=SnapUtil::getConfig('general'); ?>
 <?php 
 	if(!$model->content_id) { //New record
 		$menuSelected = $model->Menu->name == $cnf['site']['defaultMenu']; 

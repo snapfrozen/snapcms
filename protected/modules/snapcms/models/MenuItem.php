@@ -39,8 +39,9 @@ class MenuItem extends SnapActiveRecord
 		// will receive user inputs.
 		return array(
 			array('path, title, menu_id', 'required'),
-			array('content_id, sort, parent, menu_id', 'numerical', 'integerOnly'=>true),
+			array('content_id, sort, parent', 'numerical', 'integerOnly'=>true),
 			array('path, title, external_path', 'length', 'max'=>255),
+			array('menu_id', 'length', 'max'=>50),
 			array('external_path,', 'url'),
 			array('created, updated', 'safe'),
 			// The following rule is used by search().
@@ -57,7 +58,6 @@ class MenuItem extends SnapActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'Menu' => array(self::BELONGS_TO, 'Menu', 'menu_id'),
 			'Content' => array(self::BELONGS_TO, 'Content', 'content_id'),
 			'Parent' => array(self::BELONGS_TO, 'MenuItem', 'parent'),
 			'children' => array(self::HAS_MANY, 'MenuItem', 'parent','order'=>'sort ASC'),
@@ -197,5 +197,10 @@ class MenuItem extends SnapActiveRecord
 	{
 		$this->path = SnapFormat::slugify($this->path);
 		return parent::beforeSave();
+	}
+	
+	public function getMenu()
+	{
+		return new Menu($this->menu_id);
 	}
 }

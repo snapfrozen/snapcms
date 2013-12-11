@@ -1,112 +1,58 @@
 <?php
-
 /**
- * This is the model class for table "{{menus}}".
- *
- * The followings are the available columns in table '{{menus}}':
- * @property integer $id
- * @property string $name
- * @property string $created
- * @property string $updated
- *
- * The followings are the available model relations:
- * @property MenuItems[] $menuItems
+ * 
  */
-class Menu extends CActiveRecord
+class Menu extends CModel
 {
-	/**
-	 * @return string the associated database table name
-	 */
-	public function tableName()
+	protected $rootMenuItems;
+	public $name;
+	public $id;
+			
+	public function __construct($id) 
 	{
-		return '{{menus}}';
+		$cnf = SnapUtil::getConfig('general');
+		$this->id = $id;
+		$this->name = $cnf['menus'][$id];
+	
+		$criteria = new CDbCriteria();
+		$criteria->addCondition('menu_id=:id AND (parent=0 OR parent IS NULL)');
+		$criteria->order = 'sort';
+		$criteria->params = array(':id'=>$id);
+		
+		$items = MenuItem::model()->findAll($criteria);
+		$this->rootMenuItems = $items ? $items : array(); //If no items found make sure this is an array
 	}
 
-	/**
-	 * @return array validation rules for model attributes.
-	 */
-	public function rules()
+	public function attributeNames() 
 	{
-		// NOTE: you should only define rules for those attributes that
-		// will receive user inputs.
-		return array(
-			array('name', 'required'),
-			array('name', 'length', 'max'=>255),
-			array('created, updated', 'safe'),
-			// The following rule is used by search().
-			// @todo Please remove those attributes that should not be searched.
-			array('id, name, created, updated', 'safe', 'on'=>'search'),
-		);
-	}
-
-	/**
-	 * @return array relational rules.
-	 */
-	public function relations()
-	{
-		// NOTE: you may need to adjust the relation name and the related
-		// class name for the relations automatically generated below.
-		return array(
-			'menuItems' => array(self::HAS_MANY, 'MenuItem', 'menu_id'),
-			'rootMenuItems' => array(self::HAS_MANY, 'MenuItem', 'menu_id','condition'=>'parent=0 OR parent IS NULL', 'order'=>'sort ASC'),
-		);
-	}
-
-	/**
-	 * @return array customized attribute labels (name=>label)
-	 */
-	public function attributeLabels()
-	{
-		return array(
-			'id' => 'ID',
-			'name' => 'Name',
-			'created' => 'Created',
-			'updated' => 'Updated',
-		);
-	}
-
-	/**
-	 * Retrieves a list of models based on the current search/filter conditions.
-	 *
-	 * Typical usecase:
-	 * - Initialize the model fields with values from filter form.
-	 * - Execute this method to get CActiveDataProvider instance which will filter
-	 * models according to data in model fields.
-	 * - Pass data provider to CGridView, CListView or any similar widget.
-	 *
-	 * @return CActiveDataProvider the data provider that can return the models
-	 * based on the search/filter conditions.
-	 */
-	public function search()
-	{
-		// @todo Please modify the following code to remove attributes that should not be searched.
-
-		$criteria=new CDbCriteria;
-
-		$criteria->compare('id',$this->id);
-		$criteria->compare('name',$this->name,true);
-		$criteria->compare('created',$this->created,true);
-		$criteria->compare('updated',$this->updated,true);
-
-		return new CActiveDataProvider($this, array(
-			'criteria'=>$criteria,
-		));
-	}
-
-	/**
-	 * Returns the static model of the specified AR class.
-	 * Please note that you should have this exact method in all your CActiveRecord descendants!
-	 * @param string $className active record class name.
-	 * @return Menu the static model class
-	 */
-	public static function model($className=__CLASS__)
-	{
-		return parent::model($className);
+		return array();
 	}
 	
-	public static function getDropDownList()
+	/**
+	 * @param array $settings
+	 * admin => true or false
+	 * @return type 
+	 */
+	public function getMenuList($settings=array()) 
 	{
-		return CHtml::listData(self::model()->findAll(),'id','name');
+		$subitems = array();
+		if($this->rootMenuItems) 
+		{
+			foreach($this->rootMenuItems as $child) {
+				$subitems[] = $child->getMenuList($settings);
+			}
+		}
+		return $subitems;
+	}
+	
+	public static function getMenus()
+	{
+		$cnf = SnapUtil::getConfig('general');
+		$menus = array();
+		foreach($cnf['menus'] as $key=>$menuName) {
+			$menus[] = self::model($key);
+		}
+		return $menus;
 	}
 	
 	public function getItemDropDownList()
@@ -131,21 +77,9 @@ class Menu extends CActiveRecord
 		return $data;
 	}
 	
-	/**
-	 * @param array $settings
-	 * admin => true or false
-	 * @return type 
-	 */
-	public function getMenuList($settings=array()) 
+	public static function getDropDownList()
 	{
-		$subitems = array();
-		if($this->rootMenuItems) 
-		{
-			foreach($this->rootMenuItems as $child) {
-				$subitems[] = $child->getMenuList($settings);
-			}
-		}
-		return $subitems;
+		return CHtml::listData(self::getMenus(),'id','name');
 	}
 	
 	/**
@@ -157,18 +91,20 @@ class Menu extends CActiveRecord
 		$pos=0;
 		foreach($items as $item)
 		{
-			if($item['id'] == 12) {
-				print_r($item);
-			}
 			$MI = MenuItem::model()->findByPk($item['id']);
 			$MI->parent = $parent;
 			$MI->sort = $pos++;
-			$MI->save();
+			var_dump($MI->save());
 			
 			if(isset($item['children'])) {
-				print_r($items);
+				//print_r($items);
 				$this->updateStructure($item['children'], $MI->id);
 			}
 		}
+	}
+		
+	public static function model($menuName, $className=__CLASS__)
+	{
+		return new $className($menuName);
 	}
 }

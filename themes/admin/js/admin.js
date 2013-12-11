@@ -9,7 +9,6 @@ $(document).ready(function(){
 		for(var name in CKEDITOR.instances) 
 		{
 			var editor = CKEDITOR.instances[name];
-
 			if(!editor.checkDirty())
 				continue;
 
@@ -29,11 +28,10 @@ $(document).ready(function(){
 			$.ajax({
 				type:"POST",
 				async:false,
-				url: SnapCMS.baseUrl + '/admin/content/update/id/' + $(htmlElem).data('id'),
+				url: SnapCMS.baseUrl + '/snapcms/content/update/id/' + $(htmlElem).data('id'),
 				data:postData,
 				success:function(data) {
-					
-					//TODO:Move to "Saved!" to template
+					//@TODO:Move to "Saved!" to template so it can be translated
 					$a.html('Saved!')
 						.removeClass('snap-processing')
 						.addClass('snap-success');
@@ -45,7 +43,6 @@ $(document).ready(function(){
 							.removeClass('snap-success')
 							.addClass('snap-disabled');
 					},3000);
-					
 				}
 			});
 		}

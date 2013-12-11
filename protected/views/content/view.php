@@ -9,7 +9,7 @@ $this->breadcrumbs=array(
 //	$Content->title,
 );
 
-$items = Menu::model()->findByAttributes(array('name'=>'Main Menu'))->menuList; 
+$items = Menu::model('main_menu')->menuList; 
 $this->menu = $items;
 ?>
 
