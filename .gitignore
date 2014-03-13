@@ -13,3 +13,4 @@ public_html/cache/*
 public_html/uploads/*
 !public_html/uploads/.htaccess
 /nbproject/*
+vendor/*

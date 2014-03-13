@@ -49,7 +49,7 @@ class m140313_093439_create_homepage_and_news_pages extends CDbMigration
 			'created' => new CDbExpression('NOW()'),
 			'updated' => new CDbExpression('NOW()'),
 		));
-		$this->insert('{{content_homepage}}', array(
+		$this->insert('{{content_news_list}}', array(
 			'content_id'=>'2',
 			'content'=>'',
 			'meta_keywords' => 'some,keywords,here',

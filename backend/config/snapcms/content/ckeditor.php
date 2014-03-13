@@ -35,7 +35,7 @@ return array(
 				'items'=>array('Maximize')
 			),
 		),
-		'ckeditor'=>Yii::app()->basePath.'/../public_html/lib/ckeditor/ckeditor.php',
+		'ckeditor'=>Yii::getPathOfAlias('backend.external.CKeditor').'/ckeditor.php',
 		'ckBasePath'=>'/lib/ckeditor/',
 		//'css' => $baseUrl.'/css/index.css',
 		'config'=>array(
@@ -57,7 +57,7 @@ return array(
 				'items'=>array('Bold','Italic','Underline')
 			),
 		),
-		'ckeditor'=>Yii::app()->basePath.'/../public_html/lib/ckeditor/ckeditor.php',
+		'ckeditor'=>Yii::getPathOfAlias('backend.external.CKeditor').'/../backend/external/CKEditor/ckeditor.php',
 		'ckBasePath'=>'/lib/ckeditor/',
 		//'css' => $baseUrl.'/css/index.css',
 		'config'=>array(

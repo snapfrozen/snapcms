@@ -13,7 +13,7 @@ return array(
 			'username' => 'root',
 			'password' => '',
 			'charset' => 'utf8',
-			'tablePrefix' => 'tbl_',
+			'tablePrefix' => 'snap_',
 			//'enableProfiling' => true,
 			//'enableParamLogging' => true,
 		),

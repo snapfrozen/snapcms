@@ -31,7 +31,7 @@ return array(
 			'username' => 'root',
 			'password' => '',
 			'charset' => 'utf8',
-			'tablePrefix' => 'tbl_',
+			'tablePrefix' => 'snap_',
 		),
 		'composer.callbacks' => array(
 			// args for Yii command runner

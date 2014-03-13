@@ -30,7 +30,7 @@ return array(
 			'username' => 'root',
 			'password' => '',
 			'charset' => 'utf8',
-			'tablePrefix' => 'tbl_',
+			'tablePrefix' => 'snap_',
 		),
 		// uncomment the following to use a MySQL database
 		/*
