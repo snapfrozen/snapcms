@@ -1,0 +1,193 @@
+footer {
+	border-top:1px solid $gray-lighter;
+	background:$gray;
+	color:$white;
+	padding:15px 0;
+	p {
+		margin-bottom:0;
+	}
+	a {
+		color:lighten($link-color, 15%);
+	}
+}
+
+.navbar {
+	margin-bottom:0;
+}
+	.navbar-brand {
+		padding:5px 5px 0 10px;
+		margin-left:0 !important;
+		background:$navbar-default-brand-hover-bg;
+	}
+
+	.navbar-default {
+		.navbar-nav > li:hover > a {
+			background:$navbar-default-brand-hover-bg !important;
+		}
+	}
+	
+.btn-group .glyphicon,
+.nav .glyphicon {
+	width:20px;
+}
+.nav-tabs {
+	margin-bottom:10px;
+}
+.panel .btn-group {
+	display:block;
+	button {
+		text-align:left;
+		border:none;
+		padding:10px 15px;
+		color:$link-color;
+	}
+	button:focus,
+	button:active,
+	button:hover {
+		background:$gray-lighter;
+		@include box-shadow(none);
+	}
+}
+
+.breadcrumb-area {
+	background:$white;
+	@include box-shadow(0 1px 1px rgba(0,0,0,.05));
+	position:relative; /* so the box shadow shows */
+	.breadcrumb {
+		margin-bottom:0;
+		padding-left:0;
+		padding-right:0;
+	}
+}
+	
+.content-area {
+	background:$gray-lighter;
+	padding:20px 0 40px;
+}
+
+.page-header {
+	margin-top:0;
+	padding-bottom:0;
+	border:none;
+}
+	.page-header h1 {
+		margin-top:0;
+	}
+
+.panel {
+	border:none;
+}
+
+/* CGridView */
+.summary {
+	text-align:right;
+	color:$gray;
+	font-size:floor(($font-size-base * .85));
+	border-top:1px solid #ddd;
+	margin-bottom:0px;
+	padding:8px 0 0;
+}
+.table {
+	margin-bottom:0;
+}
+.sortable .actions,
+.table > tbody > tr > td.button-column,
+.button-column {
+	white-space:nowrap;
+	padding:8px 6px 0;
+	text-align:right;
+	.glyphicon {
+		font-size:20px;
+		margin-left:5px;
+	}
+}
+.sort-link .caret {
+	display:none;
+}
+.sort-link.asc .caret,
+.sort-link.desc .caret {
+	display:inline-block;
+}
+.sort-link.asc .caret {
+    border-bottom: 4px solid;
+    border-top: 4px solid transparent;
+    border-left: 4px solid transparent;
+	vertical-align: top;
+	padding-top:4px;
+}
+
+/* nestedSortable */
+ul.sortable, ul.sortable ul {
+	margin: 0 0 0 25px;
+	padding: 0;
+	list-style-type: none;
+	li {
+		margin: 5px 0 0 0;
+		padding: 0;
+		> div  {
+			border: 1px solid #ddd;
+			padding: 6px;
+			margin: 0;
+			cursor: move;
+			background: #f6f6f6;
+		}
+		.actions {
+			float:right;
+			padding:0;
+			.glphicon {
+				padding:0;
+			}
+		}
+	}
+}
+
+.placeholder {
+	outline: 1px dashed $brand-primary;
+}
+
+ul.sortable {
+	margin: 0 0 0 15px;
+	padding: 0;
+}
+.disclose {
+	cursor: pointer;
+	width: 10px;
+	display: none;
+}
+.sortable li.collapsed > ul {
+	display: none;
+}
+	.sortable .disclose {
+		display: inline-block;
+		width:20px;
+		height:20px;
+		line-height:20px;
+		text-align:center;
+		margin-right:10px;
+		color:$link-color;
+		position:relative;
+		margin-left:-30px;
+		float:left;
+	}
+	.sortable .collapsed > div > .disclose .glyphicon:before {
+		content:"+";
+	}
+	.sortable .expanded > div > .disclose .glyphicon:before {
+		content:"−";
+	}
+
+/* Menu Page */
+#menu-form .nav-tabs {
+	margin-bottom:0;
+}
+#menu-form .panel-body {
+	border-right:1px solid $nav-tabs-border-color;
+	border-left:1px solid $nav-tabs-border-color;
+	border-bottom:1px solid $nav-tabs-border-color;
+}
+
+/* JUI overrides */
+
+.ui-widget-header select {
+	color:#333;
+}

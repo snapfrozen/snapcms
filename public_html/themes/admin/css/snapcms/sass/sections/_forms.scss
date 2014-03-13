@@ -1,0 +1,25 @@
+.captcha  {
+	img {
+		border:1px solid $input-border;
+		margin:0 20px 10px 0;
+	}
+}
+.form-control,
+kbd {
+	@include box-shadow(none);
+}
+
+legend {
+	margin-top:20px;
+}
+
+.form-group {
+	.img {
+		border:1px solid #ccc;
+		padding:3px;
+		margin:10px 0;
+	}
+	.file {
+		margin:10px 0;
+	}
+}
