@@ -63,7 +63,7 @@ class SnapMenu extends CMenu
 	 */
 	protected function renderMenuItem($item)
 	{
-		$icon=isset($item['icon']) ? BSHtml::icon($item['icon']).' ' : '';
+		$icon=isset($item['icon']) ? BsHtml::icon($item['icon']).' ' : '';
 		
 		if(isset($item['url']))
 		{

@@ -9,7 +9,7 @@
 
 <?php echo $form->hiddenField($MenuItem,'menu_id',array('name'=>'MenuItem['.$MenuItem->Menu->name.'][menu_id]')); ?>
 <?php echo $form->hiddenField($MenuItem,'id',array('name'=>'MenuItem['.$MenuItem->Menu->name.'][id]')); ?>
-<?php echo BSHtml::checkBoxControlGroup('MenuItem['.$MenuItem->Menu->name.'][include]', $menuSelected, array(
+<?php echo BsHtml::checkBoxControlGroup('MenuItem['.$MenuItem->Menu->name.'][include]', $menuSelected, array(
 	//'name'=>'MenuItem['.$MenuItem->Menu->name.'][include]',
 	'labelOptions'=>array(
 		'class'=>'myclass',

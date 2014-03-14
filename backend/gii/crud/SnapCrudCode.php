@@ -86,10 +86,10 @@ class SnapCrudCode extends CrudCode
     public function generateControlGroup($modelClass, $column)
     {
 		if ($column->type === 'boolean' || strpos($column->dbType,'tinyint(1)')!==false) {
-            return "BSHtml::activeCheckBoxControlGroup(\$$modelClass,'{$column->name}')";
+            return "BsHtml::activeCheckBoxControlGroup(\$$modelClass,'{$column->name}')";
         } else {
             if (stripos($column->dbType, 'text') !== false) {
-                return "BSHtml::activeTextAreaControlGroup(\$$modelClass,'{$column->name}',array('rows'=>6))";
+                return "BsHtml::activeTextAreaControlGroup(\$$modelClass,'{$column->name}',array('rows'=>6))";
             } else {
                 if (preg_match('/^(password|pass|passwd|passcode)$/i', $column->name)) {
                     $inputField = 'activePasswordControlGroup';
@@ -98,12 +98,12 @@ class SnapCrudCode extends CrudCode
                 }
 
                 if ($column->type !== 'string' || $column->size === null) {
-                    return "BSHtml::{$inputField}(\$$modelClass,'{$column->name}')";
+                    return "BsHtml::{$inputField}(\$$modelClass,'{$column->name}')";
                 } else {
                     if (($size = $maxLength = $column->size) > 60) {
                         $size = 60;
                     }
-                    return "BSHtml::{$inputField}(\$$modelClass,'{$column->name}',array('size'=>$size,'maxlength'=>$maxLength))";
+                    return "BsHtml::{$inputField}(\$$modelClass,'{$column->name}',array('size'=>$size,'maxlength'=>$maxLength))";
                 }
             }
         }

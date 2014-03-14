@@ -9,7 +9,7 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('icon' => BSHtml::GLYPHICON_LOCK, 'label'=>'Change Password', 'url'=>array('changePassword', 'id'=>$model->id)),
+	array('icon' => BsHtml::GLYPHICON_LOCK, 'label'=>'Change Password', 'url'=>array('changePassword', 'id'=>$model->id)),
 );
 
 $this->page_heading = 'Update';

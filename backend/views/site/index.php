@@ -11,7 +11,7 @@ $this->pageTitle=Yii::app()->name;
 	<?php $this->beginWidget('bootstrap.widgets.BsPanel', array(
 		'title'=>'The latest at Snapfrozen',
 		'titleTag'=>'h1',
-		'type'=>BSHtml::PANEL_TYPE_PRIMARY,
+		'type'=>BsHtml::PANEL_TYPE_PRIMARY,
 	)); ?>
 		<?php 
 		$n=0;
@@ -33,7 +33,7 @@ $this->pageTitle=Yii::app()->name;
 	<?php $this->beginWidget('bootstrap.widgets.BsPanel', array(
 		'title'=>'Recent Activity',
 		'titleTag'=>'h1',
-		'type'=>BSHtml::PANEL_TYPE_INFO,
+		'type'=>BsHtml::PANEL_TYPE_INFO,
 	)); ?>
 		<?php foreach($RecentActivity as $Log): ?>
 		<p class="alert alert-<?php echo $Log->level == 'error' ? 'danger' : $Log->level ?>">

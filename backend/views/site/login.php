@@ -30,8 +30,8 @@ $this->breadcrumbs=array(
 			//'help' => 'Hint: You may login with <kbd>demo</kbd>/<kbd>demo</kbd> or <kbd>admin</kbd>/<kbd>admin</kbd>.',
 		));
 		echo $form->checkBoxControlGroup($model, 'rememberMe');
-		echo BSHtml::submitButton('Login', array(
-			'color' => BSHtml::BUTTON_COLOR_PRIMARY
+		echo BsHtml::submitButton('Login', array(
+			'color' => BsHtml::BUTTON_COLOR_PRIMARY
 		)); 
 		$this->endWidget();
 	?>

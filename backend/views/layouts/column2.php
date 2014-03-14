@@ -2,7 +2,7 @@
 <?php $this->beginContent('//layouts/main'); ?>
 <div class="row">
 	<div class="col-lg-12">
-		<?php echo BSHtml::pageHeader($this->page_heading, $this->page_heading_subtext) ?>
+		<?php echo BsHtml::pageHeader($this->page_heading, $this->page_heading_subtext) ?>
 	</div>
 	<div id="content" class="col-lg-9">
 		<?php echo $content; ?>
@@ -15,7 +15,7 @@
 				'htmlOptions'=>array(
 					'class'=>'panel sticky',
 				),
-				'type'=>BSHtml::PANEL_TYPE_PRIMARY,
+				'type'=>BsHtml::PANEL_TYPE_PRIMARY,
 			));
 			$this->widget('application.widgets.SnapMenu', array(
 				'items'=>$this->menu,

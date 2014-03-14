@@ -81,7 +81,7 @@ $user = Yii::app()->user;
 		'collapse' => true,
 		'brandLabel' => CHtml::image($themeUrl . '/images/snap-logo.png'),
 		'brandUrl' => array('/site/index'),
-		'position' => BSHtml::NAVBAR_POSITION_STATIC_TOP,
+		'position' => BsHtml::NAVBAR_POSITION_STATIC_TOP,
 		'items' => array(
 			array(
 				'class' => 'bootstrap.widgets.BsNav',

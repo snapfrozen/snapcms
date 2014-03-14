@@ -4,7 +4,7 @@
  * @package snapcms/components
  * Class SnapHtml
  */
-class SnapHtml extends BSHtml
+class SnapHtml extends BsHtml
 {
     
 }

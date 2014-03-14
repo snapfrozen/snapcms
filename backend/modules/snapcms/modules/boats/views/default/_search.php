@@ -36,7 +36,7 @@
                     <?php echo $form->textFieldControlGroup($Boat,'date_field'); ?>
 
                         <div class="form-actions">
-        <?php echo BSHtml::submitButton('Search',  array('color' => BSHtml::BUTTON_COLOR_PRIMARY,));?>
+        <?php echo BsHtml::submitButton('Search',  array('color' => BsHtml::BUTTON_COLOR_PRIMARY,));?>
     </div>
 
     <?php $this->endWidget(); ?>

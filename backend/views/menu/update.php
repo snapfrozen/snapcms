@@ -8,8 +8,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('icon' => BSHtml::GLYPHICON_PLUS_SIGN, 'label'=>'Add Menu Item', 'url'=>array('/menuItem/create','menu'=>$model->id)),
-	array('icon' => BSHtml::GLYPHICON_THUMBS_UP, 'label'=>'Save Menu', 'url'=>'javascript:void(0)', 'linkOptions'=>array('id'=>'saveMenu')),
+	array('icon' => BsHtml::GLYPHICON_PLUS_SIGN, 'label'=>'Add Menu Item', 'url'=>array('/menuItem/create','menu'=>$model->id)),
+	array('icon' => BsHtml::GLYPHICON_THUMBS_UP, 'label'=>'Save Menu', 'url'=>'javascript:void(0)', 'linkOptions'=>array('id'=>'saveMenu')),
 );
 
 $this->page_heading = 'Update';

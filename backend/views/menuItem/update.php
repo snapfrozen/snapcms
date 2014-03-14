@@ -12,7 +12,7 @@ $this->menu=array(
 	array(
 		'label'=>'Delete Menu Item', 
 		'url'=>'#', 
-		'icon'=>BSHtml::GLYPHICON_TRASH,
+		'icon'=>BsHtml::GLYPHICON_TRASH,
 		'linkOptions'=>array(
 			'submit'=>array('delete','id'=>$model->id),
 			'confirm'=>'Are you sure you want to delete this item?',

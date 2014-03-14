@@ -7,7 +7,7 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('icon' => BSHtml::GLYPHICON_PLUS_SIGN, 'label'=>'Create User', 'url'=>array('create')),
+	array('icon' => BsHtml::GLYPHICON_PLUS_SIGN, 'label'=>'Create User', 'url'=>array('create')),
 );
 
 $this->page_heading = 'Users';

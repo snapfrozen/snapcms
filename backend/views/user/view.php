@@ -8,9 +8,9 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('icon' => BSHtml::GLYPHICON_PENCIL, 'label'=>'Update User', 'url'=>array('update', 'id'=>$model->id)),
+	array('icon' => BsHtml::GLYPHICON_PENCIL, 'label'=>'Update User', 'url'=>array('update', 'id'=>$model->id)),
 	array(
-		'icon' => BSHtml::GLYPHICON_TRASH,
+		'icon' => BsHtml::GLYPHICON_TRASH,
 		'label'=>'Delete User', 
 		'url'=>'#', 
 		'linkOptions'=>array(

@@ -47,12 +47,12 @@ class SnapActiveForm extends BsActiveForm
 		}
 		
 		$htmlOptions['input'] = $output;
-		$htmlOptions['labelOptions'] = BSHtml::setLabelOptionsByLayout($layout, $labelOptions);
+		$htmlOptions['labelOptions'] = BsHtml::setLabelOptionsByLayout($layout, $labelOptions);
 		
 		if (!empty($layout)) 
 		{
-            if ($layout === BSHtml::FORM_LAYOUT_HORIZONTAL) {
-                $controlClass = BSArray::popValue('class',$controlOptions,BSHtml::$formLayoutHorizontalControlClass);
+            if ($layout === BsHtml::FORM_LAYOUT_HORIZONTAL) {
+                $controlClass = BSArray::popValue('class',$controlOptions,BsHtml::$formLayoutHorizontalControlClass);
                 BsHtml::addCssClass($controlClass, $htmlOptions['controlOptions']);
             }
         }
@@ -87,12 +87,12 @@ class SnapActiveForm extends BsActiveForm
 		}
 		
 		$htmlOptions['input'] = $output;
-		$htmlOptions['labelOptions'] = BSHtml::setLabelOptionsByLayout($layout, $labelOptions);
+		$htmlOptions['labelOptions'] = BsHtml::setLabelOptionsByLayout($layout, $labelOptions);
 		
 		if (!empty($layout)) 
 		{
-            if ($layout === BSHtml::FORM_LAYOUT_HORIZONTAL) {
-                $controlClass = BSArray::popValue('class',$controlOptions,BSHtml::$formLayoutHorizontalControlClass);
+            if ($layout === BsHtml::FORM_LAYOUT_HORIZONTAL) {
+                $controlClass = BSArray::popValue('class',$controlOptions,BsHtml::$formLayoutHorizontalControlClass);
                 BsHtml::addCssClass($controlClass, $htmlOptions['controlOptions']);
             }
         }
@@ -106,7 +106,7 @@ class SnapActiveForm extends BsActiveForm
      * @param string $attribute the attribute name.
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated row.
-     * @see BSHtml::activeDateFieldControlGroup
+     * @see BsHtml::activeDateFieldControlGroup
      */
     public function dateFieldControlGroup($model, $attribute, $htmlOptions = array())
     {
@@ -140,7 +140,7 @@ class SnapActiveForm extends BsActiveForm
      * @param string $attribute the attribute name.
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated row.
-     * @see BSHtml::activeDateFieldControlGroup
+     * @see BsHtml::activeDateFieldControlGroup
      */
     public function timeFieldControlGroup($model, $attribute, $htmlOptions = array())
     {
@@ -179,7 +179,7 @@ class SnapActiveForm extends BsActiveForm
      * @param string $attribute the attribute name.
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated row.
-     * @see BSHtml::activeDateFieldControlGroup
+     * @see BsHtml::activeDateFieldControlGroup
      */
     public function datetimeFieldControlGroup($model, $attribute, $htmlOptions = array())
     {
@@ -301,7 +301,7 @@ class SnapActiveForm extends BsActiveForm
      * @param string $attribute the attribute name.
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated row.
-     * @see BSHtml::activeTextFieldControlGroup
+     * @see BsHtml::activeTextFieldControlGroup
      */
     public function richTextAreaControlGroup($model, $attribute, $htmlOptions = array())
     {
@@ -317,6 +317,6 @@ class SnapActiveForm extends BsActiveForm
 		}
 		
         $htmlOptions = $this->processRowOptions($model, $attribute, $htmlOptions);
-        return BSHtml::activeTextAreaControlGroup($model, $attribute, $htmlOptions);
+        return BsHtml::activeTextAreaControlGroup($model, $attribute, $htmlOptions);
     }
 }

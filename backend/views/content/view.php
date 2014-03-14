@@ -8,8 +8,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('icon' => BSHtml::GLYPHICON_PENCIL, 'label'=>'Update Content', 'url'=>array('update', 'id'=>$Content->id)),
-	array('icon' => BSHtml::GLYPHICON_TRASH, 'label'=>'Delete Content', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$Content->id),'confirm'=>'Are you sure you want to delete this item?')),
+	array('icon' => BsHtml::GLYPHICON_PENCIL, 'label'=>'Update Content', 'url'=>array('update', 'id'=>$Content->id)),
+	array('icon' => BsHtml::GLYPHICON_TRASH, 'label'=>'Delete Content', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$Content->id),'confirm'=>'Are you sure you want to delete this item?')),
 );
 
 $attributes = array(

@@ -19,7 +19,7 @@
 	// There is a call to performAjaxValidation() commented in generated controller code.
 	// See class documentation of CActiveForm for details on this.
 	'enableAjaxValidation'=>false,
-	'layout' => BSHtml::FORM_LAYOUT_HORIZONTAL,
+	'layout' => BsHtml::FORM_LAYOUT_HORIZONTAL,
 	'htmlOptions' => array('class'=>'row'),
 )); ?>\n"; ?>
 
@@ -53,11 +53,11 @@
 		'htmlOptions'=>array(
 			'class'=>'panel sticky',
 		),
-		'type'=>BSHtml::PANEL_TYPE_PRIMARY,
+		'type'=>BsHtml::PANEL_TYPE_PRIMARY,
 	)); ?>"; ?>
 		<div class="btn-group btn-group-vertical">
-			<?php echo "<?php echo BSHtml::submitButton(BSHtml::icon(BsHtml::GLYPHICON_THUMBS_UP).' Save'); ?>\n"; ?>
-			<?php echo "<?php echo BSHtml::submitButton(BSHtml::icon(BsHtml::GLYPHICON_PENCIL).' Save and Continue Editing', array('name' => 'save_and_continue')); ?>\n"; ?>
+			<?php echo "<?php echo BsHtml::submitButton(BsHtml::icon(BsHtml::GLYPHICON_THUMBS_UP).' Save'); ?>\n"; ?>
+			<?php echo "<?php echo BsHtml::submitButton(BsHtml::icon(BsHtml::GLYPHICON_PENCIL).' Save and Continue Editing', array('name' => 'save_and_continue')); ?>\n"; ?>
 			
 			<?php echo "<?php \$this->widget('application.widgets.SnapMenu', array(
 				'items'=>\$this->menu,

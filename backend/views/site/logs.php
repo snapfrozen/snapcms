@@ -8,7 +8,7 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('icon' => BSHtml::GLYPHICON_TRASH, 'label'=>'Clear Logs', 'url'=>'#', 'linkOptions'=>array('submit'=>array('clearLogs'),'confirm'=>'Are you sure you want to clear all logs?')),
+	array('icon' => BsHtml::GLYPHICON_TRASH, 'label'=>'Clear Logs', 'url'=>'#', 'linkOptions'=>array('submit'=>array('clearLogs'),'confirm'=>'Are you sure you want to clear all logs?')),
 );
 
 $this->page_heading = 'Logs';

@@ -15,7 +15,7 @@ $this->page_heading_subtext =  $name;
 	<?php $form=$this->beginWidget('application.widgets.SnapActiveForm', array(
 		'id'=>'update-group-form',
 		'enableAjaxValidation'=>false,
-		'layout' => BSHtml::FORM_LAYOUT_HORIZONTAL,
+		'layout' => BsHtml::FORM_LAYOUT_HORIZONTAL,
 		'htmlOptions' => array('class'=>'row'),
 	)); ?>
 
@@ -45,10 +45,10 @@ $this->page_heading_subtext =  $name;
 			'htmlOptions'=>array(
 				'class'=>'panel sticky',
 			),
-			'type'=>BSHtml::PANEL_TYPE_PRIMARY,
+			'type'=>BsHtml::PANEL_TYPE_PRIMARY,
 		)); ?>		
 		<div class="btn-group btn-group-vertical">
-			<?php echo BSHtml::submitButton(BSHtml::icon(BsHtml::GLYPHICON_THUMBS_UP).' Save'); ?>
+			<?php echo BsHtml::submitButton(BsHtml::icon(BsHtml::GLYPHICON_THUMBS_UP).' Save'); ?>
 
 			<?php $this->widget('application.widgets.SnapMenu', array(
 				'items'=>$this->menu,

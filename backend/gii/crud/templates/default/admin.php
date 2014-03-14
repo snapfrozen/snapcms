@@ -36,12 +36,12 @@ Yii::app()->clientScript->registerScript('search',
 $this->page_heading = '<?php echo $label ?>';
 ?>
 <?php echo "<?php \$this->beginWidget('bootstrap.widgets.BsPanel', array(
-	'title'=>BSHtml::button('Advanced search',array(
+	'title'=>BsHtml::button('Advanced search',array(
 		'data-toggle' => 'collapse',
 		'data-target' => '#search-form',
 		'class' =>'search-button', 
-		'icon' => BSHtml::GLYPHICON_SEARCH,
-		'color' => BSHtml::BUTTON_COLOR_PRIMARY), '#'),
+		'icon' => BsHtml::GLYPHICON_SEARCH,
+		'color' => BsHtml::BUTTON_COLOR_PRIMARY), '#'),
 ));
 ?>"; ?>
 	<div id="search-form" class="search-form collapse">

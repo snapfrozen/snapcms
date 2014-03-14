@@ -60,8 +60,8 @@ If you have business inquiries or other questions, please fill out the following
 	
 	<?php endif; ?>
 
-	<?php echo BSHtml::submitButton('Submit', array(
-		'color' => BSHtml::BUTTON_COLOR_PRIMARY
+	<?php echo BsHtml::submitButton('Submit', array(
+		'color' => BsHtml::BUTTON_COLOR_PRIMARY
 	)); ?>
 	
 </fieldset>

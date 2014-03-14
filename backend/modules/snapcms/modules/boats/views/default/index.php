@@ -13,7 +13,7 @@ array('icon' => 'glyphicon-plus-sign','label'=>'Create Boat', 'url'=>array('crea
 array('icon' => 'glyphicon-plus-briefcase','label'=>'Manage Boat', 'url'=>array('admin')),
 );
 ?>
-<?php echo BSHtml::pageHeader('Boats') ?>
+<?php echo BsHtml::pageHeader('Boats') ?>
 <?php $this->widget('bootstrap.widgets.BsListView',array(
 'dataProvider'=>$dataProvider,
 'itemView'=>'_view',

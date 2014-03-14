@@ -9,7 +9,7 @@
 <?php $form=$this->beginWidget('application.widgets.SnapActiveForm', array(
 	'id'=>'menu-item-form',
 	'enableAjaxValidation'=>false,
-	'layout' => BSHtml::FORM_LAYOUT_HORIZONTAL,
+	'layout' => BsHtml::FORM_LAYOUT_HORIZONTAL,
 )); ?>
 	<div class="col-lg-9 clearfix">
 		
@@ -22,7 +22,7 @@
 
 		<div class="form-group">
 			<?php $Content = new Content; ?>
-			<?php echo BSHtml::activeLabel($model,'content_id',array('class'=>'control-label col-lg-2','label'=>'Link to Content')) ?>
+			<?php echo BsHtml::activeLabel($model,'content_id',array('class'=>'control-label col-lg-2','label'=>'Link to Content')) ?>
 			<div class="col-lg-10">
 				<?php $this->widget('zii.widgets.jui.CJuiAutoComplete',array(
 					'name'=>'page_autocomplete',
@@ -65,10 +65,10 @@
 			'htmlOptions'=>array(
 				'class'=>'panel sticky',
 			),
-			'type'=>BSHtml::PANEL_TYPE_PRIMARY,
+			'type'=>BsHtml::PANEL_TYPE_PRIMARY,
 		)); ?>		
 		<div class="btn-group btn-group-vertical">
-			<?php echo BSHtml::submitButton(BSHtml::icon(BsHtml::GLYPHICON_THUMBS_UP).' Save'); ?>
+			<?php echo BsHtml::submitButton(BsHtml::icon(BsHtml::GLYPHICON_THUMBS_UP).' Save'); ?>
 			
 			<?php $this->widget('application.widgets.SnapMenu', array(
 				'items'=>$this->menu,

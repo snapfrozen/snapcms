@@ -72,7 +72,7 @@ return array(
 		),
 		
 		'bsHtml' => array(
-			'class' => 'bootstrap.components.BSHtml'
+			'class' => 'bootstrap.components.BsHtml'
 		),
 		
 		'authManager'=>array(

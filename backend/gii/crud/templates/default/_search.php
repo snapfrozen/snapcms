@@ -28,7 +28,7 @@
 
     <?php endforeach; ?>
     <div class="form-actions">
-        <?php echo "<?php echo BSHtml::submitButton('Search',  array('color' => BSHtml::BUTTON_COLOR_PRIMARY,));?>\n" ?>
+        <?php echo "<?php echo BsHtml::submitButton('Search',  array('color' => BsHtml::BUTTON_COLOR_PRIMARY,));?>\n" ?>
     </div>
 
     <?php echo "<?php \$this->endWidget(); ?>\n"; ?>

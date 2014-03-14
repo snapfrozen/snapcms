@@ -25,7 +25,7 @@ $this->beginWidget('bootstrap.widgets.BsPanel', array(
 		<?php foreach(Menu::getMenus() as $menu) : ?>	
 			<tr>
 				<td><?php echo CHtml::link($menu->name,array('/menu/update','id'=>$menu->id,'title'=>'Update')); ?></td>
-				<td><?php echo CHtml::link(CHtml::tag('span',array('class'=>'glyphicon ' . BSHtml::GLYPHICON_PENCIL)),array('/menu/update','id'=>$menu->id,'title'=>'Update')); ?></td>
+				<td><?php echo CHtml::link(CHtml::tag('span',array('class'=>'glyphicon ' . BsHtml::GLYPHICON_PENCIL)),array('/menu/update','id'=>$menu->id,'title'=>'Update')); ?></td>
 			</tr>		
 		<?php endforeach; ?>
 		</tbody>
