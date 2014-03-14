@@ -10,7 +10,7 @@ return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'SnapCMS',
 	'id'=>'snapcms',
-
+	
 	// preloading 'log' component
 	'preload'=>array('log'),
 	
@@ -91,7 +91,7 @@ return array(
 			'cookieParams' => array(
 				'path' => '/',
 				'httpOnly' => true,
-				'domain' => 'snapcms.local',
+				//'domain' => 'snapcms.local',
 			),
 		),
 		// uncomment the following to enable URLs in path-format

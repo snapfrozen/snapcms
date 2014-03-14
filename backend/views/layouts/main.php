@@ -2,7 +2,7 @@
 /* @var $this Controller */ 
 $cs = Yii::app()->clientScript;
 $baseUrl = Yii::app()->baseUrl;
-$themeUrl = $baseUrl . Yii::app()->theme->baseUrl;
+$themeUrl = Yii::app()->theme->baseUrl;
 $cs
     ->registerCoreScript('jquery',CClientScript::POS_END)
     ->registerCoreScript('jquery.ui',CClientScript::POS_END)
@@ -47,7 +47,7 @@ $user = Yii::app()->user;
 	<?php 
 	$moduleMenu = $this->getModuleMenus(SnapCMS::MENU_MAIN_MENU);
 	$menuItems = array(
-		array('label'=>'View Site', 'url'=>'/'),
+		array('label'=>'View Site', 'url'=>$this->createFrontendUrl('site/contact')),
 		array('label'=>'Content', 'url'=>array('/content/admin'),'visible'=>$user->checkAccess('Update Content')),
 		array('label'=>'Menus','url'=>array('/menu/update'),'visible'=>$user->checkAccess('Update Menu')),
 		array(
