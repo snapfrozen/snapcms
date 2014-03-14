@@ -14,14 +14,15 @@ class Menu extends CModel
 		$this->name = SnapUtil::config("general/menus.$id");
 	
 		$criteria = new CDbCriteria();
-		//$criteria->with = array('Content'=>array('select'=>'Content.published, Content.publish_on, Content.unpublish_on'));
 		$criteria->with = array('Content');
 		$criteria->addCondition('menu_id=:id AND (parent=0 OR parent IS NULL)');
-		if(!$showHidden) {
+		if(!$showHidden) 
+		{
 			$criteria->addCondition('(Content.publish_on < NOW() OR Content.publish_on is null)');
 			$criteria->addCondition('(Content.unpublish_on > NOW() OR Content.unpublish_on is null)');
 			$criteria->addCondition('Content.published = 1');
 		}
+		$criteria->addCondition('Content.id is null','OR');
 		$criteria->order = 'sort';
 		$criteria->params = array(':id'=>$id);
 		

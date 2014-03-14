@@ -63,6 +63,17 @@ class m140313_093439_create_homepage_and_news_pages extends CDbMigration
 			'created' => new CDbExpression('NOW()'),
 			'updated' => new CDbExpression('NOW()'),
 		));
+		$this->insert('{{menu_items}}', array(
+			'path'=>'',
+			'title'=>'Contact',
+			'menu_id' => 'main_menu',
+			'external_path' => '/site/contact',
+			'created' => new CDbExpression('NOW()'),
+			'updated' => new CDbExpression('NOW()'),
+		));
+		
+		//Not sure why this doen't work?
+		Yii::log('SnapCMS installed.','info','installation');
 	}
 
 	public function down()

@@ -40,9 +40,10 @@ class MenuItem extends SnapActiveRecord
 		return array(
 			array('menu_id', 'required'),
 			array('content_id, sort, parent', 'numerical', 'integerOnly'=>true),
-			array('path, title, external_path', 'length', 'max'=>255),
+			array('external_path, path, title, external_path', 'length', 'max'=>255),
+			array('path', 'unique'),
 			array('menu_id', 'length', 'max'=>50),
-			array('external_path,', 'url'),
+			//array('external_path,', 'url'), //Doesn't work for relative urls
 			array('created, updated', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.

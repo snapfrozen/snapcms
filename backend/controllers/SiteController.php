@@ -22,12 +22,16 @@ class SiteController extends Controller
 	{
 		return array(
 			array('allow',
-				'actions'=>array('login','logout'),
+				'actions'=>array('login','logout','error'),
 				'users'=>array('*'),
 			),
 			array('allow',
 				'actions'=>array('index','view','getImage','getFile'),
 				'roles'=>array('Access Backend'),
+			),
+			array('allow',
+				'actions'=>array('logs','clearLogs'),
+				'roles'=>array('Admin'),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -46,11 +50,47 @@ class SiteController extends Controller
 			$snapFeed = file_get_contents('http://www.snapfrozen.com.au/feed/atom/');
 			Yii::app()->cache->set('snapFeed', $snapFeed, 60*60*24);
 		}
+		
+		$RecentActivity = Log::model()->findAll(array('limit'=>10,'order'=>'logtime DESC','condition'=>'level="info"'));
 
 		$this->render('index',array(
 			'snapFeed' => simplexml_load_string($snapFeed),
 			'feedLimit' => 5,
+			'RecentActivity' => $RecentActivity,
 		));
+	}
+	
+	/**
+	 */
+	public function actionLogs($level=null)
+	{
+		$criteria = new CDbCriteria;
+		if($level) {
+			$criteria->addCondition('level=:level');
+			$criteria->params = array(':level'=>$level);
+		}
+		$dataProvider = new CActiveDataProvider('Log',array(
+			'criteria'=>$criteria,
+			'sort'=>array(
+				'defaultOrder'=>'logtime DESC'
+			)
+		));
+		$this->layout = '//layouts/column2';
+		$this->render('logs',array(
+			'dataProvider' => $dataProvider,
+			'levels'=>array('error','warning','info'),
+			'selectedLevel'=>$level,
+		));
+	}
+	
+	/**
+	 */
+	public function actionClearLogs()
+	{
+		Yii::app()->db->createCommand()->truncateTable('{{log}}');
+		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+		if(!isset($_GET['ajax']))
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('logs'));
 	}
 
 	/**

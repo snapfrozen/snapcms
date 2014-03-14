@@ -16,7 +16,7 @@ $this->page_heading = 'Content Type';
 $this->page_heading_subtext = 'Status';
 ?>
 <?php $this->beginWidget('bootstrap.widgets.BsPanel',array(
-	'title'=>'Content Types'
+	'title'=>'&nbsp;'
 )); ?>
 
 <div class="items">

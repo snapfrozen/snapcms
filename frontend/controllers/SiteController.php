@@ -46,7 +46,7 @@ class SiteController extends Controller
 	{
 		return array(
 			array('allow',
-				'actions'=>array('error','login'),
+				'actions'=>array('error','login','captcha'),
 				'users'=>array('*'),
 			),
 			array('allow',

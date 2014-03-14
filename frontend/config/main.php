@@ -91,14 +91,18 @@ return array(
 			'class'=>'CLogRouter',
 			'routes'=>array(
 				array(
-					'class'=>'CFileLogRoute',
-					'levels'=>'error, warning',
+					'class'=>'CDbLogRoute',
+					'connectionID' => 'db',
+					'levels'=>'error, warning, info',
+					'logTableName'=>'{{log}}'
 				),
 				// uncomment the following to show log messages on web pages
+				/*
 				array(
 					'class'=>'CWebLogRoute',
 					'categories'=>'system.db.CDbCommand',
 				),
+				 */
 			),
 		),
 	),

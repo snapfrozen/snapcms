@@ -55,7 +55,8 @@ class m131103_131530_add_user_auth_data extends CDbMigration
 		$role->addChild("View Content");
 		
 		$role=$authManager->createRole("Editor");
-		$role->addChild("View User");
+		$role->addChild("User");
+		$role->addChild("Manage User Groups");
 		$role->addChild("Content");
 		$role->addChild("Menu");
 		$role->addChild("Access Backend");
@@ -65,7 +66,6 @@ class m131103_131530_add_user_auth_data extends CDbMigration
 		$role->addChild("Content");
 		$role->addChild("Menu");
 		$role->addChild("General");
-		$role->addChild("Manage User Groups");
 		$role->addChild("Update Settings");
 		$role->addChild("Update Content Type Structure");
 		

@@ -12,8 +12,9 @@
 <?php echo BSHtml::checkBoxControlGroup('MenuItem['.$MenuItem->Menu->name.'][include]', $menuSelected, array(
 	//'name'=>'MenuItem['.$MenuItem->Menu->name.'][include]',
 	'labelOptions'=>array(
-		'label'=>'Include in this menu',
+		'class'=>'myclass',
 	),
+	'label'=>'Include in this menu',
 	'formLayout'=>$form->layout,
 )) ?>
 

@@ -100,6 +100,11 @@ class ContentController extends Controller
 					Yii::app()->user->setFlash('error','Problem saving Content Type');
 				}
 				
+				Yii::log(
+					CHtml::link($Content->UserCreated->full_name, array('user/view','id'=>$Content->created_by)) .
+					' created ' . $Content->ContentType->name . ' ' . CHtml::link($Content->title, $this->createFrontendUrl('content/view', array('id'=>$Content->id))) 
+					, 'info', 'Content');
+				
 				if(isset($_POST['save_and_continue'])) {
 					$this->redirect(array('content/update','id'=>$Content->id));
 				} else {
@@ -147,7 +152,7 @@ class ContentController extends Controller
 							$MenuItem = new MenuItem;
 						}
 						$MenuItem = $this->_populateMenuItem($MenuItem, $data, $Content);
-
+						
 						if(!$MenuItem->save())
 							$menuItemsSaved = false;
 					}
@@ -185,7 +190,12 @@ class ContentController extends Controller
 		
 		if($contentSaved && $menuItemsSaved) 
 		{
-			Yii::app()->user->setFlash('success','Content Updated');	
+			Yii::app()->user->setFlash('success','Content Updated');
+			Yii::log(
+				CHtml::link($Content->UserUpdated->full_name, array('user/view','id'=>$Content->updated_by)) .
+				' updated ' . $Content->ContentType->name . ' ' . CHtml::link($Content->title, $this->createFrontendUrl('content/view', array('id'=>$Content->id))) 
+				, 'info', 'Content');
+			
 			if(!isset($_POST['save_and_continue'])) {
 				$this->redirect(array('content/admin','id'=>$Content->id));
 			}
@@ -211,7 +221,14 @@ class ContentController extends Controller
 	 */
 	public function actionDelete($id)
 	{
-		$this->loadModel($id)->delete();
+		$Content = $this->loadModel($id);
+		$User = User::model()->findByPk(Yii::app()->user->id);
+		Yii::log(
+				CHtml::link($User->full_name, array('user/view','id'=>$User->id)) .
+				' deleted ' . $Content->ContentType->name . ' ' . $Content->title 
+				, 'info', 'Content');
+		
+		$Content->delete();
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))

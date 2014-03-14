@@ -50,7 +50,6 @@ $user = Yii::app()->user;
 		array('label'=>'View Site', 'url'=>'/'),
 		array('label'=>'Content', 'url'=>array('/content/admin'),'visible'=>$user->checkAccess('Update Content')),
 		array('label'=>'Menus','url'=>array('/menu/update'),'visible'=>$user->checkAccess('Update Menu')),
-		array('label'=>'Users', 'url'=>array('/user/index'), 'visible'=>$user->checkAccess('Editor')),
 		array(
 			'label'=>'Users',
 			'url'=>'#',
@@ -60,7 +59,18 @@ $user = Yii::app()->user;
 			),
 			'visible' => $user->checkAccess('Update User'),
 		),
-		array('label'=>'Settings','url'=>array('/config'),'visible'=>$user->checkAccess('Update Settings')),
+		array(
+			'label'=>'Administer',
+			'url'=>'#',
+			'items'=>array(
+				array('label'=>'Settings','url'=>array('/config'),'visible'=>$user->checkAccess('Update Settings')),
+				array('label'=>'Logs','url'=>array('/site/logs'),'visible'=>$user->checkAccess('Update Settings')),
+				array('label'=>'Content Types', 'url'=>array('contentType/status'), 'visible'=>Yii::app()->user->checkAccess('Update Content Type Structure')),
+				array('label'=>'Updates','url'=>array('/site/updates'),'visible'=>$user->checkAccess('Update Settings')),
+			),
+			'visible' => $user->checkAccess('Update Settings'),
+		),
+		
 	);
 	if(!empty($moduleMenu))
 		$menuItems []= $moduleMenu; 

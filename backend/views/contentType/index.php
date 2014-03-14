@@ -9,7 +9,7 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Status', 'url'=>array('status')),
+	//array('label'=>'Status', 'url'=>array('status'), 'visible'=>Yii::app()->user->checkAccess('Update Content Type Structure')),
 );
 
 $this->page_heading = 'Create';

@@ -30,6 +30,18 @@ $this->pageTitle=Yii::app()->name;
 	<?php $this->endWidget();?>
 	</div>
 	<div class="col-md-6">
-		
+	<?php $this->beginWidget('bootstrap.widgets.BsPanel', array(
+		'title'=>'Recent Activity',
+		'titleTag'=>'h1',
+		'type'=>BSHtml::PANEL_TYPE_INFO,
+	)); ?>
+		<?php foreach($RecentActivity as $Log): ?>
+		<p class="alert alert-<?php echo $Log->level == 'error' ? 'danger' : $Log->level ?>">
+			<strong><?php echo $Log->category ?></strong> - 
+			<span class="date"><?php echo SnapFormat::datetime($Log->logtime) ?></span><br />
+			<?php echo $Log->message; ?>
+		<p>
+		<?php endforeach; ?>
+	<?php $this->endWidget();?>
 	</div>
 </div>
