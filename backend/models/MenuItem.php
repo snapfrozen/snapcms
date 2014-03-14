@@ -131,7 +131,7 @@ class MenuItem extends SnapActiveRecord
 	{		
 		$returnarray = array(
 			'label' => $this->title,
-			'url' => $this->external_path ? $this->external_path : array('content/view', 'path'=>$this->path)
+			'url' => $this->external_path ? $this->external_path_formatted : array('content/view', 'path'=>$this->path)
 		);
 		
 		if($this->Content)
@@ -220,5 +220,15 @@ class MenuItem extends SnapActiveRecord
 	public function getMenu()
 	{
 		return new Menu($this->menu_id);
+	}	
+		
+	public function getExternal_path_formatted()
+	{
+		$path=trim($this->external_path);
+		if($path[0] == '/') {
+			return Yii::app()->baseUrl.$path;
+		}
+		
+		return $this->external_path;
 	}
 }

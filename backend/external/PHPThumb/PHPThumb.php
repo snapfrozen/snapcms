@@ -17,7 +17,7 @@ $document_path = '/'.trim($_SERVER['DOCUMENT_ROOT'], '/').($_SERVER['DOCUMENT_RO
 $cache_path = __DIR__.'/../../../public_html/cache/';
 
 // The URI to your cache folder
-$cache_uri = 'http://'.trim($_SERVER['HTTP_HOST'], '/').'/cache/';
+$cache_uri = Yii::app()->baseUrl.'/cache/';
 
 // How long caches should live. Remember, hard refreshes will also clear out your cache so you'll be
 // safe setting this pretty high

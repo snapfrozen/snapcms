@@ -2,7 +2,7 @@
 /* @var $this Controller */ 
 $cs = Yii::app()->clientScript;
 $baseUrl = Yii::app()->baseUrl;
-$themeUrl = Yii::app()->theme->baseUrl;
+$themeUrl = $baseUrl . Yii::app()->theme->baseUrl;
 $cs
     ->registerCoreScript('jquery',CClientScript::POS_END)
     ->registerCoreScript('jquery.ui',CClientScript::POS_END)
