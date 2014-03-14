@@ -61,8 +61,14 @@ class Controller extends CController
 	
 	public function createFrontendUrl($route, $params=array())
 	{
+		//@todo: must be a better way to do this..
 		$baseUrl = Yii::app()->baseUrl;
 		$backUrl = Yii::app()->urlManager->createUrl($route, $params, '&', true);
+		
+		//If the last character isn't admin.. we're in the frontend already
+		if(substr($baseUrl,-strlen('/admin')) !== '/admin')
+			return $backUrl;
+		
 		//@todo: must be a better way to do this..
 		$url = substr($baseUrl,0,-strlen('/admin')) . substr($backUrl,strlen($baseUrl)); //Removes admin/
 		return $url;
@@ -73,6 +79,11 @@ class Controller extends CController
 		//@todo: must be a better way to do this..
 		$baseUrl = Yii::app()->baseUrl;		
 		$frontUrl = Yii::app()->urlManager->createUrl($route, $params, '&', true);
+		
+		//If the last character are admin.. we're in the backend already
+		if(substr($baseUrl,-strlen('/admin')) == '/admin')
+			return $frontUrl;
+		
 		$frontUrl = substr($frontUrl,strlen($baseUrl));
 		$url = $baseUrl.'/admin'.$frontUrl; //Adds admin/
 		return $url;
