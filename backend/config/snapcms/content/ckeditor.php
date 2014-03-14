@@ -1,4 +1,5 @@
 <?php
+$baseUrl = Yii::app()->controller->createFrontendUrl('/');
 return array(
 	'default'=>array(
 		//'attribute'=>'content',     
@@ -36,15 +37,15 @@ return array(
 			),
 		),
 		'ckeditor'=>Yii::getPathOfAlias('backend.external.CKeditor').'/ckeditor.php',
-		'ckBasePath'=>'/lib/ckeditor/',
+		'ckBasePath'=>$baseUrl.'/lib/ckeditor/',
 		//'css' => $baseUrl.'/css/index.css',
 		'config'=>array(
-			'filebrowserBrowseUrl'=> '/lib/kcfinder/browse.php?type=files',
-			'filebrowserImageBrowseUrl'=> '/lib/kcfinder/browse.php?type=images',
-			'filebrowserFlashBrowseUrl'=> '/lib/kcfinder/browse.php?type=flash',
-			'filebrowserUploadUrl'=> '/lib/kcfinder/upload.php?type=files',
-			'filebrowserImageUploadUrl'=> '/lib/kcfinder/upload.php?type=images',
-			'filebrowserFlashUploadUrl'=> '/lib/kcfinder/upload.php?type=flash'
+			'filebrowserBrowseUrl'=> $baseUrl.'/lib/kcfinder/browse.php?type=files',
+			'filebrowserImageBrowseUrl'=> $baseUrl.'/lib/kcfinder/browse.php?type=images',
+			'filebrowserFlashBrowseUrl'=> $baseUrl.'/lib/kcfinder/browse.php?type=flash',
+			'filebrowserUploadUrl'=> $baseUrl.'/lib/kcfinder/upload.php?type=files',
+			'filebrowserImageUploadUrl'=> $baseUrl.'/lib/kcfinder/upload.php?type=images',
+			'filebrowserFlashUploadUrl'=> $baseUrl.'/lib/kcfinder/upload.php?type=flash'
 		),
 	),
 	'plain'=>array(
@@ -58,15 +59,15 @@ return array(
 			),
 		),
 		'ckeditor'=>Yii::getPathOfAlias('backend.external.CKeditor').'/ckeditor.php',
-		'ckBasePath'=>'/lib/ckeditor/',
+		'ckBasePath'=>$baseUrl.'/lib/ckeditor/',
 		//'css' => $baseUrl.'/css/index.css',
 		'config'=>array(
-			'filebrowserBrowseUrl'=> '/lib/kcfinder/browse.php?type=files',
-			'filebrowserImageBrowseUrl'=> '/lib/kcfinder/browse.php?type=images',
-			'filebrowserFlashBrowseUrl'=> '/lib/kcfinder/browse.php?type=flash',
-			'filebrowserUploadUrl'=> '/lib/kcfinder/upload.php?type=files',
-			'filebrowserImageUploadUrl'=> '/lib/kcfinder/upload.php?type=images',
-			'filebrowserFlashUploadUrl'=> '/lib/kcfinder/upload.php?type=flash'
+			'filebrowserBrowseUrl'=> $baseUrl.'/lib/kcfinder/browse.php?type=files',
+			'filebrowserImageBrowseUrl'=> $baseUrl.'/lib/kcfinder/browse.php?type=images',
+			'filebrowserFlashBrowseUrl'=> $baseUrl.'/lib/kcfinder/browse.php?type=flash',
+			'filebrowserUploadUrl'=> $baseUrl.'/lib/kcfinder/upload.php?type=files',
+			'filebrowserImageUploadUrl'=> $baseUrl.'/lib/kcfinder/upload.php?type=images',
+			'filebrowserFlashUploadUrl'=> $baseUrl.'/lib/kcfinder/upload.php?type=flash'
 		),
 	),
 );

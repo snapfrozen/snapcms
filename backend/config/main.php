@@ -68,7 +68,7 @@ return array(
 		
 		'themeManager'=>array(
 			'basePath'=>'../themes/',
-			'baseUrl'=>'/themes/',
+			'baseUrl'=>'../themes/',
 		),
 		
 		'bsHtml' => array(

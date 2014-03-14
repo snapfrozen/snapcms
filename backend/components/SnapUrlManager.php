@@ -17,7 +17,7 @@ class SnapUrlManager extends CUrlManager
 			if(!empty($params)) {
 				$path .= '?' . http_build_query($params);
 			}
-			return '/' .  $path;
+			return Yii::app()->baseUrl.'/' .  $path;
 		}
 		
         return parent::createUrl($route, $params, $ampersand);

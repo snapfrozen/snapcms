@@ -61,15 +61,20 @@ class Controller extends CController
 	
 	public function createFrontendUrl($route, $params=array())
 	{
+		$baseUrl = Yii::app()->baseUrl;
+		$backUrl = Yii::app()->urlManager->createUrl($route, $params, '&', true);
 		//@todo: must be a better way to do this..
-		$url = substr(Yii::app()->urlManager->createUrl($route, $params, '&', true),6); //Removes admin/
+		$url = substr($baseUrl,0,-strlen('/admin')) . substr($backUrl,strlen($baseUrl)); //Removes admin/
 		return $url;
 	}
 	
 	public function createBackendUrl($route, $params=array())
 	{
 		//@todo: must be a better way to do this..
-		$url = '/admin'.Yii::app()->urlManager->createUrl($route, $params, '&', true); //Adds admin/
+		$baseUrl = Yii::app()->baseUrl;		
+		$frontUrl = Yii::app()->urlManager->createUrl($route, $params, '&', true);
+		$frontUrl = substr($frontUrl,strlen($baseUrl));
+		$url = $baseUrl.'/admin'.$frontUrl; //Adds admin/
 		return $url;
 	}
 	

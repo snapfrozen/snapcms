@@ -34,7 +34,7 @@ $cs
 	
 	<div class="container">
 		<div class="masthead">
-			<h3 class="text-muted"><?php echo CHtml::link(Yii::app()->name,'/') ?></h3>
+			<h3 class="text-muted"><?php echo CHtml::link(Yii::app()->name,$baseUrl) ?></h3>
 			<?php $this->widget('bootstrap.widgets.BsNavbar', array(
 				'collapse' => true,
 				'brandLabel' => false,

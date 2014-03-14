@@ -3,10 +3,11 @@
 /* @var $model Menu */
 /* @var $form CActiveForm */
 $cs = Yii::app()->clientScript;
+$baseUrl = Yii::app()->baseUrl;
 $themePath = Yii::app()->theme->baseUrl;
 $cs
 	->registerCoreScript('jquery.ui')
-	->registerScriptFile($themePath.'/js/lib/jquery.mjs.nested.sortable.js',CClientScript::POS_END);
+	->registerScriptFile($baseUrl.'/'.$themePath.'/js/lib/jquery.mjs.nested.sortable.js',CClientScript::POS_END);
 ?>
 
 <div class="form row">
