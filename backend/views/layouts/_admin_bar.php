@@ -71,7 +71,7 @@ if($app->user->checkAccess('Update Content')) :
 
 	<div id="admin-nav">
 		<div class="inner">
-			<?php echo CHtml::link('Admin','/admin/'); ?>
+			<?php echo CHtml::link('Admin',$this->createBackendUrl('/')); ?>
 			<?php if(isset($this->Content)):
 				echo CHtml::link('Edit',$this->createBackendUrl('/content/update/',array('id'=>$this->Content->id)));
 			endif;?>

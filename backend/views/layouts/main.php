@@ -47,7 +47,7 @@ $user = Yii::app()->user;
 	<?php 
 	$moduleMenu = $this->getModuleMenus(SnapCMS::MENU_MAIN_MENU);
 	$menuItems = array(
-		array('label'=>'View Site', 'url'=>$this->createFrontendUrl('/')),
+		array('label'=>'View Site', 'url'=>$this->createFrontendUrl('/ ')),//Space added to work around BsNav::isItemActive which assumes url is array
 		array('label'=>'Content', 'url'=>array('/content/admin'),'visible'=>$user->checkAccess('Update Content')),
 		array('label'=>'Menus','url'=>array('/menu/update'),'visible'=>$user->checkAccess('Update Menu')),
 		array(
@@ -74,6 +74,8 @@ $user = Yii::app()->user;
 	);
 	if(!empty($moduleMenu))
 		$menuItems []= $moduleMenu; 
+	
+	//var_dump($menuItems);exit;
 	
 	$this->widget('bootstrap.widgets.BsNavbar', array(
 		'collapse' => true,
