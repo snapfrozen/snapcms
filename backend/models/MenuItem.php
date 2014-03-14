@@ -127,7 +127,7 @@ class MenuItem extends SnapActiveRecord
 		return parent::model($className);
 	}
 	
-	public function getMenuList($level=1) 
+	public function getMenuList($level=1,$duplicateFirst=false) 
 	{		
 		$returnarray = array(
 			'label' => $this->title,
@@ -148,7 +148,7 @@ class MenuItem extends SnapActiveRecord
 		if($this->children) 
 		{
 			//Duplicate first level link for bootstrap click to activate links
-			if($level==1) {
+			if($duplicateFirst && $level==1) {
 				$subitems []= $returnarray;
 				$subitems []= BsHtml::menuDivider();
 			}

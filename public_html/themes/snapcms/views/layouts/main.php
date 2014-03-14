@@ -35,15 +35,6 @@ $cs
 	<div class="container">
 		<div class="masthead">
 			<h3 class="text-muted"><?php echo CHtml::link(Yii::app()->name,'/') ?></h3>
-			<?php 
-			/*
-			$this->widget('zii.widgets.CMenu',array(
-				'encodeLabel'=>false,
-				'activateParents'=>true,
-				'items'=>Menu::model('main_menu')->menuList
-			)); 
-			 */
-			?>
 			<?php $this->widget('bootstrap.widgets.BsNavbar', array(
 				'collapse' => true,
 				'brandLabel' => false,
@@ -54,7 +45,7 @@ $cs
 						'class' => 'bootstrap.widgets.BsNav',
 						'type' => 'navbar',
 						'activateParents' => true,
-						'items'=>Menu::model('main_menu',$user->checkAccess('Update Menu'))->menuList
+						'items'=>Menu::model('main_menu',$user->checkAccess('Update Menu'))->getMenuList()
 					),
 				)
 			)); ?>

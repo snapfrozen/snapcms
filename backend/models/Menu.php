@@ -22,7 +22,7 @@ class Menu extends CModel
 			$criteria->addCondition('(Content.unpublish_on > NOW() OR Content.unpublish_on is null)');
 			$criteria->addCondition('Content.published = 1');
 		}
-		$criteria->addCondition('Content.id is null','OR');
+		$criteria->addCondition('Content.id is null AND menu_id=:id AND (parent=0 OR parent IS NULL)','OR');
 		$criteria->order = 'sort';
 		$criteria->params = array(':id'=>$id);
 		
@@ -40,9 +40,8 @@ class Menu extends CModel
 	 * admin => true or false
 	 * @return type 
 	 */
-	public function getMenuList($MI=false,$startLevel=1) 
+	public function getMenuList($MI=false,$startLevel=1,$duplicateFirst=false) 
 	{
-		//var_dump(Yii::app()->request);
 		$subitems = array();
 		if($MI)
 		{
@@ -56,13 +55,13 @@ class Menu extends CModel
 			}
 			$StartMI = $trail[$startLevel-2];
 			foreach($StartMI->children as $child) {
-				$subitems[] = $child->getMenuList($startLevel);
+				$subitems[] = $child->getMenuList($startLevel,$duplicateFirst);
 			}
 		}
 		else if($MI===false && $this->rootMenuItems) 
 		{
 			foreach($this->rootMenuItems as $child) {
-				$subitems[] = $child->getMenuList();
+				$subitems[] = $child->getMenuList($startLevel,$duplicateFirst);
 			}
 		}
 		return $subitems;
