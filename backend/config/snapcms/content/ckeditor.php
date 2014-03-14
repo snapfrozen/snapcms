@@ -57,7 +57,7 @@ return array(
 				'items'=>array('Bold','Italic','Underline')
 			),
 		),
-		'ckeditor'=>Yii::getPathOfAlias('backend.external.CKeditor').'/../backend/external/CKEditor/ckeditor.php',
+		'ckeditor'=>Yii::getPathOfAlias('backend.external.CKeditor').'/ckeditor.php',
 		'ckBasePath'=>'/lib/ckeditor/',
 		//'css' => $baseUrl.'/css/index.css',
 		'config'=>array(

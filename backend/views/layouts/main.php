@@ -66,7 +66,7 @@ $user = Yii::app()->user;
 				array('label'=>'Settings','url'=>array('/config'),'visible'=>$user->checkAccess('Update Settings')),
 				array('label'=>'Logs','url'=>array('/site/logs'),'visible'=>$user->checkAccess('Update Settings')),
 				array('label'=>'Content Types', 'url'=>array('contentType/status'), 'visible'=>Yii::app()->user->checkAccess('Update Content Type Structure')),
-				array('label'=>'Updates','url'=>array('/site/updates'),'visible'=>$user->checkAccess('Update Settings')),
+				//array('label'=>'Updates','url'=>array('/site/updates'),'visible'=>$user->checkAccess('Update Settings')),
 			),
 			'visible' => $user->checkAccess('Update Settings'),
 		),
