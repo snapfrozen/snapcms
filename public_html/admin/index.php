@@ -9,9 +9,9 @@ defined('YII_DEBUG') or define('YII_DEBUG',true);
 defined('YII_TRACE_LEVEL') or define('YII_TRACE_LEVEL',3);
 require_once($yii);
 
-$config = CMap::mergeArray(
+$config = CMap::mergeArray(CMap::mergeArray(
 	require(__DIR__ . '/../../backend/config/main.php'),
-	require(__DIR__ . '/../../backend/config/main-local.php')
-);
+	require(__DIR__ . '/../../frontend/config/backend.php')
+), require(__DIR__ . '/../../frontend/config/main-local.php'));
 
 Yii::createWebApplication($config)->run();

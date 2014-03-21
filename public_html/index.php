@@ -9,9 +9,9 @@ defined('YII_DEBUG') or define('YII_DEBUG',false);
 defined('YII_TRACE_LEVEL') or define('YII_TRACE_LEVEL',3);
 require_once($yii);
 
-$config = CMap::mergeArray(CMap::mergeArray(
+$config = CMap::mergeArray(
 	require(__DIR__ . '/../frontend/config/main.php'),
-	require(__DIR__ . '/../backend/config/main-local.php')		//Use backend host specific config
-),	require(__DIR__ . '/../frontend/config/main-local.php'));	//Override in frontend if desired
+	require(__DIR__ . '/../frontend/config/main-local.php')
+);
 
 Yii::createWebApplication($config)->run();

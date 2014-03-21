@@ -4,8 +4,8 @@ return array(
 		'id' => 'homepage',
 		'name' => 'Homepage',
 		'description' => '',
-		'showInCMS' => false,
-		'autoAddToMenu' => array(),
+		'show_in_cms' => false,
+		'auto_add_to_menu' => array(),
 		'fields' => array(
 			'content' => 'text',
 			'content_2' => 'text',
@@ -19,7 +19,7 @@ return array(
 			'Content' => array('content', 'content_2'),
 			'SEO' => array('meta_keywords','meta_description'),
 		),
-		'inputTypes' => array (
+		'input_types' => array (
 			'meta_description' => 'textAreaControlGroup',
 		)
 	),
@@ -27,8 +27,8 @@ return array(
 		'id' => 'page',
 		'name' => 'Page',
 		'description' => 'A standard page',
-		'showInCMS' => true,
-		'autoAddToMenu' => array('main_menu'),
+		'show_in_cms' => true,
+		'auto_add_to_menu' => array('main_menu'),
 		'fields' => array(
 			'content' => 'text',
 			'meta_keywords' => 'string',
@@ -41,7 +41,7 @@ return array(
 			'Content' => array('content'),
 			'SEO' => array('meta_keywords','meta_description'),
 		),
-		'inputTypes' => array (
+		'input_types' => array (
 			'meta_description' => 'textAreaControlGroup',
 		)
 	),
@@ -49,8 +49,8 @@ return array(
 		'id' => 'news_list',
 		'name' => 'News List',
 		'description' => '',
-		'showInCMS' => false,
-		'autoAddToMenu' => array(),
+		'show_in_cms' => false,
+		'auto_add_to_menu' => array(),
 		'fields' => array(
 			'content' => 'text',
 			'meta_keywords' => 'string',
@@ -63,7 +63,7 @@ return array(
 			'Content' => array('content'),
 			'SEO' => array('meta_keywords','meta_description'),
 		),
-		'inputTypes' => array (
+		'input_types' => array (
 			'meta_description' => 'textAreaControlGroup',
 		)
 	),
@@ -71,8 +71,8 @@ return array(
 		'id' => 'news',
 		'name' => 'News',
 		'description' => 'News items will appear in the news section of your website.',
-		'showInCMS' => true,
-		'autoAddToMenu' => array(),
+		'show_in_cms' => true,
+		'auto_add_to_menu' => array(),
 		'fields' => array(
 			'content' => 'text',
 			'intro' => 'text',
@@ -91,7 +91,7 @@ return array(
 			'Content' => array('intro','content','image','file'),
 			'SEO' => array('meta_keywords','meta_description'),
 		),
-		'inputTypes' => array (
+		'input_types' => array (
 			'image' => 'imageField',
 			'file' => 'fileField',
 			'intro' => array(

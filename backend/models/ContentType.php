@@ -9,9 +9,9 @@ class ContentType extends SnapModel
 	public $fileFields = array();
 	public $fields = array();
 	public $rules = array();
-	public $inputTypes = array();
-	public $autoAddToMenu = array();
-	public $showInCMS = true;
+	public $input_types = array();
+	public $auto_add_to_menu = array();
+	public $show_in_cms = true;
 	public $dataLoaded = false;
 	
 	protected $_newRecord = true;
@@ -42,11 +42,11 @@ class ContentType extends SnapModel
 		$this->name = $config['name'];
 		$this->description = $config['description'];
 		
-		$this->inputTypes = $config['inputTypes'];
-		$this->fileFields = array_keys(array_filter($this->inputTypes, array($this,'_filterFileFields')));
+		$this->input_types = $config['input_types'];
+		$this->fileFields = array_keys(array_filter($this->input_types, array($this,'_filterFileFields')));
 		
-		$this->showInCMS = $config['showInCMS'];
-		$this->autoAddToMenu = $config['autoAddToMenu'];
+		$this->show_in_cms = $config['show_in_cms'];
+		$this->auto_add_to_menu = $config['auto_add_to_menu'];
 		
 		//parent::__construct($config);
 	}

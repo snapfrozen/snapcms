@@ -41,7 +41,7 @@ class ContentTypeController extends Controller
 		//$cnfCTs = ContentType::getConfigArray();
 		$data = ContentType::findAll();
 		foreach($data as $key=>$ct) {
-			if(!$ct->showInCMS)
+			if(!$ct->show_in_cms)
 				unset($data[$key]);
 		}
 		//ContentType::checkSchema();

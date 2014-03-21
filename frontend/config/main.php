@@ -2,6 +2,7 @@
 
 // uncomment the following to define a path alias
 Yii::setPathOfAlias('backend','../backend');
+Yii::setPathOfAlias('frontend','../frontend');
 Yii::setPathOfAlias('vendor','../vendor');
 
 // This is the main Web application configuration. Any writable
@@ -63,14 +64,16 @@ return array(
 			// enable cookie-based authentication
 			'class'=>'backend.components.SnapWebUser',
 		),
+		/*
 		'session' => array(
 			'cookieMode' => 'allow',
 			'cookieParams' => array(
 				'path' => '/',
 				'httpOnly' => true,
-				'domain' => 'snapcms.local',
+				//'domain' => 'snapcms.local',
 			),
 		),
+		 */
 		// uncomment the following to enable URLs in path-format
 		'urlManager'=>array(
 			'class'=>'backend.components.SnapUrlManager',
@@ -105,12 +108,5 @@ return array(
 				 */
 			),
 		),
-	),
-
-	// application-level parameters that can be accessed
-	// using Yii::app()->params['paramName']
-	'params'=>array(
-		// this is used in contact page
-		'adminEmail'=>'webmaster@example.com',
 	),
 );

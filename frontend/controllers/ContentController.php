@@ -107,7 +107,7 @@ class ContentController extends Controller
 		$_GET['h']=$h;
 		$_GET['zc']=$zc;
 
-		include(Yii::getPathOfAlias('backend.external.PHPThumb').'/phpThumb.php');
+		include(Yii::getPathOfAlias('backend.external.PHPThumb').'/PHPThumb.php');
 	}
 
 	/**

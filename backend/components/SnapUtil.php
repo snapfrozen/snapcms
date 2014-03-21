@@ -35,7 +35,7 @@ class SnapUtil
 	 */
 	public static function getConfig($path)
 	{
-		$confPath = Yii::getPathOfAlias('backend.config.snapcms.'.$path);
+		$confPath = Yii::getPathOfAlias('frontend.config.snapcms.'.$path);
 		return require($confPath.'.php');
 	}
 	

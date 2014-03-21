@@ -1,7 +1,7 @@
 <?php 
 	$menuSelected = false;
 	if($MenuItem->isNewRecord) { //New record
-		$menuSelected = in_array($MenuItem->Menu->id, $Content->autoAddToMenu); 
+		$menuSelected = in_array($MenuItem->Menu->id, $Content->auto_add_to_menu); 
 	} else {
 		$menuSelected = $MenuItem->content_id == $Content->id;
 	}

@@ -9,7 +9,6 @@
 
 abstract class SnapActiveRecord extends CActiveRecord 
 {
-	
 	const dateTimeFormat = 'yyyy-MM-dd hh:mm:ss';
 	const dateFormat = 'yyyy-MM-dd';
 	const timeFormat = 'hh:mm:ss';

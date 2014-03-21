@@ -2,6 +2,7 @@
 
 // uncomment the following to define a path alias
 Yii::setPathOfAlias('backend','../../backend/');
+Yii::setPathOfAlias('frontend','../../frontend/');
 Yii::setPathOfAlias('vendor','../../vendor/');
 
 // This is the main Web application configuration. Any writable
@@ -40,14 +41,7 @@ return array(
 		),
 		'snapcms' => array(
 			'class' => 'application.modules.snapcms.SnapCMSModule',
-			'modules' => array (
-				/*
-				//Example module
-				'boats' => array (
-					'class' => 'snapcms.modules.boats.SnapCMSBoatsModule'
-				)
-				 */
-			)
+			'modules' => array ()
 		),
 		// uncomment the following to enable the Gii tool
 		'gii'=>array(
@@ -123,18 +117,13 @@ return array(
 					'logTableName'=>'{{log}}'
 				),
 				// uncomment the following to show log messages on web pages
-//				array(
-//					'class'=>'CWebLogRoute',
-//					'categories'=>'system.db.CDbCommand',
-//				),
+				/*
+				array(
+					'class'=>'CWebLogRoute',
+					'categories'=>'system.db.CDbCommand',
+				),
+				 */
 			),
 		),
-	),
-
-	// application-level parameters that can be accessed
-	// using Yii::app()->params['paramName']
-	'params'=>array(
-		// this is used in contact page
-		'adminEmail'=>'webmaster@example.com',
 	),
 );

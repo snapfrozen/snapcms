@@ -263,9 +263,9 @@ class SnapActiveForm extends BsActiveForm
 	public function autoGenerateInput($model, $attribute, $htmlOptions = array())
 	{
 		$dbAttribs = $model->getTableSchema()->columns[$attribute];
-		if(isset($this->_contentTypesConfig[$model->id]['inputTypes'][$attribute]))
+		if(isset($this->_contentTypesConfig[$model->id]['input_types'][$attribute]))
 		{
-			$method = $this->_contentTypesConfig[$model->id]['inputTypes'][$attribute];
+			$method = $this->_contentTypesConfig[$model->id]['input_types'][$attribute];
 			if(is_array($method) && isset($method['widget']['class'])) {
 				return $this->_loadWidget($model, $attribute, $method);
 			} else {
