@@ -1,6 +1,6 @@
 <?php
 /**
- * User: Francis Berseford
+ * @author Francis Beresford
  * @package snapcms/components
  * Class SnapHtml
  */
