@@ -4,7 +4,7 @@
  */
 class Menu extends CModel
 {
-	protected $rootMenuItems;
+	public $rootMenuItems;
 	public $name;
 	public $id;
 			

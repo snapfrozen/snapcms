@@ -102,6 +102,24 @@ $user = Yii::app()->user;
 			),
 		)
 	));
+	
+	if(!empty($this->secondary_menu)):
+		$this->widget('bootstrap.widgets.BsNavbar', array(
+			'collapse' => true,
+			'brandLabel' => false,
+			'htmlOptions'=>array('id'=>'secondary-nav'),
+			//'brandUrl' => array('/site/index'),
+			'position' => BsHtml::NAVBAR_POSITION_STATIC_TOP,
+			'items' => array(
+				array(
+					'class' => 'bootstrap.widgets.BsNav',
+					'type' => 'navbar',
+					'activateParents' => true,
+					'items'=>$this->secondary_menu,
+				),
+			)
+		));
+	endif;
 	?>
 	
 	<?php if(isset($this->breadcrumbs)):?>

@@ -1,13 +1,8 @@
 <?php
-
 /**
- * This is the base model / active record class 
- * all model classes MUST extend this class.
- * 
- * @author Andrew Mclagan
+ * @author Francis Beresford
  */
-
-abstract class SnapActiveRecord extends CActiveRecord 
+class SnapActiveRecord extends CActiveRecord 
 {
 	const dateTimeFormat = 'yyyy-MM-dd hh:mm:ss';
 	const dateFormat = 'yyyy-MM-dd';

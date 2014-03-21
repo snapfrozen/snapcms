@@ -6,6 +6,9 @@ public_html/lib/*
 public_html/cache/*
 public_html/uploads/*
 !public_html/uploads/.htaccess
+public_html/themes/*
+!public_html/themes/admin/*
+!public_html/themes/snapcms/*
 
 frontend/runtime/*
 !frontend/runtime/.gitignore

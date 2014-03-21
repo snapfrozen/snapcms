@@ -142,7 +142,7 @@ class SiteController extends Controller
 	{
 		$model = $modelName::model()->findByPk($id);
 		$base=Yii::getPathOfAlias('backend.data');
-		$filePath=dirname(Yii::app()->request->scriptFile).'/'.$base.'/'.strtolower($modelName).'/'.$field.'_'.$id;
+		$filePath=$base.'/'.strtolower($modelName).'/'.$field.'_'.$id;
 
 		$image = $model->$field;
 		if($model && !empty($image)) {

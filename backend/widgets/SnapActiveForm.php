@@ -33,7 +33,7 @@ class SnapActiveForm extends BsActiveForm
 				$tmpModel = $model->Content;
 			
 			$output .= CHtml::image(Yii::app()->controller->createUrl(
-			'site/getImage',array(
+			'/site/getImage',array(
 				'id'=>$tmpModel->id,
 				'modelName'=>get_class($tmpModel),
 				'field'=>$attribute,
