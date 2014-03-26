@@ -1,3 +1,8 @@
+*
+!public_html/*
+!frontend/*
+!backend/*
+
 public_html/assets/*
 public_html/admin/assets/*
 !public_html/assets/.gitignore
