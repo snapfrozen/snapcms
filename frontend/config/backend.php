@@ -8,8 +8,8 @@ return array(
 		'boxomatic.components.*',
 	),
 	'aliases' => array(
-		'boxomatic' => 'backend.modules.snapcms.modules.boxomatic',
-    ),
+		'boxomatic' => 'frontend.modules.boxomatic',
+    	),
 	// application components
 	'modules'=>array(
 		'snapcms' => array(
@@ -17,7 +17,7 @@ return array(
 			'modules' => array (
 				//Example module
 				'boxomatic' => array (
-					'class' => 'snapcms.modules.boxomatic.SnapCMSBoxomaticModule'
+					'class' => 'boxomatic.backend.SnapCMSBoxomaticModule'
 				)
 			)
 		),

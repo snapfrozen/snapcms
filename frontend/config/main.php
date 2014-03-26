@@ -11,7 +11,7 @@ return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'My Website',
 	'id'=>'snapcms',
-	'theme'=>'snapcms',
+	'theme'=>'boxomatic',
 
 	// preloading 'log' component
 	'preload'=>array('log'),
@@ -26,17 +26,23 @@ return array(
 		'bootstrap.components.*',
 		'bootstrap.helpers.*',
 		'bootstrap.behaviors.*',
+		'boxomatic.models.*',
+		'boxomatic.components.*',
 	),
 	
 	'aliases' => array(
 		//If you are using the bootstrap module
 		'bootstrap' => 'vendor.drmabuse.yii-bootstrap-3-module',
+		'boxomatic' => 'frontend.modules.boxomatic.backend',
     ),
 
 	'modules'=>array(
 		//If you are using the bootstrap module
 		'bootstrap' => array(
 			'class' => 'bootstrap.BootStrapModule'
+		),
+		'shop' => array(
+			'class' => 'application.modules.boxomatic.frontend.FrontendBoxomaticModule'
 		),
 		// uncomment the following to enable the Gii tool
 		'gii'=>array(

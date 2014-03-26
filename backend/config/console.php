@@ -1,9 +1,10 @@
 <?php
 Yii::setPathOfAlias('backend','./backend/');
+Yii::setPathOfAlias('frontend','./frontend/');
 
 // This is the configuration for yiic console application.
 // Any writable CConsoleApplication properties can be configured here.
-return array(
+$config = array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'SnapCMS Console',
 
@@ -58,4 +59,11 @@ return array(
 			'post-install' => array('yiic', 'migrate'),
 		),
 	),
+);
+
+
+
+return CMap::mergeArray(
+	$config,
+	require(__DIR__ . '/../../frontend/config/main-local.php')
 );
