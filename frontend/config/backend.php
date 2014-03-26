@@ -4,11 +4,11 @@
  */
 return array(
 	'import'=>array(
-		'boxomatic.backend.models.*',
-		'boxomatic.backend.components.*',
+		'boxomatic.models.*',
+		'boxomatic.components.*',
 	),
 	'aliases' => array(
-		'boxomatic' => 'frontend.modules.boxomatic',
+		'boxomatic' => 'frontend.modules.boxomatic.backend',
 	),
 	// application components
 	'modules'=>array(
@@ -17,7 +17,7 @@ return array(
 			'modules' => array (
 				//Example module
 				'boxomatic' => array (
-					'class' => 'boxomatic.backend.SnapCMSBoxomaticModule'
+					'class' => 'boxomatic.SnapCMSBoxomaticModule'
 				)
 			)
 		),
