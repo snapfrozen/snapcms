@@ -47,7 +47,11 @@ class SiteController extends Controller
 	{
 		if(!$snapFeed = Yii::app()->cache->get('snapFeed'))
 		{
-			$snapFeed = file_get_contents('http://www.snapfrozen.com.au/feed/atom/');
+			$curl = curl_init();
+			curl_setopt($curl, CURLOPT_URL, 'http://www.snapfrozen.com.au/feed/atom/');
+			curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+			$snapFeed = curl_exec($curl);
+			curl_close($curl);
 			Yii::app()->cache->set('snapFeed', $snapFeed, 60*60*24);
 		}
 		
