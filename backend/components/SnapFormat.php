@@ -44,4 +44,23 @@ class SnapFormat
 		$cn=new CNumberFormatter(Yii::app()->locale->id);
 		return $cn->formatCurrency($value,'USD');
 	}
+	
+	/**
+	 * Get month name from month number
+	 * @param int month number
+	 * @return string month name
+	 */
+	public function getMonthName($month)
+	{
+		return date("F", mktime(0, 0, 0, $month, 1));
+	}
+	
+	/**
+	 * Format a week string
+	 * @param string $day
+	 */
+	public function dayOfYear($day)
+	{
+		return Yii::app()->dateFormatter->format("EEE MMM d, yyy", $day);
+	}
 }

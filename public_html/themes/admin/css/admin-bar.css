@@ -13,6 +13,8 @@ body {
 	height:30px;
 	line-height:30px;
 	width:100%;
+	font-family:Arial;
+	font-size:14px;
 }
 	#admin-nav .inner {
 		padding:0 10px;

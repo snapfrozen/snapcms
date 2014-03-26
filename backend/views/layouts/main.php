@@ -108,7 +108,8 @@ $user = Yii::app()->user;
 			'collapse' => true,
 			'brandLabel' => false,
 			'htmlOptions'=>array('id'=>'secondary-nav'),
-			//'brandUrl' => array('/site/index'),
+			'brandLabel' => $this->nav_brand_label,
+			'brandUrl' => $this->nav_brand_url,
 			'position' => BsHtml::NAVBAR_POSITION_STATIC_TOP,
 			'items' => array(
 				array(
@@ -143,7 +144,7 @@ $user = Yii::app()->user;
 	
 	<footer>
 		<div class="container">
-			<p>2014 <a href="http://www.snapfrozen.com">Snapfrozen</a> All Rights Reserved</p>
+			<p>&copy; 2014 <a href="http://www.snapfrozen.com">Snapfrozen</a> All Rights Reserved</p>
 		</div>
 	</footer>
 	
@@ -155,13 +156,15 @@ $user = Yii::app()->user;
 	<?php 
 	$controller = Yii::app()->controller->id; //set current controller
 	$action = Yii::app()->controller->getAction()->getId();
-	$jsActionFile = Yii::app()->theme->basePath .'/js/' . strtolower($controller) . '/' . strtolower($action) . '.js'; // filename to load
-	if( is_file($jsActionFile) ) { 
-		$jsActionUrl = $themeUrl . '/js/' . strtolower($controller) . '/' . strtolower($action) . '.js';
-	?>
-	<script type="text/javascript" src="<?php echo $jsActionUrl;?>"></script>
-	<?php }	?>
-
+	
+	foreach($this->scriptLocations as $path => $url):
+		$jsActionFile = $path .'/js/' . strtolower($controller) . '/' . strtolower($action) . '.js'; // filename to load
+		if( is_file($jsActionFile) ) :
+			$jsActionUrl = $url . '/js/' . strtolower($controller) . '/' . strtolower($action) . '.js';
+		?>
+		<script type="text/javascript" src="<?php echo $jsActionUrl;?>"></script>
+		<?php endif	?>
+	<?php endforeach; ?>
 <?php //$this->renderPartial('application.modules.snapcms.views.layouts._admin_bar'); ?>
 	
 </body>

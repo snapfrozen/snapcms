@@ -19,6 +19,14 @@ class Controller extends CController
 	 */
 	public $secondary_menu=array();
 	/**
+	 * @var string home label for the secondary nav
+	 */
+	public $nav_brand_label=false;
+	/**
+	 * @var mixed Yii url for secondary nav home label.
+	 */
+	public $nav_brand_url=false;
+	/**
 	 * @var array the breadcrumbs of the current page. The value of this property will
 	 * be assigned to {@link CBreadcrumbs::links}. Please refer to {@link CBreadcrumbs::links}
 	 * for more details on how to specify this property.
@@ -28,8 +36,14 @@ class Controller extends CController
 	public $page_heading;
 	public $page_heading_subtext;
 	
+	public $scriptLocations = array();
+	
 	public function init()
 	{
+		$baseUrl = Yii::app()->baseUrl;
+		$themeUrl = $baseUrl.'/'.Yii::app()->theme->baseUrl;
+		$this->scriptLocations[Yii::app()->theme->basePath] = $themeUrl;
+		
 		if(Yii::app()->request->pathInfo != 'content-type/status') 
 		{
 			$data = ContentType::findAll();

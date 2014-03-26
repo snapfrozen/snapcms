@@ -1,10 +1,8 @@
 <?php
 /* @var $this SiteController */
 $this->pageTitle=Yii::app()->name;
+$this->page_heading = 'Welcome to '.CHtml::encode(Yii::app()->name);
 ?>
-<div class="page-header">
-	<h1>Welcome to <strong><?php echo CHtml::encode(Yii::app()->name); ?></strong></h1>
-</div>
 
 <div class="row">
 	<div class="col-md-6">

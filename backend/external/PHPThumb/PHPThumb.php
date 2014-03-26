@@ -11,7 +11,8 @@ $path = Yii::getPathOfAlias('vendor.weotch.phpthumb.src');
 require_once $path . '/ThumbLib.inc.php';
 
 // The path to your web root
-$document_path = '/'.trim($_SERVER['DOCUMENT_ROOT'], '/').($_SERVER['DOCUMENT_ROOT']!=''?'/':'');
+//$document_path = '/'.trim($_SERVER['DOCUMENT_ROOT'], '/').($_SERVER['DOCUMENT_ROOT']!=''?'/':'');
+$document_path = '';
 
 // The path to your cache folder
 $cache_path = __DIR__.'/../../../public_html/cache/';

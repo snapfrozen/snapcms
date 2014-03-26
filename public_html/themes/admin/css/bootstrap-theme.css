@@ -24,8 +24,8 @@ footer a {
 }
 /* line 19, snapcms/sass/sections/_layout.scss */
 #secondary-nav .navbar-nav > li > a {
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding-top: 8px;
+  padding-bottom: 8px;
   color: #34788f;
 }
 /* line 28, snapcms/sass/sections/_layout.scss */
@@ -37,47 +37,55 @@ footer a {
   background-color: #88c1d4 !important;
   color: white;
 }
+/* line 32, snapcms/sass/sections/_layout.scss */
+#secondary-nav .navbar-brand {
+  height: 36px;
+  background: #e6f2f6;
+  padding: 5px 0;
+  width: 60px;
+  text-align: center;
+}
 
-/* line 34, snapcms/sass/sections/_layout.scss */
+/* line 41, snapcms/sass/sections/_layout.scss */
 .navbar {
   margin-bottom: 0;
 }
 
-/* line 37, snapcms/sass/sections/_layout.scss */
+/* line 44, snapcms/sass/sections/_layout.scss */
 .navbar-brand {
   padding: 5px 5px 0 10px;
   margin-left: 0 !important;
   background: #57a8c2;
 }
 
-/* line 44, snapcms/sass/sections/_layout.scss */
+/* line 51, snapcms/sass/sections/_layout.scss */
 .navbar-default .navbar-nav > li:hover > a {
   background: #57a8c2 !important;
 }
 
-/* line 50, snapcms/sass/sections/_layout.scss */
+/* line 57, snapcms/sass/sections/_layout.scss */
 .btn-group .glyphicon,
 .nav .glyphicon {
   width: 20px;
 }
 
-/* line 53, snapcms/sass/sections/_layout.scss */
+/* line 60, snapcms/sass/sections/_layout.scss */
 .nav-tabs {
   margin-bottom: 10px;
 }
 
-/* line 56, snapcms/sass/sections/_layout.scss */
+/* line 63, snapcms/sass/sections/_layout.scss */
 .panel .btn-group {
   display: block;
 }
-/* line 58, snapcms/sass/sections/_layout.scss */
+/* line 65, snapcms/sass/sections/_layout.scss */
 .panel .btn-group button {
   text-align: left;
   border: none;
   padding: 10px 15px;
   color: #50a4c0;
 }
-/* line 66, snapcms/sass/sections/_layout.scss */
+/* line 73, snapcms/sass/sections/_layout.scss */
 .panel .btn-group button:focus,
 .panel .btn-group button:active,
 .panel .btn-group button:hover {
@@ -86,7 +94,7 @@ footer a {
   box-shadow: none;
 }
 
-/* line 72, snapcms/sass/sections/_layout.scss */
+/* line 79, snapcms/sass/sections/_layout.scss */
 .breadcrumb-area {
   background: white;
   -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
@@ -94,38 +102,38 @@ footer a {
   position: relative;
   /* so the box shadow shows */
 }
-/* line 76, snapcms/sass/sections/_layout.scss */
+/* line 83, snapcms/sass/sections/_layout.scss */
 .breadcrumb-area .breadcrumb {
   margin-bottom: 0;
   padding-left: 0;
   padding-right: 0;
 }
 
-/* line 83, snapcms/sass/sections/_layout.scss */
+/* line 90, snapcms/sass/sections/_layout.scss */
 .content-area {
   background: #f8f8f8;
   padding: 20px 0 40px;
 }
 
-/* line 88, snapcms/sass/sections/_layout.scss */
+/* line 95, snapcms/sass/sections/_layout.scss */
 .page-header {
   margin-top: 0;
   padding-bottom: 0;
   border: none;
 }
 
-/* line 93, snapcms/sass/sections/_layout.scss */
+/* line 100, snapcms/sass/sections/_layout.scss */
 .page-header h1 {
   margin-top: 0;
 }
 
-/* line 97, snapcms/sass/sections/_layout.scss */
+/* line 104, snapcms/sass/sections/_layout.scss */
 .panel {
   border: none;
 }
 
 /* CGridView */
-/* line 102, snapcms/sass/sections/_layout.scss */
+/* line 109, snapcms/sass/sections/_layout.scss */
 .summary {
   text-align: right;
   color: #6c6c6c;
@@ -135,12 +143,12 @@ footer a {
   padding: 8px 0 0;
 }
 
-/* line 110, snapcms/sass/sections/_layout.scss */
+/* line 117, snapcms/sass/sections/_layout.scss */
 .table {
   margin-bottom: 0;
 }
 
-/* line 115, snapcms/sass/sections/_layout.scss */
+/* line 122, snapcms/sass/sections/_layout.scss */
 .sortable .actions,
 .table > tbody > tr > td.button-column,
 .button-column {
@@ -148,7 +156,7 @@ footer a {
   padding: 8px 6px 0;
   text-align: right;
 }
-/* line 119, snapcms/sass/sections/_layout.scss */
+/* line 126, snapcms/sass/sections/_layout.scss */
 .sortable .actions .glyphicon,
 .table > tbody > tr > td.button-column .glyphicon,
 .button-column .glyphicon {
@@ -156,18 +164,18 @@ footer a {
   margin-left: 5px;
 }
 
-/* line 124, snapcms/sass/sections/_layout.scss */
+/* line 131, snapcms/sass/sections/_layout.scss */
 .sort-link .caret {
   display: none;
 }
 
-/* line 128, snapcms/sass/sections/_layout.scss */
+/* line 135, snapcms/sass/sections/_layout.scss */
 .sort-link.asc .caret,
 .sort-link.desc .caret {
   display: inline-block;
 }
 
-/* line 131, snapcms/sass/sections/_layout.scss */
+/* line 138, snapcms/sass/sections/_layout.scss */
 .sort-link.asc .caret {
   border-bottom: 4px solid;
   border-top: 4px solid transparent;
@@ -177,18 +185,18 @@ footer a {
 }
 
 /* nestedSortable */
-/* line 140, snapcms/sass/sections/_layout.scss */
+/* line 147, snapcms/sass/sections/_layout.scss */
 ul.sortable, ul.sortable ul {
   margin: 0 0 0 25px;
   padding: 0;
   list-style-type: none;
 }
-/* line 144, snapcms/sass/sections/_layout.scss */
+/* line 151, snapcms/sass/sections/_layout.scss */
 ul.sortable li, ul.sortable ul li {
   margin: 5px 0 0 0;
   padding: 0;
 }
-/* line 147, snapcms/sass/sections/_layout.scss */
+/* line 154, snapcms/sass/sections/_layout.scss */
 ul.sortable li > div, ul.sortable ul li > div {
   border: 1px solid #ddd;
   padding: 6px;
@@ -196,40 +204,40 @@ ul.sortable li > div, ul.sortable ul li > div {
   cursor: move;
   background: #f6f6f6;
 }
-/* line 154, snapcms/sass/sections/_layout.scss */
+/* line 161, snapcms/sass/sections/_layout.scss */
 ul.sortable li .actions, ul.sortable ul li .actions {
   float: right;
   padding: 0;
 }
-/* line 157, snapcms/sass/sections/_layout.scss */
+/* line 164, snapcms/sass/sections/_layout.scss */
 ul.sortable li .actions .glphicon, ul.sortable ul li .actions .glphicon {
   padding: 0;
 }
 
-/* line 164, snapcms/sass/sections/_layout.scss */
+/* line 171, snapcms/sass/sections/_layout.scss */
 .placeholder {
   outline: 1px dashed #88c1d4;
 }
 
-/* line 168, snapcms/sass/sections/_layout.scss */
+/* line 175, snapcms/sass/sections/_layout.scss */
 ul.sortable {
   margin: 0 0 0 15px;
   padding: 0;
 }
 
-/* line 172, snapcms/sass/sections/_layout.scss */
+/* line 179, snapcms/sass/sections/_layout.scss */
 .disclose {
   cursor: pointer;
   width: 10px;
   display: none;
 }
 
-/* line 177, snapcms/sass/sections/_layout.scss */
+/* line 184, snapcms/sass/sections/_layout.scss */
 .sortable li.collapsed > ul {
   display: none;
 }
 
-/* line 180, snapcms/sass/sections/_layout.scss */
+/* line 187, snapcms/sass/sections/_layout.scss */
 .sortable .disclose {
   display: inline-block;
   width: 20px;
@@ -243,23 +251,23 @@ ul.sortable {
   float: left;
 }
 
-/* line 192, snapcms/sass/sections/_layout.scss */
+/* line 199, snapcms/sass/sections/_layout.scss */
 .sortable .collapsed > div > .disclose .glyphicon:before {
   content: "+";
 }
 
-/* line 195, snapcms/sass/sections/_layout.scss */
+/* line 202, snapcms/sass/sections/_layout.scss */
 .sortable .expanded > div > .disclose .glyphicon:before {
   content: "−";
 }
 
 /* Menu Page */
-/* line 200, snapcms/sass/sections/_layout.scss */
+/* line 207, snapcms/sass/sections/_layout.scss */
 #menu-form .nav-tabs {
   margin-bottom: 0;
 }
 
-/* line 203, snapcms/sass/sections/_layout.scss */
+/* line 210, snapcms/sass/sections/_layout.scss */
 #menu-form .panel-body {
   border-right: 1px solid #dddddd;
   border-left: 1px solid #dddddd;
@@ -267,7 +275,7 @@ ul.sortable {
 }
 
 /* JUI overrides */
-/* line 211, snapcms/sass/sections/_layout.scss */
+/* line 218, snapcms/sass/sections/_layout.scss */
 .ui-widget-header select {
   color: #333;
 }
