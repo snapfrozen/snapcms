@@ -3,6 +3,11 @@
 !/public_html/
 !/frontend/
 !/backend/
+!.htaccess
+!composer.json
+!db.php
+!LICENSE
+!README.md
 
 public_html/assets/*
 public_html/admin/assets/*
