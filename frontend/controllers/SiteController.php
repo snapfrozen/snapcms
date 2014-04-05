@@ -1,5 +1,4 @@
 <?php
-
 class SiteController extends Controller
 {
 	public $Content;
@@ -46,11 +45,7 @@ class SiteController extends Controller
 	{
 		return array(
 			array('allow',
-				'actions'=>array('error','login','captcha'),
-				'users'=>array('*'),
-			),
-			array('allow',
-				'actions'=>array('index','contact'),
+				'actions'=>array('index','contact','error','login','logout','captcha','register','getImage'),
 				'roles'=>array('View Content'),
 			),
 			array('deny',  // deny all users
@@ -160,6 +155,32 @@ class SiteController extends Controller
 		}
 		// display the login form
 		$this->render('login',array('model'=>$model));
+	}
+	
+	/**
+	 * Get an associated with this model
+	 * @param type $id
+	 * @param type $attribute
+	 */
+	public function actionGetImage($id, $field, $modelName='Content', $w=null, $h=null, $zc=null)
+	{
+		$model = $modelName::model()->findByPk($id);
+		$base = Yii::getPathOfAlias('frontend.data');
+		
+		if(empty($model->$field)) {
+			$path = SnapUtil::config('boxomatic/defaultImages.'.$modelName);
+			$filePath=dirname(Yii::app()->request->scriptFile).'/../'.$path;
+		} else {
+			$filePath=dirname(Yii::app()->request->scriptFile).'/'.$base.'/'.strtolower($modelName).'/'.$field.'_'.$id;
+		}
+
+		$image = $model->$field;
+		$_GET['src']=$filePath;
+		$_GET['w']=$w;
+		$_GET['h']=$h;
+		$_GET['zc']=$zc;
+
+		include(Yii::getPathOfAlias('backend.external.PHPThumb').'/PHPThumb.php');
 	}
 
 	/**

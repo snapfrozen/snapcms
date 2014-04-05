@@ -50,9 +50,9 @@ class SnapFormat
 	 * @param int month number
 	 * @return string month name
 	 */
-	public function getMonthName($month)
+	public function getMonthName($month, $format="F")
 	{
-		return date("F", mktime(0, 0, 0, $month, 1));
+		return date($format, mktime(0, 0, 0, $month, 1));
 	}
 	
 	/**

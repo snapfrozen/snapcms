@@ -134,12 +134,7 @@ $user = Yii::app()->user;
 	<?php endif?>
 	
 	<div class="content-area">
-		<div class="container">
-			<div id="flashes">
-				<?php $this->renderPartial('//layouts/_flash_messages') ?>
-			</div>
-			<?php echo $content; ?>
-		</div>
+		<?php echo $content; ?>
 	</div>
 	
 	<footer>

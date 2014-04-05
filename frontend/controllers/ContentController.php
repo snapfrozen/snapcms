@@ -89,28 +89,6 @@ class ContentController extends Controller
 	}
 	
 	/**
-	 * Get an associated with this model
-	 * @param type $id
-	 * @param type $field
-	 */
-	public function actionGetImage($id, $field, $modelName='Content', $w=null, $h=null, $zc=null)
-	{
-		$model = $modelName::model()->findByPk($id);
-		$base=Yii::getPathOfAlias('backend.data');
-		$filePath=dirname(Yii::app()->request->scriptFile).'/'.$base.'/'.strtolower($modelName).'/'.$field.'_'.$id;
-
-		$image = $model->$field;
-		if($model && !empty($image)) {
-			$_GET['src']=$filePath;
-		}
-		$_GET['w']=$w;
-		$_GET['h']=$h;
-		$_GET['zc']=$zc;
-
-		include(Yii::getPathOfAlias('backend.external.PHPThumb').'/PHPThumb.php');
-	}
-
-	/**
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer $id the ID of the model to be loaded
