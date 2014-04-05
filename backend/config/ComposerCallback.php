@@ -68,7 +68,7 @@ class ComposerCallback
         $composer = $event->getComposer();
         // do stuff
         echo "Phundament 3 Installer\n\n";
-        echo " * download packages specified in composer.json
+        echo "* download packages specified in composer.json
 * trigger composer callbacks\n\n";
         if (self::confirm("Start Installation?")) {
             self::runHook('pre-install');

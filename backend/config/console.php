@@ -1,10 +1,13 @@
 <?php
+define('SNAP_FRONTEND_URL', '');
+define('SNAP_BACKEND_URL', '/admin');
+
 Yii::setPathOfAlias('backend','./backend/');
 Yii::setPathOfAlias('frontend','./frontend/');
 
 // This is the configuration for yiic console application.
 // Any writable CConsoleApplication properties can be configured here.
-$config = array(
+return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'SnapCMS Console',
 
@@ -26,14 +29,7 @@ $config = array(
 
 	// application components
 	'components'=>array(
-		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=snapcms',
-			'emulatePrepare' => true,
-			'username' => 'root',
-			'password' => '',
-			'charset' => 'utf8',
-			'tablePrefix' => 'snap_',
-		),
+		'db'=>require('db.php'),
 		'authManager'=>array(
 			'class'=>'SnapAuthManager',
 			'connectionID'=>'db',
@@ -57,13 +53,7 @@ $config = array(
 			//'yiisoft/yii-install' => array('yiic', 'webapp', dirname(__FILE__).DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'),
 			'post-update' => array('yiic', 'migrate'),
 			'post-install' => array('yiic', 'migrate'),
+			'pre-install' => array('yiic', 'snapfrontend', 'frontend')
 		),
 	),
-);
-
-
-
-return CMap::mergeArray(
-	$config,
-	require(__DIR__ . '/../../frontend/config/main-local.php')
 );

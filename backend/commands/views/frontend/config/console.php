@@ -24,14 +24,7 @@ return array(
 
 	// application components
 	'components'=>array(
-		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=snapcms',
-			'emulatePrepare' => true,
-			'username' => 'root',
-			'password' => '',
-			'charset' => 'utf8',
-			'tablePrefix' => 'snap_',
-		),
+		'db'=>require('../db.php'),
 		// uncomment the following to use a MySQL database
 		/*
 		'db'=>array(

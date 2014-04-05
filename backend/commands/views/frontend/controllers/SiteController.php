@@ -168,8 +168,7 @@ class SiteController extends Controller
 		$base = Yii::getPathOfAlias('frontend.data');
 		
 		if(empty($model->$field)) {
-			$path = SnapUtil::config('boxomatic/defaultImages.'.$modelName);
-			$filePath=dirname(Yii::app()->request->scriptFile).'/../'.$path;
+			$filePath=dirname(Yii::app()->request->scriptFile).'/'.$base.'/default.jpg';
 		} else {
 			$filePath=dirname(Yii::app()->request->scriptFile).'/'.$base.'/'.strtolower($modelName).'/'.$field.'_'.$id;
 		}

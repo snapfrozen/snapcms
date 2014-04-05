@@ -1,5 +1,5 @@
 <?php
-$baseUrl = Yii::app()->controller->createFrontendUrl('/');
+$baseUrl = SNAP_FRONTEND_URL;
 return array(
 	'default'=>array(
 		//'attribute'=>'content',     

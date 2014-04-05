@@ -16,9 +16,7 @@ public_html/themes/*
 !public_html/themes/admin/*
 !public_html/themes/snapcms/*
 
-frontend/runtime/*
-!frontend/runtime/.gitignore
-frontend/data/*
+frontend/*
 
 backend/runtime/*
 backend/data/*

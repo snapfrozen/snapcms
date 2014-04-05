@@ -7,16 +7,7 @@
 return array(
 	// application components
 	'components'=>array(
-		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=snapcms',
-			'emulatePrepare' => true,
-			'username' => 'root',
-			'password' => '',
-			'charset' => 'utf8',
-			'tablePrefix' => 'snap_',
-			//'enableProfiling' => true,
-			//'enableParamLogging' => true,
-		),
+		'db'=>require('../db.php'),
 	),
 	// application-level parameters that can be accessed
 	// using Yii::app()->params['paramName']

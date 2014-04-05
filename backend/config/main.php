@@ -1,4 +1,6 @@
 <?php
+define('SNAP_FRONTEND_URL', '');
+define('SNAP_BACKEND_URL', '/admin');
 
 // uncomment the following to define a path alias
 Yii::setPathOfAlias('backend','../../backend/');
