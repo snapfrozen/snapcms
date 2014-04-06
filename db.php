@@ -1,6 +1,6 @@
 <?php
 return array(
-	'connectionString' => 'mysql:host=localhost;dbname=galaxymap',
+	'connectionString' => 'mysql:host=localhost;dbname=snapcms',
 	'emulatePrepare' => true,
 	'username' => 'root',
 	'password' => '',

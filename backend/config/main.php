@@ -5,6 +5,7 @@ define('SNAP_BACKEND_URL', '/admin');
 // uncomment the following to define a path alias
 Yii::setPathOfAlias('backend','../../backend/');
 Yii::setPathOfAlias('frontend','../../frontend/');
+Yii::setPathOfAlias('web','../../public_html');
 Yii::setPathOfAlias('vendor','../../vendor/');
 
 // This is the main Web application configuration. Any writable
