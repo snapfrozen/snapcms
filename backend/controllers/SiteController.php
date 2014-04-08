@@ -145,13 +145,17 @@ class SiteController extends Controller
 	public function actionGetImage($id, $field, $modelName, $w=null, $h=null, $zc=null)
 	{
 		$model = $modelName::model()->findByPk($id);
-		$base=Yii::getPathOfAlias('backend.data');
-		$filePath=$base.'/'.strtolower($modelName).'/'.$field.'_'.$id;
+		$base=Yii::getPathOfAlias('frontend.data');
+		
+		$filePath=dirname(Yii::app()->request->scriptFile).'/'.$base.'/'.strtolower($modelName).'/'.$field.'_'.$id;
+		if(empty($model->$field) || !file_exists($filePath)) {
+			$filePath=dirname(Yii::app()->request->scriptFile).'/'.$base.'/default.jpg';
+		}
+		
+		//var_dump($filePath);exit;
 
 		$image = $model->$field;
-		if($model && !empty($image)) {
-			$_GET['src']=$filePath;
-		}
+		$_GET['src']=$filePath;
 		$_GET['w']=$w;
 		$_GET['h']=$h;
 		$_GET['zc']=$zc;
