@@ -211,10 +211,15 @@ class Content extends SnapActiveRecord
 	
 	public function getMenuItem($Menu)
 	{
-		$MI = MenuItem::model()->findByAttributes(array(
-			'menu_id'=>$Menu->id,
-			'content_id'=>$this->id,
-		));
+		$MI = null;
+		if($this->id)
+		{
+			$MI = MenuItem::model()->findByAttributes(array(
+				'menu_id'=>$Menu->id,
+				'content_id'=>$this->id,
+			));
+		}
+		
 		if(!$MI)
 		{
 			$MI=new MenuItem;
@@ -254,5 +259,35 @@ class Content extends SnapActiveRecord
 			return $this->getRelated($name)!==null;
 		else
 			parent::__isset($name);
+	}
+	
+	public static function getWidgets($widgetId)
+	{
+		$criteria = new CDbCriteria();
+		$criteria->join = 'INNER JOIN {{widgets_content}} WidgetsContent ON t.id = WidgetsContent.content_id';
+		$criteria->addCondition('widget_id=:widgetId');
+		$criteria->params=array(
+			':widgetId'=>$widgetId,
+		);
+		$widgets = self::model()->findAll($criteria);
+		return $widgets === false ? array() : $widgets;
+	}
+	
+	public static function addWidget($widgetId,$contentId)
+	{
+		$sql = 'REPLACE INTO {{widgets_content}}(widget_id,content_id) VALUES (:widgetId,:contentId)';
+		return Yii::app()->db->createCommand($sql)->execute(array(
+			':widgetId'=>$widgetId,
+			':contentId'=>$contentId,
+		));
+	}
+	
+	public static function removeWidget($widgetId,$contentId)
+	{
+		$sql = 'DELETE FROM {{widgets_content}} WHERE widget_id = :widgetId AND content_id = :contentId';
+		return Yii::app()->db->createCommand($sql)->execute(array(
+			':widgetId'=>$widgetId,
+			':contentId'=>$contentId,
+		));
 	}
 }

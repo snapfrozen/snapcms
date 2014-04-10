@@ -6,7 +6,7 @@ class SnapWebUser extends CWebUser
         'path' => '/',
         'domain' => 'snapcms.local',
     );
-
+	
 	protected function afterLogin($fromCookie)
 	{			
 		if($this->checkAccess('Update Content'))

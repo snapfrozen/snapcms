@@ -41,7 +41,7 @@ class MenuItem extends SnapActiveRecord
 			array('menu_id', 'required'),
 			array('content_id, sort, parent', 'numerical', 'integerOnly'=>true),
 			array('external_path, path, title, external_path', 'length', 'max'=>255),
-			array('path', 'unique'),
+			//array('path', 'unique'),
 			array('menu_id', 'length', 'max'=>50),
 			//array('external_path,', 'url'), //Doesn't work for relative urls
 			array('created, updated', 'safe'),
@@ -214,7 +214,7 @@ class MenuItem extends SnapActiveRecord
 			$path = SnapFormat::slugify($Parent->title) . '/' . $path;
 			$Parent = $Parent->Parent;
 		}
-		return $path;
+		return '/'.$path;
 	}
 	
 	public function getMenu()
@@ -230,5 +230,15 @@ class MenuItem extends SnapActiveRecord
 		}
 		
 		return $this->external_path;
+	}
+	
+	public function getCheck_path()
+	{
+		$homepageId = SnapUtil::config('general/site.homepage_id');
+		$path = !empty($this->content_id) ? $this->path : $this->external_path;
+		if($this->content_id == $homepageId) {
+			return '/'.Yii::app()->controller->createFrontendUrl('/');
+		}
+		return $path;
 	}
 }

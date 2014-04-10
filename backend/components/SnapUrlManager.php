@@ -25,11 +25,17 @@ class SnapUrlManager extends CUrlManager
  
     public function parseUrl($request)
     {
-		$path=$request->pathInfo;
-		$MI=MenuItem::model()->findByAttributes(array('path'=>$path));
+		$path='/'.$request->pathInfo;
+		
+		if(!empty($path))
+			$MI=MenuItem::model()->findByAttributes(array('path'=>$path));
+		
 		if($MI && $MI->content_id) {
 			$route='content/view/id/'.$MI->content_id;
 			$_GET['path']=$MI->path; //So that menu items become active
+		} else if($MI && $MI->external_path) {
+			//$route = parent::parseUrl($request);
+			Yii::app()->getRequest()->redirect($MI->external_path,true,302);
 		} else {
 			$route = parent::parseUrl($request);
 		}
