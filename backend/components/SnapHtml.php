@@ -4,7 +4,7 @@
  * @package snapcms/components
  * Class SnapHtml
  */
-class SnapHtml extends BsHtml
+class SnapHtml extends CHtml
 {
 	/**
 	 * Generate an image tag for an image stored in a SnapCMS model
@@ -27,5 +27,30 @@ class SnapHtml extends BsHtml
 			$reqArr['size'] = $size;
 		}
 		return CHtml::image(Yii::app()->controller->createUrl('/site/getImage',$reqArr),$alt);
+	}
+	
+	/**
+	 * 
+	 * @param type $model
+	 * @param type $attribute
+	 * @param type $editable
+	 * @param type $toolbar
+	 * @param type $tag
+	 * @return type
+	 */
+	public static function editableArea($model, $attribute, $editable, $toolbar='default', $tag='div')
+	{
+		$htmlOptions = array();
+		//"$this" should be the controller object, maybe we should pass this as a parameter?
+		if($editable) 
+		{
+			$htmlOptions['contenteditable']='true';
+			$htmlOptions['id']='field_'.$attribute;
+			$htmlOptions['data-id']=$model->id;
+			$htmlOptions['data-field']=$attribute;
+			$htmlOptions['data-toolbarset']=$toolbar;
+		}
+		
+		return CHtml::tag($tag,$htmlOptions,$model->$attribute);
 	}
 }
