@@ -9,7 +9,7 @@ class SnapUrlManager extends CUrlManager
 		
 		//Francis - This feels very hacky, it would be good to find a cleaner
 		//way of doing this.
-		if($route == 'content/view' && isset($params['path'])) 
+		if(strpos($route, 'content/view') !== false && isset($params['path'])) 
 		{
 			$path = $params['path'];
 			unset($params['path']);
@@ -17,7 +17,7 @@ class SnapUrlManager extends CUrlManager
 			if(!empty($params)) {
 				$path .= '?' . http_build_query($params);
 			}
-			return Yii::app()->baseUrl.'/' .  $path;
+			return Yii::app()->baseUrl .  $path;
 		}
 		
         return parent::createUrl($route, $params, $ampersand);
@@ -26,7 +26,6 @@ class SnapUrlManager extends CUrlManager
     public function parseUrl($request)
     {
 		$path='/'.$request->pathInfo;
-		
 		if(!empty($path))
 			$MI=MenuItem::model()->findByAttributes(array('path'=>$path));
 		
