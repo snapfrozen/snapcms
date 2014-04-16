@@ -5,7 +5,7 @@
 !/backend/
 !.htaccess
 !composer.json
-!db.php
+!db.php.default
 !LICENSE
 !README.md
 
