@@ -72,8 +72,8 @@ class ContentController extends Controller
 		if($this->getLayoutFile('//layouts/content_types/'.$Content->type))
 			$this->layout = '//layouts/content_types/'.$Content->type;
 
-		if($this->getViewFile('content_types/'.$Content->type))
-			$view = 'content_types/'.$Content->type;		
+		if($this->getViewFile($Content->type))
+			$view = $Content->type;		
 		
 		$this->meta_keywords = CHtml::value($Content,'meta_keywords');
 		$this->meta_description = CHtml::value($Content,'meta_description');

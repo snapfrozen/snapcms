@@ -171,7 +171,7 @@ class SiteController extends Controller
 	public function actionGetFile($id, $field, $modelName)
 	{
 		$model = $modelName::model()->findByPk($id);
-		$base=Yii::getPathOfAlias('application.data');
+		$base=Yii::getPathOfAlias('frontend.data');
 		$filePath=$base.'/'.strtolower($modelName).'/'.$field.'_'.$id;
 		$mime=false;
 
@@ -180,13 +180,27 @@ class SiteController extends Controller
 			$finfo = finfo_open(FILEINFO_MIME_TYPE);
 			$mime = finfo_file($finfo, $filePath);
 		}
-
-		Yii::app()->request->xSendFile($filePath,array(
-			'saveName'=>$model->$field,
-			'mimeType'=>$mime,
-			'terminate'=>false,
-			'forceDownload'=>false,
-		));
+		
+		$apacheModules = apache_get_modules();
+		
+		if(in_array('mod_xsendfile',$apacheModules))
+		{
+			Yii::app()->request->xSendFile($filePath,array(
+				'saveName'=>$model->$field,
+				'mimeType'=>$mime,
+				'terminate'=>false,
+				'forceDownload'=>false,
+			));		
+		}
+		else
+		{
+			header("Content-Type: $mime");
+			header('Content-Disposition: inline;filename="'.$model->$field.'"');
+			header('Content-length: '.filesize($filePath));
+			header('Cache-Control: no-cache');
+			header("Content-Transfer-Encoding: chunked"); 
+			readfile($filePath);
+		}
 	}
 
 	/**

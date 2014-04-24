@@ -14,17 +14,18 @@ class SnapHtml extends CHtml
 	 * @param string $alt
 	 * @return string
 	 */
-    public static function image($model, $attribute, $size=null, $alt='')
+    public static function activeImage($model, $attribute, $size=null, $alt='')
 	{
 		$reqArr = array(
 			'id'=>$model->id,
 			'field'=>$attribute,
-			'modelName'=>get_class($model),'w'=>70,'h'=>70,'zc'=>1
+			'modelName'=>get_class($model),
 		);
 		if(is_array($size)) {//It's a PHPThumb array
 			$reqArr = array_merge($reqArr,$size);
 		} else if(is_string($size)) {
-			$reqArr['size'] = $size;
+			$conf = SnapUtil::getConfig('images');
+			$reqArr = array_merge($reqArr, $conf['sizes'][$size]);
 		}
 		return CHtml::image(Yii::app()->controller->createUrl('/site/getImage',$reqArr),$alt);
 	}

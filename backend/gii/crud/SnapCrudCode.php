@@ -34,7 +34,7 @@ class SnapCrudCode extends CrudCode
 		{
 			$moduleId = Yii::app()->controller->getModule('gii')->parentModule->id;
 			$moduleFolder = str_replace('snapcms/','',$moduleId);
-			return Yii::getPathOfAlias("application.modules.snapcms.modules.$moduleFolder.views.default");
+			return Yii::getPathOfAlias("frontend.modules.$moduleFolder.backend.views.".$this->getControllerID());
 		}
 		return $this->getModule()->getViewPath().'/'.$this->getControllerID();
 	}
@@ -51,8 +51,8 @@ class SnapCrudCode extends CrudCode
 		{
 			$moduleId = Yii::app()->controller->getModule('gii')->parentModule->id;
 			$moduleFolder = str_replace('snapcms/','',$moduleId);
-			$controllerPath = Yii::getPathOfAlias("application.modules.snapcms.modules.$moduleFolder.controllers");
-			$id='Default';
+			$controllerPath = Yii::getPathOfAlias("frontend.modules.$moduleFolder.backend.controllers");
+			//$id='Default';
 		}
 		
 		if(($pos=strrpos($id,'/'))!==false)
@@ -63,6 +63,7 @@ class SnapCrudCode extends CrudCode
 		return $controllerPath.'/'.$id.'Controller.php';
 	}
 	
+	/*
 	public function getControllerClass()
 	{
 		$gii = Yii::app()->controller->getModule('gii');
@@ -78,6 +79,7 @@ class SnapCrudCode extends CrudCode
 		else
 			return ucfirst($this->controller).'Controller';
 	}
+	 */
 	
 	/**
 	 * @author Christoffer Niska <ChristofferNiska@gmail.com>

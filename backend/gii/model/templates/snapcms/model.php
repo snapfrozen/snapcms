@@ -54,20 +54,10 @@ $labels = array_merge($labels,$this->hourMinuteLabels);
  */
 class <?php echo $modelClass; ?> extends <?php echo $this->baseClass."\n"; ?>
 {
-
 <?php 
-/*	foreach($model->attributes as $attribute=>$value):
-		foreach($model->getValidators($attribute) as $validator):
-			if($validator instanceof CDateValidator):
-				$attrHour = $attribute.'_hour';
-				$attrMinute = $attribute.'_minute'; 
-?>	public $<?php echo $attrHour ?>;
-	public $<?php echo $attrMinute ?>;
-<?php endif;
-		endforeach;
-	endforeach;
- */
-?>					
+	foreach($this->hourMinuteLabels as $attribute=>$label):
+?>	public $<?php echo $attribute ?>;
+<?php endforeach; ?>					
  
 	/**
 	 * @return string the associated database table name

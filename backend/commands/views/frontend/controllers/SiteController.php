@@ -72,8 +72,8 @@ class SiteController extends Controller
 		if($this->getLayoutFile('//layouts/content_types/'.$Content->type))
 			$this->layout = '//layouts/content_types/'.$Content->type;
 
-		if($this->getViewFile('/content/content_types/'.$Content->type))
-			$view = '/content/content_types/'.$Content->type;
+		if($this->getViewFile('/content/'.$Content->type))
+			$view = '/content/'.$Content->type;
 		
 		$News = Content::model()->findAllByAttributes(array('type'=>'news'), array(
 			'limit'=>4,

@@ -29,5 +29,5 @@ $dataProvider=new CActiveDataProvider('Content',array(
 <?php $this->widget('bootstrap.widgets.BsListView', array(
 	'dataProvider'=>$dataProvider,
 	'id'=>'news-list',
-	'itemView'=>'/content/content_types/_news_view',
+	'itemView'=>'/content/_news_view',
 )); ?>

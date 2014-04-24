@@ -8,6 +8,8 @@ class SnapActiveRecord extends CActiveRecord
 	const dateFormat = 'yyyy-MM-dd';
 	const timeFormat = 'hh:mm:ss';
 	
+	public $Search = array();
+	
 	/**
 	 * Prepare logging fields such as: created, updated, created_user_id, updated_user_id
 	 * done before performing validation 
@@ -94,6 +96,7 @@ class SnapActiveRecord extends CActiveRecord
 	
 	public function beforeSave()
 	{
+		/*
 		foreach($this->attributes as $attribute=>$value) 
 		{
 			foreach($this->getValidators($attribute) as $validator)
@@ -107,6 +110,7 @@ class SnapActiveRecord extends CActiveRecord
 				}
 			}
 		}
+		 */
 		return parent::beforeSave();
 	}
 
@@ -117,5 +121,37 @@ class SnapActiveRecord extends CActiveRecord
 	{
 		$user = Yii::app()->user;
 		return !$user->isGuest && $user->id == $this->user_id;
+	}
+	
+	public function __get($name)
+	{
+		if(strpos($name,'.')!==false) {
+			$parts = explode('.',$name);
+			return isset($this->Search[$parts[0]][$parts[1]]) ? $this->Search[$parts[0]][$parts[1]] : '';
+		} 
+		else
+			return parent::__get($name);
+	}
+	
+	public function __set($name,$value)
+	{
+		if($name === 'attributes') 
+		{
+			foreach($value as $key=>$val)
+			{
+				if(strpos($key,'.')!==false) 
+				{
+					$parts = explode('.',$key);
+					$relation = $this->getActiveRelation($parts[0]);
+					$className = $relation->className;
+					$model = new $className();
+					
+					if($model->hasAttribute($parts[1])) {
+						$this->Search[$parts[0]][$parts[1]] = $val;
+					}
+				}
+			}
+		} 
+		parent::__set($name,$value);
 	}
 }
