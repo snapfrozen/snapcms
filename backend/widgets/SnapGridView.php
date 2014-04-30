@@ -83,15 +83,15 @@ class SnapGridView extends BsGridView
 	{
 		echo '<div class="filters snap-gv-column-options btn-group">';
 		echo CHtml::checkBoxList(
-				$this->dataProvider->modelClass.'[SelectedColumns]', 
-				$this->selectedColumns, 
-				$this->_selectableColumnsList,array(
-					'labelOptions'=>array(
-						'class'=>'btn btn-primary'
-					),
-					'template'=>'{label}{input}',
-					'separator'=>'',
-				));
+			$this->dataProvider->modelClass.'[SelectedColumns]', 
+			$this->selectedColumns, 
+			$this->_selectableColumnsList,array(
+				'labelOptions'=>array(
+					'class'=>'btn btn-primary'
+				),
+				'template'=>'{label}{input}',
+				'separator'=>'',
+			));
 		echo '</div>';
 	}
 	

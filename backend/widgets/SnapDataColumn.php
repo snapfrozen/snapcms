@@ -11,6 +11,8 @@ class SnapDataColumn extends BsDataColumn
 	 */
 	protected function renderFilterCellContent()
 	{
+		if(is_string($this->filter))
+			echo $this->filter;
 		if($this->filter!==false && $this->grid->filter!==null && $this->name!==null)
 		{
 			if(is_array($this->filter))

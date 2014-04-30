@@ -14,8 +14,11 @@ class SnapHtml extends CHtml
 	 * @param string $alt
 	 * @return string
 	 */
-    public static function activeImage($model, $attribute, $size=null, $alt='')
+    public static function activeImage($model, $attribute, $size=null, $alt='', $htmlOptions=array())
 	{
+		if(empty($model->$attribute))
+			return '';
+		
 		$reqArr = array(
 			'id'=>$model->id,
 			'field'=>$attribute,
@@ -27,7 +30,7 @@ class SnapHtml extends CHtml
 			$conf = SnapUtil::getConfig('images');
 			$reqArr = array_merge($reqArr, $conf['sizes'][$size]);
 		}
-		return CHtml::image(Yii::app()->controller->createUrl('/site/getImage',$reqArr),$alt);
+		return CHtml::image(Yii::app()->controller->createUrl('/site/getImage',$reqArr), $alt, $htmlOptions);
 	}
 	
 	/**
