@@ -7,7 +7,7 @@ $this->page_heading = 'Welcome to '.CHtml::encode(Yii::app()->name);
 <div class="row">
 	<div class="col-md-6">
 	<?php $this->beginWidget('bootstrap.widgets.BsPanel', array(
-		'title'=>'The latest at Snapfrozen',
+		'title'=>'The latest from Snapfrozen',
 		'titleTag'=>'h1',
 		'type'=>BsHtml::PANEL_TYPE_PRIMARY,
 	)); ?>
