@@ -33,7 +33,7 @@ class ContentController extends Controller
 	{
 		return array(
 			array('allow',
-				'actions'=>array('index','view','getImage'),
+				'actions'=>array('index','view'),
 				'roles'=>array('View Content'),
 			),
 			array('deny',  // deny all users

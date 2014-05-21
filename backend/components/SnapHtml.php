@@ -14,9 +14,9 @@ class SnapHtml extends CHtml
 	 * @param string $alt
 	 * @return string
 	 */
-    public static function activeImage($model, $attribute, $size=null, $alt='', $htmlOptions=array())
+    public static function activeImage($model, $attribute, $size=null, $alt='', $usePlaceholder=false, $htmlOptions=array())
 	{
-		if(empty($model->$attribute))
+		if(empty($model->$attribute) && $usePlaceholder===false)
 			return '';
 		
 		$reqArr = array(

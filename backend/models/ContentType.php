@@ -291,7 +291,7 @@ class ContentType extends SnapModel
 	
 	public function save()
 	{
-		$dataDir = Yii::getPathOfAlias('application.data');
+		$dataDir = Yii::getPathOfAlias('frontend.data');
 		foreach($this->fileFields as $field) 
 		{
 			$uploadFile=CUploadedFile::getInstance($this,$field);
