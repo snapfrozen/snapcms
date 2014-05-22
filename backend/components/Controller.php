@@ -109,6 +109,6 @@ class Controller extends CController
 	
 	public function isEditable()
 	{
-		return Yii::app()->user->checkAccess('Update Content') ? 'true' : 'false';
+		return Yii::app()->user->checkAccess('Update Content') ? true : false;
 	}
 }

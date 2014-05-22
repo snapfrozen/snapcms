@@ -42,9 +42,12 @@ class SnapHtml extends CHtml
 	 * @param type $tag
 	 * @return type
 	 */
-	public static function editableArea($model, $attribute, $editable, $toolbar='default', $tag='div')
+	public static function editableArea($model, $attribute, $editable, $toolbar='default', $tag='div', $htmlOptions=array())
 	{
-		$htmlOptions = array();
+		if(!isset($htmlOptions['class'])) {
+			$htmlOptions['class'] = 'snap-editable';
+		}
+		
 		//"$this" should be the controller object, maybe we should pass this as a parameter?
 		if($editable) 
 		{
