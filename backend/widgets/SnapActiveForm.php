@@ -123,6 +123,10 @@ class SnapActiveForm extends BsActiveForm
 				'dateFormat'=>'DD, d MM yy',
 				'altFormat'=>'yy-mm-dd',
 				'altField'=>'#'.CHtml::activeId($model,$attribute),
+				'changeYear'=>true,
+				'changeMonth'=>true,
+				'yearRange'=>'1920:'.date('Y'),
+				'onSelect'=>'js:function(){$("#'.CHtml::activeId($model,$attribute).'").trigger("change");}',
 			),
 			'value'=>date('l, j F Y',strtotime($model->$attribute)),
 		), true).
