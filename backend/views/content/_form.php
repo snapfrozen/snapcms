@@ -14,31 +14,62 @@ $menus = Menu::getMenus();
 )); ?>
 	
 	<?php echo $form->errorSummary($Content); ?>
-	
+
 	<div class="col-lg-9">
 		
+		<div class="col-lg-12">
+			<div class="form-group">
+				<?php echo $form->label($Content,'title'); ?>
+				<?php echo $form->textField($Content,'title',array('maxlength'=>255)); ?>
+			</div>
+		</div>
+		
 		<ul class="nav nav-tabs">
-			<li class="active"><a href="#content-fields" data-toggle="tab">Content</a></li>
+			<?php if(isset($Content->ContentType)): ?>
+				<?php foreach($Content->ContentType->groups as $group=>$attributes): ?>
+				<li <?php echo $group=="Content" ? 'class="active"' : '' ?>><a href="#<?php echo $group ?>" data-toggle="tab"><?php echo $group ?></a></li>
+				<?php endforeach; ?>
+			<?php endif; ?>
 			<li><a href="#publishing" data-toggle="tab">Publishing</a></li>
+			<li><a href="#menu" data-toggle="tab">Menu</a></li>
 		</ul>
 	
 		<div class="tab-content">
-			<div id="content-fields" class="tab-pane active">
-				<?php echo $form->textFieldControlGroup($Content,'title',array('maxlength'=>255)); ?>
-
-				<?php if(isset($Content->ContentType)): ?>
-					<?php foreach($Content->ContentType->groups as $group=>$attributes): ?>
+			
+			<?php if(isset($Content->ContentType)): ?>
+				<?php foreach($Content->ContentType->groups as $group=>$attributes): ?>
+				<div id="<?php echo $group ?>" class="tab-pane <?php echo $group=="Content" ? 'active' : '' ?>">
 					<fieldset>
 						<legend><?php echo $group ?></legend>
 						<?php foreach($attributes as $field): ?>
 							<?php echo $form->autoGenerateInput($Content->ContentType, $field); ?>
 						<?php endforeach; ?>
 					</fieldset>
-					<?php endforeach; ?>
-				<?php endif; ?>
-				
+				</div>
+				<?php endforeach; ?>
+			<?php endif; ?>
+			
+
+			<div id="publishing" class="tab-pane">
+				<fieldset>
+					<legend>Publishing</legend>
+					<?php echo $form->checkBoxControlGroup($Content,'published',array('maxlength'=>255)); ?>
+					<?php echo $form->datetimeFieldControlGroup($Content,'publish_on'); ?>
+					<?php echo $form->datetimeFieldControlGroup($Content,'unpublish_on'); ?>
+				</fieldset>
+			</div>
+
+			<div id="menu" class="tab-pane">
 				<fieldset>
 					<legend>Menu</legend>
+					
+					<div class="col-lg-12">
+						<div class="form-group">
+							<?php echo $form->label($Content,'path'); ?>
+							<?php echo $form->textField($Content,'path',array('maxlength'=>255)); ?>
+						</div>
+					</div>
+						
 					<ul class="nav nav-tabs">
 					<?php foreach($menus as $pos=>$menu): ?>
 						<li class="<?php echo $pos==0 ? 'active' : '' ?>"><a href="#tab<?php echo $pos ?>" data-toggle="tab"><?php echo $menu->name ?></a></li>
@@ -55,15 +86,8 @@ $menus = Menu::getMenus();
 					</div>
 				</fieldset>
 			</div>
-
-			<div id="publishing" class="tab-pane">
-				<fieldset>
-					<legend>Publishing</legend>
-					<?php echo $form->checkBoxControlGroup($Content,'published',array('maxlength'=>255)); ?>
-					<?php echo $form->datetimeFieldControlGroup($Content,'publish_on'); ?>
-					<?php echo $form->datetimeFieldControlGroup($Content,'unpublish_on'); ?>
-				</fieldset>
-			</div>
+			
+			
 		</div>
 
 	</div>

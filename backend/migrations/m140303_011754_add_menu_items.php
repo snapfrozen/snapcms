@@ -6,7 +6,6 @@ class m140303_011754_add_menu_items extends CDbMigration
 	{
 		$this->createTable('{{menu_items}}', array(
 			'id' => 'pk',
-			'path' => 'string NOT NULL',
 			'title' => 'string NOT NULL',
 			'menu_id' => 'varchar(50)',
 			'parent' => 'int',

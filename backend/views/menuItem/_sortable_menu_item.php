@@ -11,7 +11,7 @@
 			if(!empty($MenuItem->external_path))
 				echo CHtml::link($MenuItem->external_path, $MenuItem->external_path);
 			else 
-				echo CHtml::link($MenuItem->path, $this->createFrontendUrl($MenuItem->path));
+				echo CHtml::link($Content->path, $this->createFrontendUrl($Content->path));
 		?>
 	</span>
 	<span class="actions">

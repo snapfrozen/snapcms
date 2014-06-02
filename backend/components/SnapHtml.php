@@ -51,8 +51,11 @@ class SnapHtml extends CHtml
 		//"$this" should be the controller object, maybe we should pass this as a parameter?
 		if($editable) 
 		{
+			$modelName=get_class($model);
 			$htmlOptions['contenteditable']='true';
-			$htmlOptions['id']='field_'.$attribute;
+			$htmlOptions['id']=$modelName.'_'.$attribute.'_'.$model->id;
+			$htmlOptions['data-model']=$modelName;
+			$htmlOptions['data-update-url']=$model->updateUrl;
 			$htmlOptions['data-id']=$model->id;
 			$htmlOptions['data-field']=$attribute;
 			$htmlOptions['data-toolbarset']=$toolbar;

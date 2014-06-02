@@ -82,8 +82,10 @@ class Menu extends CModel
 		{
 			if($MenuItem->id == $MI->id) {
 				$breadcrumbs[] = $MI->title;
-			} else {
-				$breadcrumbs[$MI->title] = array('content/view','path'=>$MI->path);
+			} else if(!empty($MI->Content)) {
+				$breadcrumbs[$MI->title] = array('content/view','path'=>$MI->Content->path);
+			} else if(!empty($MI->external_path)) {
+				$breadcrumbs[$MI->title] = $MI->external_path;
 			}
 		}
 		return $breadcrumbs;

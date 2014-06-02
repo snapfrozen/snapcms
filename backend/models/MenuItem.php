@@ -5,7 +5,6 @@
  *
  * The followings are the available columns in table '{{menu_items}}':
  * @property integer $id
- * @property string $path
  * @property string $title
  * @property integer $parent
  * @property integer $menu_id
@@ -40,14 +39,14 @@ class MenuItem extends SnapActiveRecord
 		return array(
 			array('menu_id', 'required'),
 			array('content_id, sort, parent', 'numerical', 'integerOnly'=>true),
-			array('external_path, path, title, external_path', 'length', 'max'=>255),
+			array('external_path, title, external_path', 'length', 'max'=>255),
 			//array('path', 'unique'),
 			array('menu_id', 'length', 'max'=>50),
 			//array('external_path,', 'url'), //Doesn't work for relative urls
 			array('created, updated', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, path, title, parent, menu_id, external_path, created, updated', 'safe', 'on'=>'search'),
+			array('id, title, parent, menu_id, external_path, created, updated', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -72,7 +71,6 @@ class MenuItem extends SnapActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'path' => 'Path',
 			'title' => 'Title',
 			'parent' => 'Parent',
 			'menu_id' => 'Menu',
@@ -103,7 +101,6 @@ class MenuItem extends SnapActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('path',$this->path,true);
 		$criteria->compare('title',$this->title,true);
 		$criteria->compare('parent',$this->parent);
 		$criteria->compare('menu_id',$this->menu_id);
@@ -131,7 +128,7 @@ class MenuItem extends SnapActiveRecord
 	{		
 		$returnarray = array(
 			'label' => $this->title,
-			'url' => $this->external_path ? $this->external_path_formatted : array('content/view', 'path'=>$this->path)
+			'url' => $this->external_path ? $this->external_path_formatted : array('content/view', 'path'=>$this->Content->path)
 		);
 		
 		if($this->Content)
@@ -196,12 +193,12 @@ class MenuItem extends SnapActiveRecord
 	
 	public function beforeSave()
 	{
-		$this->path = SnapFormat::slugify($this->path);
-
 		if(empty($this->title))
 			$this->title = $this->Content ? $this->Content->title : 'No Title';
-		if(empty($this->path) && empty($this->external_path))
-			$this->path = $this->createPath();
+		if(empty($this->external_path) && $this->Content) {
+			$this->Content->path = $this->createPath();
+			$this->Content->save();
+		}
 		
 		return parent::beforeSave();
 	}

@@ -27,17 +27,19 @@ class SnapUrlManager extends CUrlManager
     {
 		$path='/'.$request->pathInfo;
 		if(!empty($path))
-			$MI=MenuItem::model()->findByAttributes(array('path'=>$path));
+			$Content=Content::model()->findByAttributes(array('path'=>$path));
 		
-		if($MI && $MI->content_id) {
-			$route='content/view/id/'.$MI->content_id;
-			$_GET['path']=$MI->path; //So that menu items become active
-		} else if($MI && $MI->external_path) {
+		if($Content && $Content->id) {
+			$route='content/view/id/'.$Content->id;
+			$_GET['path']=$Content->path; //So that menu items become active
+		} /* else if($MI && $MI->external_path) {
 			//$route = parent::parseUrl($request);
 			Yii::app()->getRequest()->redirect($MI->external_path,true,302);
-		} else {
+		} */ else {
 			$route = parent::parseUrl($request);
 		}
+		
+		
         return lcfirst(str_replace(' ', '', ucwords(str_replace('-', ' ', $route))));
     }
 }
