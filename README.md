@@ -1,4 +1,4 @@
-SnapCMS7
+SnapCMS
 ========
 
 ## Installation
@@ -40,5 +40,6 @@ Or to enable PHP features:
 php -d allow_url_fopen=On -d suhosin.executor.include.whitelist=phar -d disable_functions= composer.phar install
 ```
 Choose "yes" to create the *frontend* folder when asked
+
 
 Done!
