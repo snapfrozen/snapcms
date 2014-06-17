@@ -13,7 +13,7 @@ class SnapDataColumn extends BsDataColumn
 	{
 		if(is_string($this->filter))
 			echo $this->filter;
-		if($this->filter!==false && $this->grid->filter!==null && $this->name!==null)
+		else if($this->filter!==false && $this->grid->filter!==null && $this->name!==null)
 		{
 			if(is_array($this->filter))
 				echo CHtml::activeDropDownList($this->grid->filter, $this->name, $this->filter, array('id'=>false,'prompt'=>''));
