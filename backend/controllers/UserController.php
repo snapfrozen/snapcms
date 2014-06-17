@@ -44,7 +44,7 @@ class UserController extends Controller
 				'roles'=>array('Delete User'),
 			),
 			array('allow',
-				'actions'=>array('updateGroup','groups'),
+				'actions'=>array('updateGroup','groups','createGroup','deleteGroup'),
 				'roles'=>array('Manage User Groups'),
 			),
 			array('deny',  // deny all users
@@ -173,6 +173,46 @@ class UserController extends Controller
 			'groupPermissions'=>$authManager->getItemChildren($name),
 			'tasks'=>$authManager->getAuthItems(CAuthItem::TYPE_TASK),
 		));
+	}
+	
+	/**
+	 * Updates a particular model.
+	 * If update is successful, the browser will be redirected to the 'view' page.
+	 * @param integer $id the ID of the model to be updated
+	 */
+	public function actionCreateGroup()
+	{
+		$authManager=Yii::app()->authManager;
+
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
+
+		if(isset($_POST['name']) && !empty($_POST['name']))
+		{
+			$authManager->createAuthItem($_POST['name'], CAuthItem::TYPE_ROLE, $_POST['description']);
+			$this->redirect(array('/user/groups'));
+		}
+
+		$this->layout='//layouts/column1';
+		$this->render('create_group',array(
+			'authManager'=>$authManager,
+		));
+	}
+	
+	/**
+	 * Updates a particular model.
+	 * If update is successful, the browser will be redirected to the 'view' page.
+	 * @param integer $id the ID of the model to be updated
+	 */
+	public function actionDeleteGroup($name)
+	{
+		$authManager=Yii::app()->authManager;
+
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
+
+		$authManager->removeAuthItem($name);
+		$this->redirect(array('/user/groups'));
 	}
 
 	/**

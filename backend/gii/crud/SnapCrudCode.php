@@ -34,7 +34,7 @@ class SnapCrudCode extends CrudCode
 		{
 			$moduleId = Yii::app()->controller->getModule('gii')->parentModule->id;
 			$moduleFolder = str_replace('snapcms/','',$moduleId);
-			return Yii::getPathOfAlias("frontend.modules.$moduleFolder.backend.views.".$this->getControllerID());
+			return Yii::getPathOfAlias("frontend.modules.$moduleFolder.views.".$this->getControllerID());
 		}
 		return $this->getModule()->getViewPath().'/'.$this->getControllerID();
 	}
@@ -51,7 +51,7 @@ class SnapCrudCode extends CrudCode
 		{
 			$moduleId = Yii::app()->controller->getModule('gii')->parentModule->id;
 			$moduleFolder = str_replace('snapcms/','',$moduleId);
-			$controllerPath = Yii::getPathOfAlias("frontend.modules.$moduleFolder.backend.controllers");
+			$controllerPath = Yii::getPathOfAlias("frontend.modules.$moduleFolder.controllers");
 			//$id='Default';
 		}
 		

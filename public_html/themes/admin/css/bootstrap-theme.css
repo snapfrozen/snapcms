@@ -313,3 +313,9 @@ legend {
 .form-group .file {
   margin: 10px 0;
 }
+
+/* line 29, snapcms/sass/sections/_forms.scss */
+.grid-view .filters input,
+.grid-view .filters select {
+  width: 100%;
+}

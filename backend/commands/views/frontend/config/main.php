@@ -36,10 +36,6 @@ return array(
     ),
 
 	'modules'=>array(
-		//If you are using the bootstrap module
-		'bootstrap' => array(
-			'class' => 'bootstrap.BootStrapModule'
-		),
 		// uncomment the following to enable the Gii tool
 		'gii'=>array(
 			'class'=>'system.gii.GiiModule',

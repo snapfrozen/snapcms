@@ -1,12 +1,6 @@
 <?php
 class SnapWebUser extends CWebUser
 {
-	public $allowAutoLogin = true;
-    public $identityCookie = array(
-        'path' => '/',
-        'domain' => 'snapcms.local',
-    );
-	
 	protected function afterLogin($fromCookie)
 	{			
 		if($this->checkAccess('Update Content'))
