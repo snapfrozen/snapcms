@@ -1,16 +1,17 @@
 <?php 
 $app=Yii::app();
-$adminThemeUrl = $app->themeManager->getTheme('admin')->baseUrl;
-$baseUrl = Yii::app()->request->baseUrl;
-$cs = Yii::app()->clientScript;
-$cs
-    ->registerCoreScript('jquery',CClientScript::POS_END)
-    ->registerCoreScript('jquery.ui',CClientScript::POS_END)
-	->registerScriptFile($adminThemeUrl.'/js/app.js',CClientScript::POS_END);
 
 if($app->user->checkAccess('Update Content')) :
 	
-	$cs = $app->clientScript;
+	$adminThemeUrl = $app->themeManager->getTheme('admin')->baseUrl;
+	$baseUrl = Yii::app()->request->baseUrl;
+	$cs = Yii::app()->clientScript;
+	
+	$cs
+		->registerCoreScript('jquery',CClientScript::POS_END)
+		->registerCoreScript('jquery.ui',CClientScript::POS_END)
+		->registerScriptFile($adminThemeUrl.'/js/app.js',CClientScript::POS_END);
+
 	$conf = SnapUtil::getConfig('content.ckeditor');
 	
 	$cs->registerCssFile($adminThemeUrl . '/css/admin-bar.css');
