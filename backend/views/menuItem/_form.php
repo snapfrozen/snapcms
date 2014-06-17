@@ -47,7 +47,7 @@
 			<?php echo $form->hiddenField($model,'content_id'); ?>
 		</div>
 		
-		<?php echo $form->textFieldControlGroup($model,'path',array('size'=>60,'maxlength'=>255)); ?>
+		<?php //echo $form->textFieldControlGroup($model,'path',array('size'=>60,'maxlength'=>255)); ?>
 		
 		<div class="form-group">
 			<div class="col-lg-10 col-lg-offset-2">
