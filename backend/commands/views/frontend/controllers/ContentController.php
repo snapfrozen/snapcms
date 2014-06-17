@@ -55,6 +55,7 @@ class ContentController extends Controller
 			$Content=$this->loadModel($id);
 		}
 		$Content=$this->loadModel($id);
+		$MI=MenuItem::model()->findByAttributes(array('content_id'=>$Content->id));
 		
 		if(!Yii::app()->user->checkAccess('Update Content'))
 		{

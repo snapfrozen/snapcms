@@ -115,7 +115,7 @@ class SnapActiveForm extends BsActiveForm
 		//$dateFormat = Yii::app()->locale->getDateFormat('full');
 		$htmlOptions = BsHtml::addClassName('form-control',$htmlOptions);
 		$htmlOptions['input'] = 
-		'<div class="row"><div class="col-lg-4">'.
+		($this->layout == BsHtml::FORM_LAYOUT_HORIZONTAL ? '<div class="row"><div class="col-lg-4">' : '').
 		$this->widget('zii.widgets.jui.CJuiDatePicker', array(
 			'name' => $attribute . '_widget',
 			'htmlOptions' => $htmlOptions,
@@ -130,7 +130,7 @@ class SnapActiveForm extends BsActiveForm
 			),
 			'value'=>date('l, j F Y',strtotime($model->$attribute)),
 		), true).
-		'</div></div>';
+		($this->layout == BsHtml::FORM_LAYOUT_HORIZONTAL ? '</div></div>' : '');
 		
         $htmlOptions = $this->processRowOptions($model, $attribute, $htmlOptions);
 		
