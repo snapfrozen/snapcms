@@ -63,6 +63,7 @@ class m131103_131530_add_user_auth_data extends CDbMigration
 		
 		$role=$authManager->createRole("Admin");
 		$role->addChild("User");
+		$role->addChild("Manage User Groups");
 		$role->addChild("Content");
 		$role->addChild("Menu");
 		$role->addChild("General");
