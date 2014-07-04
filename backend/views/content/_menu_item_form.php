@@ -1,6 +1,6 @@
 <?php 
 	$menuSelected = false;
-	if($MenuItem->isNewRecord) { //New record
+	if($Content->isNewRecord) { //New record
 		$menuSelected = in_array($MenuItem->Menu->id, $Content->auto_add_to_menu); 
 	} else {
 		$menuSelected = $MenuItem->content_id == $Content->id;
@@ -20,11 +20,6 @@
 
 <?php echo $form->dropDownListControlGroup($MenuItem,'parent',$MenuItem->Menu->getItemDropDownList(),array('name'=>'MenuItem['.$MenuItem->Menu->name.'][parent]')) ?>
 
-<?php echo $form->textFieldControlGroup($MenuItem,'path',array(
-	'maxlength'=>255,
-	'name'=>'MenuItem['.$MenuItem->Menu->name.'][path]',
-	'help'=>'e.g. /news/my-news-item<br />If nothing is entered this will automatically be set',
-)); ?>
 <?php echo $form->textFieldControlGroup($MenuItem,'title',array(
 	'maxlength'=>255,
 	'name'=>'MenuItem['.$MenuItem->Menu->name.'][title]',

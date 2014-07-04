@@ -86,8 +86,12 @@ class SnapActiveRecord extends CActiveRecord
 					} else if ($validator->format == self::timeFormat) {
 						$timeParts = explode(':',$this->$attribute);
 					}
-					$this->$attrHour = $timeParts[0];
-					$this->$attrMinute = $timeParts[1];
+					
+					if($validator->format == self::dateTimeFormat || $validator->format == self::timeFormat)
+					{
+						$this->$attrHour = $timeParts[0];
+						$this->$attrMinute = $timeParts[1];
+					}
 				}
 			}
 		}
@@ -145,8 +149,8 @@ class SnapActiveRecord extends CActiveRecord
 					$relation = $this->getActiveRelation($parts[0]);
 					$className = $relation->className;
 					$model = new $className();
-					
-					if($model->hasAttribute($parts[1])) {
+
+					if($model->hasAttribute($parts[1]) || $model->hasProperty($parts[1])) {
 						$this->Search[$parts[0]][$parts[1]] = $val;
 					}
 				}

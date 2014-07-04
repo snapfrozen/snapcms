@@ -6,6 +6,7 @@
  * The followings are the available columns in table '{{content}}':
  * @property integer $id
  * @property string $title
+ * @property string $path
  * @property string $type
  * @property boolean $published
  * @property string $created
@@ -50,7 +51,7 @@ class Content extends SnapActiveRecord
 
 		return array(
 			array('title, type', 'required'),
-			array('title, type', 'length', 'max'=>255),
+			array('title, type, path', 'length', 'max'=>255),
 			array('created_by, updated_by', 'numerical', 'integerOnly'=>true),
 			array('publish_on_set, unpublish_on_set, published', 'boolean'),
 			array('publish_on, unpublish_on', 'date', 'allowEmpty'=>true, 'format'=>self::dateTimeFormat),
@@ -224,7 +225,6 @@ class Content extends SnapActiveRecord
 		{
 			$MI=new MenuItem;
 			$MI->menu_id=$Menu->id;
-			$MI->content_id=$this->id;
 		}
 		return $MI;
 	}
@@ -289,5 +289,32 @@ class Content extends SnapActiveRecord
 			':widgetId'=>$widgetId,
 			':contentId'=>$contentId,
 		));
+	}
+	
+	public function getUpdateUrl()
+	{
+		return Yii::app()->controller->createBackendUrl('/content/update/',array('id'=>$this->id));
+	}
+	
+	public function beforeSave()
+	{
+		if(empty($this->path)) 
+		{
+			$mainMenu = SnapUtil::config('general/site.default_menu');
+			$MI = MenuItem::model()->findByAttributes(array(
+				'menu_id'=>$mainMenu,
+				'content_id'=>$this->id,
+			));
+			
+			if($MI) {
+				$this->path = $MI->createPath();
+			} else {
+				$this->path = '/' . $this->type . '/' . $this->title;
+			}
+		}
+		
+		$this->path = SnapFormat::slugify($this->path);
+		
+		return parent::beforeSave();
 	}
 }

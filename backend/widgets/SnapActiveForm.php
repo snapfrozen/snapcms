@@ -14,8 +14,8 @@ class SnapActiveForm extends BsActiveForm
 	
 	public function imageField($model,$attribute,$htmlOptions=array())
 	{
-        $controlOptions = BSArray::popValue('controlOptions', $htmlOptions, array());
-		$labelOptions = BSArray::popValue('labelOptions', $htmlOptions, array());
+        $controlOptions = BsArray::popValue('controlOptions', $htmlOptions, array());
+		$labelOptions = BsArray::popValue('labelOptions', $htmlOptions, array());
 		$layout = $this->layout;
 		
 		$output = '';
@@ -52,7 +52,7 @@ class SnapActiveForm extends BsActiveForm
 		if (!empty($layout)) 
 		{
             if ($layout === BsHtml::FORM_LAYOUT_HORIZONTAL) {
-                $controlClass = BSArray::popValue('class',$controlOptions,BsHtml::$formLayoutHorizontalControlClass);
+                $controlClass = BsArray::popValue('class',$controlOptions,BsHtml::$formLayoutHorizontalControlClass);
                 BsHtml::addCssClass($controlClass, $htmlOptions['controlOptions']);
             }
         }
@@ -62,8 +62,8 @@ class SnapActiveForm extends BsActiveForm
 	
 	public function fileField($model,$attribute,$htmlOptions=array())
 	{
-		$controlOptions = BSArray::popValue('controlOptions', $htmlOptions, array());
-		$labelOptions = BSArray::popValue('labelOptions', $htmlOptions, array());
+		$controlOptions = BsArray::popValue('controlOptions', $htmlOptions, array());
+		$labelOptions = BsArray::popValue('labelOptions', $htmlOptions, array());
 		$layout = $this->layout;
 		
 		$output = '';
@@ -92,7 +92,7 @@ class SnapActiveForm extends BsActiveForm
 		if (!empty($layout)) 
 		{
             if ($layout === BsHtml::FORM_LAYOUT_HORIZONTAL) {
-                $controlClass = BSArray::popValue('class',$controlOptions,BsHtml::$formLayoutHorizontalControlClass);
+                $controlClass = BsArray::popValue('class',$controlOptions,BsHtml::$formLayoutHorizontalControlClass);
                 BsHtml::addCssClass($controlClass, $htmlOptions['controlOptions']);
             }
         }
@@ -115,7 +115,7 @@ class SnapActiveForm extends BsActiveForm
 		//$dateFormat = Yii::app()->locale->getDateFormat('full');
 		$htmlOptions = BsHtml::addClassName('form-control',$htmlOptions);
 		$htmlOptions['input'] = 
-		'<div class="row"><div class="col-lg-4">'.
+		($this->layout == BsHtml::FORM_LAYOUT_HORIZONTAL ? '<div class="row"><div class="col-lg-4">' : '').
 		$this->widget('zii.widgets.jui.CJuiDatePicker', array(
 			'name' => $attribute . '_widget',
 			'htmlOptions' => $htmlOptions,
@@ -123,10 +123,14 @@ class SnapActiveForm extends BsActiveForm
 				'dateFormat'=>'DD, d MM yy',
 				'altFormat'=>'yy-mm-dd',
 				'altField'=>'#'.CHtml::activeId($model,$attribute),
+				'changeYear'=>true,
+				'changeMonth'=>true,
+				'yearRange'=>'1920:'.date('Y'),
+				'onSelect'=>'js:function(){$("#'.CHtml::activeId($model,$attribute).'").trigger("change");}',
 			),
 			'value'=>date('l, j F Y',strtotime($model->$attribute)),
 		), true).
-		'</div></div>';
+		($this->layout == BsHtml::FORM_LAYOUT_HORIZONTAL ? '</div></div>' : '');
 		
         $htmlOptions = $this->processRowOptions($model, $attribute, $htmlOptions);
 		

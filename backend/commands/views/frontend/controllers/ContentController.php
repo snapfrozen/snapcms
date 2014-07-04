@@ -33,7 +33,7 @@ class ContentController extends Controller
 	{
 		return array(
 			array('allow',
-				'actions'=>array('index','view','getImage'),
+				'actions'=>array('index','view'),
 				'roles'=>array('View Content'),
 			),
 			array('deny',  // deny all users
@@ -50,12 +50,12 @@ class ContentController extends Controller
 	{
 		//if path is given, find the content_id from the menu item
 		if($path) {
-			$MI=MenuItem::model()->findByAttributes(array('path'=>$path));
-			$id = $MI ? $MI->content_id : null;
+			$Content=Content::model()->findByAttributes(array('path'=>$path));
 		} else {
-			$MI=MenuItem::model()->findByAttributes(array('content_id'=>$id));
+			$Content=$this->loadModel($id);
 		}
 		$Content=$this->loadModel($id);
+		$MI=MenuItem::model()->findByAttributes(array('content_id'=>$Content->id));
 		
 		if(!Yii::app()->user->checkAccess('Update Content'))
 		{

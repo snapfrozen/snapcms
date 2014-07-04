@@ -41,8 +41,12 @@ class SnapFormat
 	
 	public static function currency($value)
 	{
-		$cn=new CNumberFormatter(Yii::app()->locale->id);
-		return $cn->formatCurrency($value,'USD');
+		$cn = new CNumberFormatter(Yii::app()->locale->id);
+		$fmt = $cn->formatCurrency($value,'USD');
+		if(strpos($fmt,'(') !== false) {
+			$fmt = '<span class="negative">-'.str_replace(array('(',')'),'',$fmt).'</span>';
+		}
+		return $fmt; 
 	}
 	
 	/**

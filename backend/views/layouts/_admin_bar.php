@@ -1,16 +1,17 @@
 <?php 
 $app=Yii::app();
-$adminThemeUrl = $app->themeManager->getTheme('admin')->baseUrl;
-$baseUrl = Yii::app()->request->baseUrl;
-$cs = Yii::app()->clientScript;
-$cs
-    ->registerCoreScript('jquery',CClientScript::POS_END)
-    ->registerCoreScript('jquery.ui',CClientScript::POS_END)
-	->registerScriptFile($adminThemeUrl.'/js/app.js',CClientScript::POS_END);
 
 if($app->user->checkAccess('Update Content')) :
 	
-	$cs = $app->clientScript;
+	$adminThemeUrl = $app->themeManager->getTheme('admin')->baseUrl;
+	$baseUrl = Yii::app()->request->baseUrl;
+	$cs = Yii::app()->clientScript;
+	
+	$cs
+		->registerCoreScript('jquery',CClientScript::POS_END)
+		->registerCoreScript('jquery.ui',CClientScript::POS_END)
+		->registerScriptFile($adminThemeUrl.'/js/app.js',CClientScript::POS_END);
+
 	$conf = SnapUtil::getConfig('content.ckeditor');
 	
 	$cs->registerCssFile($adminThemeUrl . '/css/admin-bar.css');
@@ -73,7 +74,7 @@ if($app->user->checkAccess('Update Content')) :
 		<div class="inner">
 			<?php echo CHtml::link('Admin',$this->createBackendUrl('/')); ?>
 			<?php if(isset($this->Content)):
-				echo CHtml::link('Edit',$this->createBackendUrl('/content/update/',array('id'=>$this->Content->id)));
+				echo CHtml::link('Edit',$this->Content->updateUrl);
 			endif;?>
 			
 			<?php if(isset($this->Content)) echo CHtml::link('Save','javascript:void(0)',array('class'=>'snap-disabled snap-btn snap-btn-default','id'=>'ckSave')); ?>

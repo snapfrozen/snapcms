@@ -42,12 +42,12 @@ class SnapCMSModule extends CWebModule
 				'menu_type'=>SnapCMS::MENU_MAIN_MENU,
 				'items'=>array(
 					'label'=>$this->name, 
-					'url'=>array('/snapcms/'.$this->id), 
+					'url'=>array('/'.$this->id), 
 					'visible'=>!Yii::app()->user->isGuest
 				)
 			),
 		);
-
+		
 		foreach($menus as $menu) 
 		{
 			if($menu['menu_type'] == $menuType) {

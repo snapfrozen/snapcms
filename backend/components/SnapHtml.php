@@ -14,9 +14,9 @@ class SnapHtml extends CHtml
 	 * @param string $alt
 	 * @return string
 	 */
-    public static function activeImage($model, $attribute, $size=null, $alt='', $htmlOptions=array())
+    public static function activeImage($model, $attribute, $size=null, $alt='', $usePlaceholder=false, $htmlOptions=array())
 	{
-		if(empty($model->$attribute))
+		if(empty($model->$attribute) && $usePlaceholder===false)
 			return '';
 		
 		$reqArr = array(
@@ -34,6 +34,27 @@ class SnapHtml extends CHtml
 	}
 	
 	/**
+	 * Generate an image tag for an image stored in a SnapCMS model
+	 * @param SnapCMSActiveRecord $model
+	 * @param string $attribute
+	 * @param mixed $size
+	 * @param string $alt
+	 * @return string
+	 */
+    public static function activeFile($model, $attribute, $label='Download', $htmlOptions=array())
+	{
+		if(empty($model->$attribute))
+			return '';
+		
+		$reqArr = array(
+			'id'=>$model->id,
+			'field'=>$attribute,
+			'modelName'=>get_class($model),
+		);
+		return CHtml::link($label,Yii::app()->controller->createUrl('/site/getFile',$reqArr));
+	}
+	
+	/**
 	 * 
 	 * @param type $model
 	 * @param type $attribute
@@ -42,14 +63,20 @@ class SnapHtml extends CHtml
 	 * @param type $tag
 	 * @return type
 	 */
-	public static function editableArea($model, $attribute, $editable, $toolbar='default', $tag='div')
+	public static function editableArea($model, $attribute, $editable, $toolbar='default', $tag='div', $htmlOptions=array())
 	{
-		$htmlOptions = array();
+		if(!isset($htmlOptions['class'])) {
+			$htmlOptions['class'] = 'snap-editable';
+		}
+		
 		//"$this" should be the controller object, maybe we should pass this as a parameter?
 		if($editable) 
 		{
+			$modelName=get_class($model);
 			$htmlOptions['contenteditable']='true';
-			$htmlOptions['id']='field_'.$attribute;
+			$htmlOptions['id']=$modelName.'_'.$attribute.'_'.$model->id;
+			$htmlOptions['data-model']=$modelName;
+			$htmlOptions['data-update-url']=$model->updateUrl;
 			$htmlOptions['data-id']=$model->id;
 			$htmlOptions['data-field']=$attribute;
 			$htmlOptions['data-toolbarset']=$toolbar;

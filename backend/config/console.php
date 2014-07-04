@@ -29,7 +29,7 @@ return array(
 
 	// application components
 	'components'=>array(
-		'db'=>require('db.php'),
+		'db'=>require('../db.php'),
 		'authManager'=>array(
 			'class'=>'SnapAuthManager',
 			'connectionID'=>'db',

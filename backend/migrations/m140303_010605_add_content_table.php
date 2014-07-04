@@ -7,6 +7,7 @@ class m140303_010605_add_content_table extends CDbMigration
 		$this->createTable('{{content}}', array(
 			'id' => 'pk',
 			'title' => 'string NOT NULL',
+			'path' => 'string NOT NULL',
 			'type' => 'varchar(50) NOT NULL',
 			'published' => 'TINYINT(1) NOT NULL DEFAULT 1',
 			'publish_on' => 'DATETIME',

@@ -61,16 +61,16 @@ class Controller extends CController
 		}
 	}
 
-	
 	public function getModuleMenus($menuType)
 	{
 		$menu = array();
-		$SnapCMSModule = Yii::app()->getModule('snapcms');
-		foreach($SnapCMSModule->modules as $id=>$module)
+		$App = Yii::app();
+		$Modules = $App->getModules();
+		foreach($Modules as $id=>$module)
 		{
 			$className = Yii::import($module['class']);
-			$Module = new $className($id,$SnapCMSModule);
-			if(method_exists($Module,'getMenu'))
+			$Module = new $className($id,$App);
+			if(is_subclass_of($Module,'SnapCMSModule') && method_exists($Module,'getMenu'))
 				$menu = $Module->getMenu($menuType);
 			//$menu += array('label'=>$Module->name, 'url'=>array('/snapcms/'.$id), 'items'=>$Module->menu, 'visible'=>!Yii::app()->user->isGuest);
 		}
@@ -109,6 +109,6 @@ class Controller extends CController
 	
 	public function isEditable()
 	{
-		return Yii::app()->user->checkAccess('Update Content') ? 'true' : 'false';
+		return Yii::app()->user->checkAccess('Update Content') ? true : false;
 	}
 }

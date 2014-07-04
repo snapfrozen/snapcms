@@ -18,16 +18,22 @@ $(document).ready(function(){
 			var htmlElem = CKEDITOR.instances[name].element.$;
 			
 			var fieldName = $('#'+name).data('field');
+			var modelName = $(htmlElem).data('model');
+			
+			//Hack: Considering removing the whole Content/ContentType in one model thing.
+			if(modelName === 'Content')
+				modelName = 'ContentType';
+			
 			var postData = {
-				ContentType: {},
 				ajax:'content-form'
 			};
-			postData.ContentType[fieldName]=data;
+			postData[modelName]={};
+			postData[modelName][fieldName]=data;
 
 			$.ajax({
 				type:"POST",
 				async:false,
-				url: SnapCMS.baseUrl + '/content/update/id/' + $(htmlElem).data('id'),
+				url: $(htmlElem).data('update-url'),
 				data:postData,
 				success:function(data) {
 					//@TODO:Move to "Saved!" to template so it can be translated

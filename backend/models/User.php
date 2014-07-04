@@ -186,4 +186,13 @@ class User extends CActiveRecord
 		
 		return parent::beforeSave();
 	}
+	
+	/**
+	 * Get a list of users for dropdown lists
+	 * @return array
+	 */
+	public static function getList()
+	{
+		return CHtml::listData(self::model()->findAll(array('order'=>'first_name ASC')),'id','full_name');
+	}
 }

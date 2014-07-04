@@ -6,7 +6,7 @@ $menus = Menu::getMenus();
 ?>
 <div class="form">
 
-<?php $form=$this->beginWidget('application.widgets.SnapActiveForm', array(
+<?php $form=$this->beginWidget('frontend.widgets.PrestigeActiveForm', array(
 	'id'=>'content-form',
 	'enableAjaxValidation'=>false,
 	'htmlOptions'=>array('enctype' => 'multipart/form-data','class'=>'row'),

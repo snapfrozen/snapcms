@@ -23,9 +23,7 @@ $dataProvider=new CActiveDataProvider('Content',array(
 <div class="page-header">
 	<h1 class="text-muted"><?php echo $Content->title ?></h1>
 </div>
-<div contenteditable="<?php echo $this->isEditable() ?>" data-field="content" id="content_<?php echo $Content->id ?>" data-id="<?php echo $Content->id ?>"> 
-	<?php echo $Content->content; ?>
-</div>
+<?php echo SnapHtml::editableArea($Content, 'content', $this->isEditable()) ?>
 <?php $this->widget('bootstrap.widgets.BsListView', array(
 	'dataProvider'=>$dataProvider,
 	'id'=>'news-list',

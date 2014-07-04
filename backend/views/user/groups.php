@@ -7,7 +7,7 @@ $this->breadcrumbs=array(
 	'User Groups',
 );
 $this->menu=array(
-	//array('label'=>'Create Group', 'url'=>array('/auth/createGroup')),
+	array('label'=>'Create Group', 'url'=>array('/user/createGroup')),
 );
 
 $this->page_heading = 'User Groups';
@@ -27,13 +27,18 @@ $this->beginWidget('bootstrap.widgets.BsPanel', array(
 			array(
 				'name'=>'name',
 				'type'=>'raw',
-				'value'=>'CHtml::link($data->name,array("user/updateGroup","name"=>$data->name))',
+				'value'=>'CHtml::link($data->name,Yii::app()->controller->createUrl("user/updateGroup")."?name=".$data->name)',
 			),
 			'permissions',
 			array(
 				'class'=>'bootstrap.widgets.BsButtonColumn',
-				'template'=>'{update}',
-				'updateButtonUrl'=>"array('/user/updateGroup','name'=>\$data->name)",
+				'template'=>'{update}{delete}',
+				'updateButtonUrl'=>'Yii::app()->controller->createUrl("user/updateGroup")."?name=".$data->name',
+				'buttons'=>array(
+					'delete'=>array(
+						'url'=>'Yii::app()->controller->createUrl("user/deleteGroup")."?name=".$data->name'
+					)
+				)
 			),
 		),
 	)); ?>
