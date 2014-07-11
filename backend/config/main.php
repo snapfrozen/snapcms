@@ -39,25 +39,18 @@ return array(
     ),
 
 	'modules'=>array(
-		'bootstrap' => array(
-			'class' => 'bootstrap.BootStrapModule'
-		),
-		'snapcms' => array(
-			'class' => 'application.modules.snapcms.SnapCMSModule',
-			'modules' => array ()
-		),
 		// uncomment the following to enable the Gii tool
-		'gii'=>array(
-			'class'=>'system.gii.GiiModule',
-			'password'=>'francis',
-			'generatorPaths' => array(
-                'bootstrap.gii',
-				'application.gii',
-            ),
-			//'viewPath'=>'application.modules.snapcms.boats.views',
-			// If removed, Gii defaults to localhost only. Edit carefully to taste.
-			'ipFilters'=>array('127.0.0.1','::1'),
-		),
+//		'gii'=>array(
+//			'class'=>'system.gii.GiiModule',
+//			'password'=>'francis',
+//			'generatorPaths' => array(
+//                'bootstrap.gii',
+//				'application.gii',
+//            ),
+//			//'viewPath'=>'application.modules.snapcms.boats.views',
+//			// If removed, Gii defaults to localhost only. Edit carefully to taste.
+//			'ipFilters'=>array('127.0.0.1','::1'),
+//		),
 	),
 
 	// application components
@@ -91,17 +84,20 @@ return array(
 				//'domain' => 'snapcms.local',
 			),
 		),
+		
 		// uncomment the following to enable URLs in path-format
 		'urlManager'=>array(
 			'class'=>'backend.components.SnapUrlManager',
 			'urlFormat'=>'path',
 			'showScriptName' => false,
+			/*
 			'rules'=>array(
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
 				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
 				'<controller:\w+>/<action:\w+>/<id:\w+>'=>'<controller>/<action>',
 				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
 			),
+			 */
 		),
 		'cache'=>array(
             'class'=>'system.caching.CFileCache',

@@ -21,7 +21,7 @@ $this->menu = $items;
 			</div>
 			<?php endforeach; ?>
 		</div>
-		<p><?php echo CHtml::link('View All News',array('content/view','path'=>'news')) ?></p>
+		<p><?php echo CHtml::link('View All News',array('content/view','path'=>'/news')) ?></p>
 		<hr />
 	</div>
 	<div class="col-md-6">

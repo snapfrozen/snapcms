@@ -14,8 +14,8 @@ class SnapActiveForm extends BsActiveForm
 	
 	public function imageField($model,$attribute,$htmlOptions=array())
 	{
-        $controlOptions = BSArray::popValue('controlOptions', $htmlOptions, array());
-		$labelOptions = BSArray::popValue('labelOptions', $htmlOptions, array());
+        $controlOptions = BsArray::popValue('controlOptions', $htmlOptions, array());
+		$labelOptions = BsArray::popValue('labelOptions', $htmlOptions, array());
 		$layout = $this->layout;
 		
 		$output = '';
@@ -52,7 +52,7 @@ class SnapActiveForm extends BsActiveForm
 		if (!empty($layout)) 
 		{
             if ($layout === BsHtml::FORM_LAYOUT_HORIZONTAL) {
-                $controlClass = BSArray::popValue('class',$controlOptions,BsHtml::$formLayoutHorizontalControlClass);
+                $controlClass = BsArray::popValue('class',$controlOptions,BsHtml::$formLayoutHorizontalControlClass);
                 BsHtml::addCssClass($controlClass, $htmlOptions['controlOptions']);
             }
         }
@@ -62,8 +62,8 @@ class SnapActiveForm extends BsActiveForm
 	
 	public function fileField($model,$attribute,$htmlOptions=array())
 	{
-		$controlOptions = BSArray::popValue('controlOptions', $htmlOptions, array());
-		$labelOptions = BSArray::popValue('labelOptions', $htmlOptions, array());
+		$controlOptions = BsArray::popValue('controlOptions', $htmlOptions, array());
+		$labelOptions = BsArray::popValue('labelOptions', $htmlOptions, array());
 		$layout = $this->layout;
 		
 		$output = '';
@@ -92,7 +92,7 @@ class SnapActiveForm extends BsActiveForm
 		if (!empty($layout)) 
 		{
             if ($layout === BsHtml::FORM_LAYOUT_HORIZONTAL) {
-                $controlClass = BSArray::popValue('class',$controlOptions,BsHtml::$formLayoutHorizontalControlClass);
+                $controlClass = BsArray::popValue('class',$controlOptions,BsHtml::$formLayoutHorizontalControlClass);
                 BsHtml::addCssClass($controlClass, $htmlOptions['controlOptions']);
             }
         }

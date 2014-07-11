@@ -80,7 +80,7 @@ class SiteController extends Controller
 			'order'=>'created DESC',
 			'condition'=>
 				'(publish_on < NOW() OR publish_on is null) AND '.
-				'(unpublish_on < NOW() OR unpublish_on is null) AND '.
+				'(unpublish_on > NOW() OR unpublish_on is null) AND '.
 				'published = 1'
 		));
 		

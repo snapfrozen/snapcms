@@ -42,6 +42,7 @@ class m140313_093439_create_homepage_and_news_pages extends CDbMigration
 		$this->insert('{{content}}', array(
 			'id'=>'2',
 			'title'=>'News',
+			'path'=>'/news',
 			'type'=>'news_list',
 			'published' => '1',
 			'created_by' => '1', //Admin
@@ -56,7 +57,6 @@ class m140313_093439_create_homepage_and_news_pages extends CDbMigration
 			'meta_description' => 'A meta description can go here',
 		));
 		$this->insert('{{menu_items}}', array(
-			'path'=>'news',
 			'title'=>'News',
 			'menu_id' => 'main_menu',
 			'content_id'=>'2',
@@ -64,7 +64,6 @@ class m140313_093439_create_homepage_and_news_pages extends CDbMigration
 			'updated' => new CDbExpression('NOW()'),
 		));
 		$this->insert('{{menu_items}}', array(
-			'path'=>'',
 			'title'=>'Contact',
 			'menu_id' => 'main_menu',
 			'external_path' => '/site/contact',

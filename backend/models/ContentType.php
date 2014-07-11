@@ -18,6 +18,7 @@ class ContentType extends SnapModel
 	private $_schemaErrors = array();
 	private $_groups = array();
 	private $_attributes = array();
+	private $_attributeLabels = array();
 	private $_tableSchema = null;
 	//private $_alias = null;
 	private $_rules = array(
@@ -34,6 +35,13 @@ class ContentType extends SnapModel
 		}
 		foreach($config['groups'] as $name => $value) {
 			$this->_groups[$name] = $value;
+		}
+		
+		if(isset($config['attributeLabels']))
+		{
+			foreach($config['attributeLabels'] as $name => $value) {
+				$this->_attributeLabels[$name] = $value;
+			}
 		}
 		
 		$this->_rules = array_merge($this->_rules, $config['rules']);
@@ -66,7 +74,7 @@ class ContentType extends SnapModel
      */
     public function attributeLabels()
     {
-        return array(
+        return $this->_attributeLabels + array(
             'id' => 'Machine name',
             'name' => 'Name',
 			'className' => 'Class name'
@@ -292,6 +300,7 @@ class ContentType extends SnapModel
 	public function save()
 	{
 		$dataDir = Yii::getPathOfAlias('frontend.data');
+		
 		foreach($this->fileFields as $field) 
 		{
 			$uploadFile=CUploadedFile::getInstance($this,$field);

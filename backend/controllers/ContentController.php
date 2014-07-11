@@ -171,6 +171,8 @@ class ContentController extends Controller
 			$ContentType = $Content->ContentType;
 			$ContentType->loadData(); //Make sure data is loaded so that we dont' try create a new record.
 			$ContentType->attributes = $_POST['ContentType'];
+			
+			
 
 			foreach($ContentType->fileFields as $field)
 			{

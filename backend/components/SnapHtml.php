@@ -34,6 +34,27 @@ class SnapHtml extends CHtml
 	}
 	
 	/**
+	 * Generate an image tag for an image stored in a SnapCMS model
+	 * @param SnapCMSActiveRecord $model
+	 * @param string $attribute
+	 * @param mixed $size
+	 * @param string $alt
+	 * @return string
+	 */
+    public static function activeFile($model, $attribute, $label='Download', $htmlOptions=array())
+	{
+		if(empty($model->$attribute))
+			return '';
+		
+		$reqArr = array(
+			'id'=>$model->id,
+			'field'=>$attribute,
+			'modelName'=>get_class($model),
+		);
+		return CHtml::link($label,Yii::app()->controller->createUrl('/site/getFile',$reqArr));
+	}
+	
+	/**
 	 * 
 	 * @param type $model
 	 * @param type $attribute
