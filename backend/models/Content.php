@@ -59,7 +59,7 @@ class Content extends SnapActiveRecord
 			array('publish_on_hour, publish_on_minute, unpublish_on_hour, unpublish_on_minute','safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('search_user_updated, content_type, id, title, type, created, updated', 'safe', 'on'=>'search'),
+			array('path, search_user_updated, content_type, id, title, type, created, updated', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -123,6 +123,7 @@ class Content extends SnapActiveRecord
 		$criteria->compare('t.id',$this->id);
 		$criteria->compare('t.title',$this->title,true);
 		$criteria->compare('t.type',$this->type);
+                $criteria->compare('t.path',$this->path,true);
 		$criteria->compare('t.created',$this->created,true);
 		$criteria->compare('t.updated',$this->updated,true);
 		
@@ -306,7 +307,7 @@ class Content extends SnapActiveRecord
 				'content_id'=>$this->id,
 			));
 			
-			if($MI) {
+                        if($MI && !empty($this->id)) {
 				$this->path = $MI->createPath();
 			} else {
 				$this->path = '/' . $this->type . '/' . $this->title;
