@@ -16,6 +16,7 @@ class SnapActiveRecord extends CActiveRecord
 	 */
 	protected function beforeValidate() 
 	{
+                $user_id = isset(Yii::app()->user) ? Yii::app()->user->id : null;
 		if( $this->isNewRecord ) 
 		{
 			// is a new record
@@ -25,9 +26,9 @@ class SnapActiveRecord extends CActiveRecord
 				//$this->updated = new CDbExpression('NOW()');
 				$this->updated = date('Y-m-d H:i:s');
 			if( self::hasAttribute('created_by') )
-				$this->created_by = Yii::app()->user->id;
+				$this->created_by = $user_id;
 			if( self::hasAttribute('updated_by') )
-				$this->updated_by = Yii::app()->user->id;
+				$this->updated_by = $user_id;
 		}
 		else {
 			// we are updating an existing one
@@ -35,7 +36,7 @@ class SnapActiveRecord extends CActiveRecord
 				$this->updated = date('Y-m-d H:i:s');
 				//$this->updated = new CDbExpression('NOW()');
 			if( self::hasAttribute('updated_by') )
-				$this->updated_by = Yii::app()->user->id;			
+				$this->updated_by = $user_id;			
 		}
 
 		foreach($this->attributes as $attribute=>$value) 
@@ -124,7 +125,7 @@ class SnapActiveRecord extends CActiveRecord
 	public function getBelongs_to_user()
 	{
 		$user = Yii::app()->user;
-		return !$user->isGuest && $user->id == $this->user_id;
+		return $user && !$user->isGuest && $user->id == $this->user_id;
 	}
 	
 	public function __get($name)

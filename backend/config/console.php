@@ -2,8 +2,8 @@
 define('SNAP_FRONTEND_URL', '');
 define('SNAP_BACKEND_URL', '/admin');
 
-Yii::setPathOfAlias('backend','./backend/');
-Yii::setPathOfAlias('frontend','./frontend/');
+Yii::setPathOfAlias('backend','../backend/');
+Yii::setPathOfAlias('frontend','../frontend/');
 
 // This is the configuration for yiic console application.
 // Any writable CConsoleApplication properties can be configured here.

@@ -37,6 +37,11 @@ class Controller extends CController
 	public $page_heading_subtext;
 	
 	public $scriptLocations = array();
+        
+        public $meta_description = '';
+        public $meta_keywords = '';
+        public $meta_author = '';
+        
 	
 	public function init()
 	{

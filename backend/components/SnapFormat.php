@@ -54,7 +54,7 @@ class SnapFormat
 	 * @param int month number
 	 * @return string month name
 	 */
-	public function getMonthName($month, $format="F")
+	public static function getMonthName($month, $format="F")
 	{
 		return date($format, mktime(0, 0, 0, $month, 1));
 	}
@@ -63,7 +63,7 @@ class SnapFormat
 	 * Format a week string
 	 * @param string $day
 	 */
-	public function dayOfYear($day)
+	public static function dayOfYear($day)
 	{
 		return Yii::app()->dateFormatter->format("EEE MMM d, yyy", $day);
 	}
