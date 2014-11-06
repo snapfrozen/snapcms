@@ -118,15 +118,17 @@ class ContentType extends SnapModel
 			->where('content_id='.$this->content_id);
 		
 		$res = $cmd->queryRow();
-		foreach($this->_attributes as $key=>$attr) {
-			$this->_attributes[$key] = $res[$key];
-		}
-		 
-		if($res) {
+                
+		if($res) 
+                {
+                    
+                        foreach($this->_attributes as $key=>$attr) {
+                                $this->_attributes[$key] = $res[$key];
+                        }
+                    
 			$this->_newRecord = false;
+                        $this->dataLoaded = true;
 		}
-		
-		$this->dataLoaded = true;
 	}
 	
 	public static function updateSchema($deleteColumns = false)
@@ -300,31 +302,33 @@ class ContentType extends SnapModel
 	public function save()
 	{
 		$dataDir = Yii::getPathOfAlias('frontend.data');
-		
-		foreach($this->fileFields as $field) 
+                
+                foreach($this->fileFields as $field) 
 		{
 			$uploadFile=CUploadedFile::getInstance($this,$field);
 			if(!$uploadFile) 
 				continue;
-			
-			$this->$field=$uploadFile;
+		
+			$this->$field = $uploadFile;
+                        
 			$dirPath=$dataDir.'/content';
 			if (!file_exists($dirPath)) {
 				mkdir($dirPath, 0777, true);
 			}
-			$fullPath = $dirPath.'/'.$field.'_'.$this->Content->id;
-			
+			$fullPath = $dirPath.'/'.$field.'_'.$this->content_id;
+                        
 			if(!$this->$field || !$this->$field->saveAs($fullPath))
 				Yii::app()->user->setFlash('danger','problem saving image for field: '.$field);
 		}
-		
+
 		if($this->_newRecord) {
 			$attribs = $this->_attributes;
 			$attribs['content_id'] = $this->content_id;
-			$saved = Yii::app()->db->createCommand()->insert('{{'.$this->tableName.'}}',$attribs);
+			$saved = Yii::app()->db->createCommand()->insert('{{'.$this->tableName.'}}',$attribs);                        
 		} else {
 			$saved = Yii::app()->db->createCommand()->update('{{'.$this->tableName.'}}',$this->_attributes,'content_id='.$this->content_id);
 		}
+
 		return $saved;
 	}
 		
