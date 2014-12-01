@@ -90,18 +90,16 @@ return array(
 			'class'=>'backend.components.SnapUrlManager',
 			'urlFormat'=>'path',
 			'showScriptName' => false,
-			/*
 			'rules'=>array(
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
 				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
 				'<controller:\w+>/<action:\w+>/<id:\w+>'=>'<controller>/<action>',
 				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
 			),
-			 */
 		),
 		'cache'=>array(
-            'class'=>'system.caching.CFileCache',
-        ),
+                    'class'=>'system.caching.CFileCache',
+                ),
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors
 			'errorAction'=>'site/error',
