@@ -15,6 +15,7 @@ body {
 	width:100%;
 	font-family:Arial;
 	font-size:14px;
+	z-index:9001;
 }
 	#admin-nav .inner {
 		padding:0 10px;

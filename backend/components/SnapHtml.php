@@ -79,7 +79,7 @@ class SnapHtml extends CHtml {
             $htmlOptions['data-toolbarset'] = $toolbar;
         }
 
-        return CHtml::tag($tag, $htmlOptions, $model->$attribute);
+        return CHtml::tag($tag, $htmlOptions, CHtml::value($model, $attribute));
     }
 
 }
