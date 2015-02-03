@@ -32,4 +32,9 @@ class SnapFormatter extends CFormatter
 	{
 		return SnapFormat::currency($value);
 	}
+
+	public function formatWithPercentSymbol($value)
+	{
+		return sprintf('%.2f%%',$value);
+	}
 }

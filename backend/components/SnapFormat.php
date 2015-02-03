@@ -67,4 +67,10 @@ class SnapFormat
 	{
 		return Yii::app()->dateFormatter->format("EEE MMM d, yyy", $day);
 	}
+
+	public static function withPercentSymbol($value)
+	{
+		$formatter = new SnapFormatter();
+		return $formatter->formatWithPercentSymbol($value);
+	}
 }
