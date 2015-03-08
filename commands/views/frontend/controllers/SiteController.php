@@ -179,7 +179,7 @@ class SiteController extends Controller
 		$_GET['h']=$h;
 		$_GET['zc']=$zc;
 
-		include(Yii::getPathOfAlias('backend.external.PHPThumb').'/PHPThumb.php');
+		include(Yii::getPathOfAlias('snapcms.external.PHPThumb').'/PHPThumb.php');
 	}
 
 	/**

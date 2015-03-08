@@ -15,7 +15,7 @@ require_once $path . '/ThumbLib.inc.php';
 $document_path = '';
 
 // The path to your cache folder
-$cache_path = __DIR__.'/../../../public_html/cache/';
+$cache_path = __DIR__.'/../../../../../public_html/cache/';
 
 // The URI to your cache folder
 $cache_uri = Yii::app()->controller->createFrontendUrl('/cache') .'/';

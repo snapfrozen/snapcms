@@ -1,7 +1,7 @@
 <?php
 
 Yii::import('bootstrap.widgets.BsGridView');
-Yii::import('backend.widgets.SnapDataColumn');
+Yii::import('snapcms.widgets.SnapDataColumn');
 
 class SnapGridView extends BsGridView
 {

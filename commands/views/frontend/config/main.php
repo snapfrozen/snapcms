@@ -21,8 +21,8 @@ return array(
     'import' => array(
         'application.models.*',
         'application.components.*',
-        'backend.models.*',
-        'backend.components.*',
+        'snapcms.models.*',
+        'snapcms.components.*',
         //Import these if you are using the bootstrap module
         'bootstrap.components.*',
         'bootstrap.helpers.*',
@@ -54,12 +54,12 @@ return array(
         ),
         'user' => array(
             // enable cookie-based authentication
-            'class' => 'backend.components.SnapWebUser',
+            'class' => 'snapcms.components.SnapWebUser',
             'allowAutoLogin' => true
         ),
         // uncomment the following to enable URLs in path-format
         'urlManager' => array(
-            'class' => 'backend.components.SnapUrlManager',
+            'class' => 'snapcms.components.SnapUrlManager',
             'urlFormat' => 'path',
             'showScriptName' => false,
             'rules' => array(
