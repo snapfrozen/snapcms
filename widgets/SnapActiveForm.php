@@ -35,7 +35,7 @@ class SnapActiveForm extends BsActiveForm
             if ($model instanceof ContentType)
                 $tmpModel = $model->Content;
 
-            $output .= CHtml::image(Yii::app()->controller->createUrl(
+            $output .= CHtml::image(Yii::app()->controller->createFrontendUrl(
                                     '/site/getImage', array(
                                 'id'        => $tmpModel->id,
                                 'modelName' => get_class($tmpModel),

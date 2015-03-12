@@ -4,36 +4,7 @@
     "license": "MIT",
     "type": "project",
     "minimum-stability": "dev",
-    "repositories": {
-        "composer-custom-directory-installer": {
-            "type": "git",
-            "url": "https://github.com/mnsami/composer-installer-plugin.git"
-        },
-        "kcfinder": {
-            "type": "package",
-            "package": {
-                "name": "kcfinder",
-                "version": "3.0",
-                "source": {
-                    "url": "https://github.com/sunhater/kcfinder.git",
-                    "type": "git",
-                    "reference": "master"
-                }
-            }
-        },
-        "ckeditorwidget": {
-            "type": "package",
-            "package": {
-                "name": "ckeditorwidget",
-                "version": "1.0",
-                "source": {
-                    "url": "https://github.com/aqlinux/TheCKEditor.git",
-                    "type": "git",
-                    "reference": "master"
-                }
-            }
-        }
-    },
+    "repositories": {},
     "require": {
         "php": ">=5.3.2",
         "yiisoft/yii": "1.1.*",
@@ -44,12 +15,6 @@
         "ckeditor/ckeditor": "dev-full/4.3.x",
         "kcfinder": "3.0.*",
         "ckeditorwidget": "1.0.*"
-    },
-    "extra": {
-        "installer-paths": {
-            "public_html/lib/ckeditor": ["ckeditor/ckeditor"],
-            "public_html/lib/kcfinder": ["kcfinder"]
-        }
     },
     "autoload": {
         "psr-0": {
