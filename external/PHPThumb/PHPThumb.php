@@ -30,7 +30,10 @@ $params = array('src'=>false, 'w'=>false, 'h'=>false);
 $options = array('resizeUp'=>true,'jpegQuality'=>100,'cache_life'=>$cache_life);
 extract(array_merge($params, $options, $_GET));
 
-$cache = md5($src.$w.$h);
+$last = strrpos($src,'/');
+$shortSrcPos = strrpos($src, '/', $last - strlen($src) - 1);
+$shortSrc = substr($src, $shortSrcPos);
+$cache = md5($shortSrc).'_'.$w.'_'.$h;
 $cache_path.= $cache;
 
 if (

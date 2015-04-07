@@ -310,6 +310,15 @@ class ContentType extends SnapModel
 				continue;
 		
 			$this->$field = $uploadFile;
+
+            $shortSrc = md5('/content/'.$field.'_'.$this->content_id);
+            $cachePath = Yii::getPathOfAlias('web').'/cache/';
+
+            $files = new DirectoryIterator($cachePath);
+            $filesFiltered = new RegexIterator($files, sprintf('(^%s.*$)i', preg_quote($shortSrc)));
+            foreach($filesFiltered as $file) {
+                unlink($file->getPathname());
+            }
                         
 			$dirPath=$dataDir.'/content';
 			if (!file_exists($dirPath)) {
