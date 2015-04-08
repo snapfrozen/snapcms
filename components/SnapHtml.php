@@ -9,7 +9,7 @@ class SnapHtml extends CHtml {
 
     /**
      * Generate an image tag for an image stored in a SnapCMS model
-     * @param SnapCMSActiveRecord $model
+     * @param SnapActiveRecord $model
      * @param string $attribute
      * @param mixed $size
      * @param string $alt
@@ -35,10 +35,10 @@ class SnapHtml extends CHtml {
 
     /**
      * Generate an image tag for an image stored in a SnapCMS model
-     * @param SnapCMSActiveRecord $model
+     * @param SnapActiveRecord $model
      * @param string $attribute
-     * @param mixed $size
-     * @param string $alt
+     * @param string $label
+     * @param array $htmlOptions
      * @return string
      */
     public static function activeFile($model, $attribute, $label = 'Download', $htmlOptions = array()) {
@@ -55,12 +55,13 @@ class SnapHtml extends CHtml {
 
     /**
      * 
-     * @param type $model
-     * @param type $attribute
-     * @param type $editable
-     * @param type $toolbar
-     * @param type $tag
-     * @return type
+     * @param SnapActiveRecord $model
+     * @param string $attribute
+     * @param boolean $editable
+     * @param mixed $toolbar
+     * @param string $tag
+     * @param array $htmlOptions
+     * @return string
      */
     public static function editableArea($model, $attribute, $editable, $toolbar = 'default', $tag = 'div', $htmlOptions = array()) {
         if (!isset($htmlOptions['class'])) {
