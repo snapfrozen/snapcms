@@ -264,10 +264,10 @@ class SnapActiveForm extends BsActiveForm
     }
 
     /**
-     * @param type $model
-     * @param type $attribute
-     * @param type $htmlOptions
-     * @return type
+     * @param SnapActiveRecord $model
+     * @param array $attribute
+     * @param array $htmlOptions
+     * @return string
      */
     public function autoGenerateInput($model, $attribute, $htmlOptions = array())
     {
@@ -278,6 +278,12 @@ class SnapActiveForm extends BsActiveForm
             if (is_array($method) && isset($method['widget']['class']))
             {
                 return $this->_loadWidget($model, $attribute, $method);
+            }
+            elseif (is_array($method) && isset($method['class']))
+            {
+                $methodName = $method['class'];
+                $params = array_merge(array($model, $attribute), $method['params']);
+                return call_user_func_array(array($this, $methodName), $params);
             }
             else
             {
