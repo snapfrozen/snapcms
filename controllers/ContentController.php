@@ -165,37 +165,34 @@ class ContentController extends Controller
 				}
 			}
 		}
-		
-		if(isset($_POST['ContentType']))
-		{
-			$ContentType = $Content->ContentType;
-			$ContentType->loadData(); //Make sure data is loaded so that we dont' try create a new record.
+
+        if (isset($_POST['ContentType']))
+        {
+            $ContentType = $Content->ContentType;
+            $ContentType->loadData(); //Make sure data is loaded so that we dont' try create a new record.
             $oldFile = array();
 
-            foreach($ContentType->fileFields as $field)
-            {
-                if(isset($_POST[$field.'_delete'])) {
+            foreach ($ContentType->fileFields as $field) {
+                if (isset($_POST[$field . '_delete']))
                     $ContentType->$field = null;
-                } else {
+                else
                     $oldFile[$field] = $ContentType->$field;
-                }
             }
 
-			$ContentType->attributes = $_POST['ContentType'];
+            $ContentType->attributes = $_POST['ContentType'];
 
             foreach ($ContentType->fileFields as $field) {
-                if (empty($_POST[$field]) && !isset($_POST[$field.'_delete']))
+                if (empty($_POST[$field]) && !isset($_POST[$field . '_delete']))
                     $ContentType->$field = $oldFile[$field];
             }
 
-			$ContentType->save(); //Have to assume saved because function always returns 0;
-			
-			if(Yii::app()->request->isAjaxRequest)
-			{
-				echo CJSON::encode($ContentType->errors);
-				Yii::app()->end();
-			}
-		}
+            $ContentType->save(); //Have to assume saved because function always returns 0;
+
+            if (Yii::app()->request->isAjaxRequest) {
+                echo CJSON::encode($ContentType->errors);
+                Yii::app()->end();
+            }
+        }
 		
 		if($contentSaved && $menuItemsSaved) 
 		{
