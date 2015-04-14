@@ -67,7 +67,7 @@ class MenuItemController extends Controller
      */
     public function actionCreate($menu = null)
     {
-        $MIClass = $this->getMenuItemClassName();
+        $MIClass = Menu::getMenuItemClassName();
         $model = new $MIClass;
         $model->menu_id = $menu;
 
@@ -94,7 +94,7 @@ class MenuItemController extends Controller
      */
     public function actionUpdate($id)
     {
-        $MIClass = $this->getMenuItemClassName();
+        $MIClass = Menu::getMenuItemClassName();
         $model = $this->loadModel($id);
 
         // Uncomment the following line if AJAX validation is needed
@@ -135,7 +135,7 @@ class MenuItemController extends Controller
      */
     public function actionIndex()
     {
-        $MIClass = $this->getMenuItemClassName();
+        $MIClass = Menu::getMenuItemClassName();
         $dataProvider = new CActiveDataProvider($MIClass);
         $this->render('index', array(
             'dataProvider' => $dataProvider,
@@ -147,7 +147,7 @@ class MenuItemController extends Controller
      */
     public function actionAdmin()
     {
-        $MIClass = $this->getMenuItemClassName();
+        $MIClass = Menu::getMenuItemClassName();
         $model = new $MIClass('search');
         $model->unsetAttributes();  // clear any default values
         if (isset($_GET[$MIClass])) {
@@ -168,7 +168,7 @@ class MenuItemController extends Controller
      */
     public function loadModel($id)
     {
-        $MIClass = $this->getMenuItemClassName();
+        $MIClass = Menu::getMenuItemClassName();
         $model = $MIClass::model()->findByPk($id);
         if ($model === null) {
             throw new CHttpException(404, 'The requested page does not exist.');
@@ -187,16 +187,5 @@ class MenuItemController extends Controller
             echo CActiveForm::validate($model);
             Yii::app()->end();
         }
-    }
-
-    protected function getMenuItemClassName()
-    {
-        $className = 'MenuItem';
-        try {
-            $className = SnapUtil::config('general/models.MenuItem.class');
-        } catch (CException $e) {
-        }
-
-        return $className;
     }
 }
