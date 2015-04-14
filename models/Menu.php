@@ -219,7 +219,7 @@ class Menu extends CModel
         return $links;
     }
 
-    protected static function getMenuItemClassName()
+    public static function getMenuItemClassName()
     {
         $className = 'MenuItem';
         try {
