@@ -1,7 +1,7 @@
 <?php
 /* @var $this MenuItemController */
 /* @var $model MenuItem */
-/* @var $form SnapActiveForm */
+/* @var $form CActiveForm */
 ?>
 
 <div class="form">
@@ -15,7 +15,6 @@
 		
 		<?php echo $form->hiddenField($model,'menu_id'); ?>
 		<?php echo $form->textFieldControlGroup($model,'title',array('size'=>60,'maxlength'=>255)); ?>
-		<?php echo $form->textFieldControlGroup($model,'icon',array('size'=>60,'maxlength'=>255)); ?>
 
 		<?php if($model->Menu): ?>
 			<?php echo $form->dropDownListControlGroup($model,'parent',$model->Menu->getItemDropDownList()); ?>

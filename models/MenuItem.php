@@ -40,7 +40,6 @@ class MenuItem extends SnapActiveRecord
 			array('menu_id', 'required'),
 			array('content_id, sort, parent', 'numerical', 'integerOnly'=>true),
 			array('external_path, title, external_path', 'length', 'max'=>255),
-			array('icon', 'length', 'max'=>30),
 			//array('path', 'unique'),
 			array('menu_id', 'length', 'max'=>50),
 			//array('external_path,', 'url'), //Doesn't work for relative urls
@@ -129,7 +128,6 @@ class MenuItem extends SnapActiveRecord
 	{		
 		$returnarray = array(
 			'label' => $this->title,
-			'icon' => $this->icon,
 			'url' => $this->external_path ? $this->external_path_formatted : array('content/view', 'path'=>$this->Content->path)
 		);
 		
