@@ -1,7 +1,7 @@
 <?php
 
 /**
- * 
+ * @property-read string $menuClassName
  */
 class Menu extends CModel
 {
@@ -14,6 +14,7 @@ class Menu extends CModel
     {
         $this->id = $id;
         $this->name = SnapUtil::config("general/menus.$id");
+        $MIClass = self::getMenuItemClassName();
 
         $criteria = new CDbCriteria();
         $criteria->with = array('Content');
@@ -28,7 +29,7 @@ class Menu extends CModel
         $criteria->order = 'sort';
         $criteria->params = array(':id' => $id);
 
-        $items = MenuItem::model()->findAll($criteria);
+        $items = $MIClass::model()->findAll($criteria);
         $this->rootMenuItems = $items ? $items : array(); //If no items found make sure this is an array
     }
 
@@ -139,7 +140,8 @@ class Menu extends CModel
     {
         $items = array();
         $this->_recurItemDropDownList($this->rootMenuItems, $items);
-        $rootobj = new MenuItem;
+        $MIClass = self::getMenuItemClassName();
+        $rootobj = new $MIClass;
         $rootobj->id = null;
         $rootobj->title = $this->name;
         $root = array($rootobj);
@@ -177,7 +179,8 @@ class Menu extends CModel
         }
         foreach ($items as $item)
         {
-            $MI = MenuItem::model()->findByPk($item['id']);
+            $MIClass = self::getMenuItemClassName();
+            $MI = $MIClass::model()->findByPk($item['id']);
             $MI->parent = $parent;
             $MI->sort = $pos++;
             if (!$MI->save())
@@ -214,6 +217,17 @@ class Menu extends CModel
             $links[] = array('label' => $Menu->name, 'url' => array('/menu/update', 'id' => $Menu->id), 'visible' => $user->checkAccess('Update Menu'));
         }
         return $links;
+    }
+
+    public static function getMenuItemClassName()
+    {
+        $className = 'MenuItem';
+        try {
+            $className = SnapUtil::config('general/models.MenuItem.class');
+        } catch (CException $e) {
+        }
+
+        return $className;
     }
 
 }
