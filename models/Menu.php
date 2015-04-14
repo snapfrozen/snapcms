@@ -140,7 +140,8 @@ class Menu extends CModel
     {
         $items = array();
         $this->_recurItemDropDownList($this->rootMenuItems, $items);
-        $rootobj = new MenuItem;
+        $MIClass = self::getMenuItemClassName();
+        $rootobj = new $MIClass;
         $rootobj->id = null;
         $rootobj->title = $this->name;
         $root = array($rootobj);
@@ -178,7 +179,8 @@ class Menu extends CModel
         }
         foreach ($items as $item)
         {
-            $MI = MenuItem::model()->findByPk($item['id']);
+            $MIClass = self::getMenuItemClassName();
+            $MI = $MIClass::model()->findByPk($item['id']);
             $MI->parent = $parent;
             $MI->sort = $pos++;
             if (!$MI->save())
