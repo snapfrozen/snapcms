@@ -33,6 +33,31 @@ class SnapHtml extends CHtml {
         return CHtml::image(Yii::app()->controller->createUrl('/site/getImage', $reqArr), $alt, $htmlOptions);
     }
 
+	/**
+	 * Generate an image url for css background
+	 * @param SnapActiveRecord $model
+	 * @param string $attribute
+	 * @param mixed $size
+	 * @return string
+	 */
+	public static function activeImageUrl($model, $attribute, $size = null) {
+		if (empty($model->$attribute))
+			return '';
+
+		$reqArr = array(
+			'id' => $model->id,
+			'field' => $attribute,
+			'modelName' => get_class($model),
+		);
+		if (is_array($size)) {//It's a PHPThumb array
+			$reqArr = array_merge($reqArr, $size);
+		} else if (is_string($size)) {
+			$conf = SnapUtil::getConfig('images');
+			$reqArr = array_merge($reqArr, $conf['sizes'][$size]);
+		}
+		return Yii::app()->controller->createUrl('/site/getImage', $reqArr);
+	}
+
     /**
      * Generate an image tag for an image stored in a SnapCMS model
      * @param SnapActiveRecord $model
