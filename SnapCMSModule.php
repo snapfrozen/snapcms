@@ -1,8 +1,6 @@
 <?php
 
 /**
- * WARNING, THIS FILE SHOULD NO LONGER BE USED, PLEASE USE THE ONE IN THE DIRECTORY ROOT
- * THIS IS BECAUSE OF THE WAY YII SETS THE MODULE basePath AUTOMATICALLY.
  * @author Francis Beresford
  */
 class SnapCMSModule extends CWebModule
