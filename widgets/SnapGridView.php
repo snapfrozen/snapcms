@@ -23,7 +23,9 @@ class SnapGridView extends BsGridView
             $cs = Yii::app()->getClientScript();
             $cs->registerScriptFile($this->snapBaseScriptUrl . '/jquery.snapgridview.js', CClientScript::POS_END);
             $cs->registerCssFile($this->snapBaseScriptUrl . '/styles.css');
-            $this->afterAjaxUpdate = "$.fn.snapGridView.init";
+            if(empty($this->afterAjaxUpdate)) {
+                $this->afterAjaxUpdate = "$.fn.snapGridView.init";
+            }
 
             $this->_setSelectedColumns();
 
