@@ -48,7 +48,11 @@ class Controller extends CController
     public function init()
     {
         $baseUrl = Yii::app()->baseUrl;
-        $themeUrl = $baseUrl . Yii::app()->theme->baseUrl;
+        if (substr($baseUrl, -strlen('/admin')) == '/admin')
+            $themeUrl = $baseUrl . '/' . Yii::app()->theme->baseUrl;
+        else
+            $themeUrl = $baseUrl . Yii::app()->theme->baseUrl;
+
         $this->scriptLocations[Yii::app()->theme->basePath] = $themeUrl;
 
         if (Yii::app()->request->pathInfo != 'content-type/status')
