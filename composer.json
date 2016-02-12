@@ -12,7 +12,7 @@
         "drmabuse/yii-bootstrap-3-module": "dev-master",
         "weotch/phpthumb": "dev-master",
         "mandrill/mandrill": "dev-master",
-        "ckeditor/ckeditor": "dev-full/4.3.x",
+        "ckeditor/ckeditor": "4.3.x",
         "kcfinder": "3.0.*",
         "ckeditorwidget": "1.0.*"
     },
